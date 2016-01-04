@@ -16,10 +16,13 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+
 }
 
 body {
   margin: 0px;
+  overflow-x: hidden;
 }
 
 article,
@@ -8955,3 +8958,4 @@ a > img.fh5co-align-center {
 }
 
 /*# sourceMappingURL=style.css.map */
+
