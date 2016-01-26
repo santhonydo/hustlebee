@@ -1,0 +1,67 @@
+<div >
+	<div class="container" style="padding: 20px 20px">
+		<div class="row">
+			<div class="col-md-12">
+				<a class="navbar-brand"  >
+					<div style="border: 2px solid black; padding: 7px 10px 7px 12px">
+						<span style="color: black;">Hustle</span><span style="color: #ffdc00;">Bee</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 text-center">
+				<h2 class="fh5co-lead">Post A Job</h2>
+				<p class="fh5co-sub">What kind of job</p>
+			</div>
+
+    	</div>
+    	<div class="row">
+    		<div class="col-md-12">
+		    	<form name="signupForm" novalidate>
+					<div class="row">
+						<div class="col-md-offset-2 col-sm-offset-2 col-md-4 col-sm-4">
+							<div class="form-group">
+								<input type="text" style="color: #ffdc00;" class="form-control" name="name" ng-model="signup.name" placeholder="Company Name" required ng-pattern="/^(\D)+$/">
+								<div ng-messages="signupForm.name.$error" ng-if="signupForm.name.$touched">
+			    					<div ng-messages-include="../static/partials/messages.html"></div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="form-group">
+								<input type="text" style="color: #ffdc00;" class="form-control" name="profession" ng-model="signup.profession" placeholder="Job Title" required ng-pattern="/^(\D)+$/">
+								<div ng-messages="signupForm.profession.$error" ng-if="signupForm.profession.$touched">
+			    					<div ng-messages-include="../static/partials/messages.html"></div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="col-md-4 col-sm-4">
+							<div class="form-group">
+								<input type="email" style="color: #ffdc00;" class="form-control" name="email" ng-model="signup.email" placeholder="Email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+								<div ng-messages="signupForm.email.$error" ng-if="signupForm.email.$touched">
+				    				<div ng-message="required"><p style="color: red">This field is required</p></div>
+				                    <div ng-message="pattern"><p style="color: red">Invalid Email</p></div>
+								</div>
+							</div>
+						</div> -->
+					</div>
+
+					<div class="row">
+						<div class="col-md-offset-5 col-sm-offset-5 col-md-2 col-sm-2">
+							<div class="form-group" style="text-align: center">
+								<input class="btn btn-primary" type="submit" ng-click="emailSignUp(signupForm)" value="Post">
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+   </div>
+</div>
