@@ -1,34 +1,49 @@
 var hustleBeeAppModule = angular.module('hustleBeeApp', ['ngRoute', 'ui.router', 'ui.bootstrap', 'ngMessages', 'angulartics', 'angulartics.google.analytics']);
 
+
 hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
 		.state('home', {
-			url: '/home',
+			url: '/',
 			templateUrl: '/static/partials/homepage.html',
+			caseInsensitiveMatch: true,
 			controller: 'HomepageController'
 		})
 
 		.state('posting_job', {
 			url: '/posting_job',
 			templateUrl: '/static/partials/posting_job.html',
+			caseInsensitiveMatch: true,
 			controller: 'PostingJobController'
 		})
 
 		.state('logIn', {
-			url: '/log_in',
-			controller: 'LogInController',
-			templateUrl: '/static/partials/log_in.html',
+			url: '/login',
+			templateUrl: '/static/partials/login.html',
+			caseInsensitiveMatch: true,
+			controller: 'AuthController',
 			params: {
 				obj: null
 			}
 		})
 
-		.state('registration', {
-			url: '/registration',
-			controller: 'RegistrationController',
-			templateUrl: '/static/partials/registration.html',
+		.state('register', {
+			url: '/register',
+			templateUrl: '/static/partials/register.html',
+			caseInsensitiveMatch: true,
+			controller: 'AuthController',
+			params: {
+				obj: null
+			}
+		})
+
+		.state('dashboard', {
+			url: '/dashboard',
+			templateUrl: '/static/partials/dashboard.html',
+			caseInsensitiveMatch: true,
+			controller: 'DashboardController',
 			params: {
 				obj: null
 			}
@@ -48,7 +63,6 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($http){
 });
 
 hustleBeeAppModule.controller('HomepageController', function($scope, $location, $uibModal, $state, $stateParams, hustleBeeAppFactory){
-	console.log("in HomepageController")
 	$scope.emailSignUp = function(signupForm){
 		if(angular.isUndefined($scope.signup)){
 			$scope.error = "Opps! Did you forget to enter all your information?";
@@ -78,10 +92,6 @@ hustleBeeAppModule.controller('HomepageController', function($scope, $location, 
       		controller: 'JobPostingModalController',
     	});
 	}
-
-	
-
-	
 });
 
 hustleBeeAppModule.controller('JobPostingModalController', function($scope, $location, $state, $stateParams, $uibModalInstance) {
@@ -104,17 +114,5 @@ hustleBeeAppModule.controller('JobPostingModalController', function($scope, $loc
 	}
 });
 
-hustleBeeAppModule.controller('LogInController', function($scope, $location, $state, $stateParams, hustleBeeAppFactory){
-	
-	$scope.registration = function() {
-		$state.go('registration', $stateParams.obj)
-	}
-})
-
-hustleBeeAppModule.controller('RegistrationController', function($scope, $location, $state, $stateParams, hustleBeeAppFactory){
-	$scope.error = ""
-
-	// $scope.
-})
 
 
