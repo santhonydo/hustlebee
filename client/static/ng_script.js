@@ -12,42 +12,29 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider){
 			controller: 'HomepageController'
 		})
 
-		.state('posting_job', {
-			url: '/posting_job',
-			templateUrl: '/static/partials/posting_job.html',
-			caseInsensitiveMatch: true,
-			controller: 'PostingJobController'
-		})
-
-		.state('logIn', {
-			url: '/login',
-			templateUrl: '/static/partials/login.html',
-			caseInsensitiveMatch: true,
-			controller: 'AuthController',
-			params: {
-				obj: null
-			}
-		})
-
-		.state('register', {
-			url: '/register',
-			templateUrl: '/static/partials/register.html',
-			caseInsensitiveMatch: true,
-			controller: 'AuthController',
-			params: {
-				obj: null
-			}
-		})
-
 		.state('dashboard', {
 			url: '/dashboard',
 			templateUrl: '/static/partials/dashboard.html',
 			caseInsensitiveMatch: true,
-			controller: 'DashboardController',
-			params: {
-				obj: null
-			}
+			controller: 'DashboardController'
 		})
+
+		.state('dashboard.postJob', {
+			url: '/dashboard/postJob',
+			templateUrl: '/static/partials/posting_job.html',
+			caseInsensitiveMatch: true,
+			controller: 'DashboardController'
+		})
+
+		// .state('dashboard', {
+		// 	url: '/dashboard',
+		// 	templateUrl: '/static/partials/dashboard.html',
+		// 	caseInsensitiveMatch: true,
+		// 	controller: 'DashboardController',
+		// 	params: {
+		// 		obj: null
+		// 	}
+		// })
 });
 
 hustleBeeAppModule.factory('hustleBeeAppFactory', function($http){
@@ -113,6 +100,10 @@ hustleBeeAppModule.controller('JobPostingModalController', function($scope, $loc
 		}
 	}
 });
+
+hustleBeeAppModule.controller('DashboardController', function($scope, $location, $state, $stateParams, hustleBeeAppFactory){
+	console.log('DashboardController');
+})
 
 
 
