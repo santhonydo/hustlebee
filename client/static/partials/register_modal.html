@@ -1,0 +1,55 @@
+<div class="modal-header">
+	<button type="button" ng-click="close()" class="close">&times;</button>
+    <h3 class="modal-title">Register!</h3>
+</div>
+<div class="modal-body">
+	<form name="jobPostingForm">
+		<div class="row">
+			<div class="col-md-12">
+				<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control" name="firstName" ng-model="newUser.firstName" placeholder="First Name">
+					</div>
+				</div>	
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control" name="lastName" ng-model="newUser.lastName" placeholder="Last Name">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control" name="companyName" ng-model="newUser.companyName" placeholder="Company">
+					</div>
+				</div>	
+		
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="email" class="form-control" name="email" ng-model="newUser.email" placeholder="Email">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" ng-model="newUser.username" placeholder="Username">
+					</div>
+				</div>	
+		
+				<div class="col-md-6">
+					<div class="form-group">
+						<input type="password" class="form-control" name="password" ng-model="newUser.password" placeholder="Password">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="modal-footer">
+	
+	<button type="button" class="btn btn-default" ng-click="register(newUser)">Register</button>
+</div>
+
