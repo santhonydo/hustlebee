@@ -400,7 +400,7 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 					}
 				}
 			} else {
-				$scope.errorMessage = "You have no posted shifts!"
+				$scope.errorMessage = "You have no posted shifts. Go post one and enjoy a 'me' day!"
 			}
 
 			$scope.allShifts = allShifts;
@@ -422,10 +422,43 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $stateParams, hustleBeeAppFactory){
 
 	console.log('in JobPostingController');
-
-	var auth = hustleBeeAppFactory
-
+	
 	$scope.error = false;
+	
+	var auth = hustleBeeAppFactory;
+	var userInfo = hustleBeeAppFactory.getUserData();
+
+	var getUserAddresses = function(){
+		$scope.addresses = [];
+		var addresses = userInfo.addresses
+		for (item in addresses){
+			var addressObj = addresses[item];
+			var addressStr = '';
+			var street = addressObj.street;
+			var suite = addressObj.suite;
+			var city = addressObj.city;
+			var state = addressObj.state;
+			var zipcode = addressObj.zipcode;
+
+			if (angular.isUndefined(suite) || suite === ''){
+				addressStr = street + ', ' + city + ', ' + state + ' ' + zipcode;
+				var addressToAdd = {};
+				addressToAdd.value = addressObj._id;
+				addressToAdd.label = addressStr;
+				console.log(addressToAdd);
+				$scope.addresses.push(addressToAdd);
+			} else {
+				addressStr = street + ' Suite ' + suite + ', ' + city + ', ' + state + ' ' + zipcode;
+				var addressToAdd = {};
+				addressToAdd.value = addressObj._id;
+				addressToAdd.label = addressStr;
+				$scope.addresses.push(addressToAdd);
+			}
+
+		}
+	}
+
+	getUserAddresses();
 
 	console.log(hustleBeeAppFactory.getUserStatus());
 
@@ -448,10 +481,10 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 		label: "Pharmacy Technician - $40/hr"
 	}];
 	
-	$scope.post = function(shiftDate, startTimeHour, startTimeMin, shiftHour, shiftMin, jobPosition){
-		if (angular.isUndefined(jobPosition) || angular.isUndefined(shiftDate) || angular.isUndefined(startTimeHour) || angular.isUndefined(startTimeMin) || angular.isUndefined(shiftHour) || angular.isUndefined(shiftMin) ) {
+	$scope.post = function(shiftDate, startTimeHour, startTimeMin, shiftHour, shiftMin, jobPosition, address){
+		if (angular.isUndefined(jobPosition) || angular.isUndefined(shiftDate) || angular.isUndefined(startTimeHour) || angular.isUndefined(startTimeMin) || angular.isUndefined(shiftHour) || angular.isUndefined(shiftMin) || angular.isUndefined(address)) {
 			console.log('empty field');
-			$scope.errorMessage = "All fields are required.";
+			$scope.errorMessage = "All fields are required. Go to Profile > Settings to add location.";
 			$scope.error = true;
 		} else {
 			$scope.error = false;
@@ -460,13 +493,15 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			var hourToMins = shiftHour.value * 60;
 			var shiftDuration = hourToMins + shiftMin.value;
 			var startTime = startTimeHour.value + ":" + startTimeMin.value;
+			var shiftAddress = address.label;
 			var shift = {};
 			shift["date"] = shiftDate;
 			shift["startTime"] = startTime;
 			shift["duration"] = shiftDuration;
 			shift["position"] = jobPosition.value;
 			shift["employer"] = userId;
-			shift['accepted'] = false;
+			shift["accepted"] = false;
+			shift["shiftAddress"] = shiftAddress;
 
 			hustleBeeAppFactory.postShift(shift, function(data){
 				if(data){
