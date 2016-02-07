@@ -9,7 +9,7 @@ module.exports = function(passport){
 			passReqToCallback: true 
 		},
 		function(req, username, password, done){
-			User.findOne({'username' : username},
+			User.findOne({'username' : username}).populate('addresses').exec(
 				function(err, user){
 					if(err)
 						return done(err);

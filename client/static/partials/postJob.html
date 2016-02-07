@@ -1,0 +1,78 @@
+<div style="height: 80px"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="text-center">
+			<h2 class="fh5co-lead">Post a shift</h2>
+			<p class="fh5co-sub">Simplifying the way you hire.</p>
+		</div>
+	</div>
+	<form name="jobPostingForm" novalidate>
+		<div class="row">
+			<div class="col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6">
+				<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+				<div class="form-group">
+					<label for="jobPosition">Position</label>
+					<select class="form-control" name="jobPosition" ng-model="jobPosition" ng-options="position as position.label for position in jobPositions" required>
+						<!-- <option value="">- Select -</option> -->
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		    <div class='col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6'>
+		        <div class="form-group">
+		        	<label for="shiftDate">Shift Date</label>
+		            <input type="text" name="shiftDate" class="form-control" placeholder="MM/DD/YYYY" ng-model="shiftDate" required ng-pattern="/^((\d{4})-(\d{2})-(\d{2})|(\d{2})\/(\d{2})\/(\d{4}))$/">
+		        </div>
+		    </div>
+		</div>
+		<div class="row">
+		    <div class='col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6'>
+		    	<label>Start Time (HH:MM - 24H)</label>
+		    	<div class="row">
+		    		<div class="col-md-6 col-sm-6 col-xs-6">
+				        <div class="form-group">
+				            <select class="form-control" name="startTimeHour" ng-model="startTimeHour" ng-options="hour as hour.label for hour in startTimeHours">
+				            	<!-- <option value="">- Hour -</option> -->
+				            </select>
+			    		</div>
+			    	</div>
+			    	<div class="col-md-6 col-sm-6 col-xs-6">
+				        <div class="form-group">
+				            <select class="form-control" name="startTimeMin" ng-model="startTimeMin" ng-options="minute as minute.label for minute in startTimeMins">
+				            	<!-- <option value="">- Minute -</option> -->
+				            </select>
+			    		</div>
+			    	</div>
+	    		</div>
+		    </div>
+		</div>
+		<div class="row">
+		    <div class='col-md-offset-3 col-sm-offset-3 col-md-6 col-sm-6'>
+		    	<label>Shift Duration (HH:MM)</label>
+		    	<div class="row">
+		    		<div class="col-md-6 col-sm-6 col-xs-6">
+				        <div class="form-group">
+				            <select class="form-control" name="shiftHour" ng-model="shiftHour" ng-options="hour as hour.label for hour in shiftHours">
+				            </select>
+				            
+			    		</div>
+			    	</div>
+			    	<div class="col-md-6 col-sm-6 col-xs-6">
+				        <div class="form-group">
+				            <select class="form-control" name="shiftMin" ng-model="shiftMin" ng-options="minute as minute.label for minute in shiftMins">
+				            </select>
+			    		</div>
+			    	</div>
+	    		</div>
+		    </div>
+		</div>
+
+		<div class="row text-center">
+			<a class="btn btn-primary btn-md" ng-click="post(shiftDate, startTimeHour, startTimeMin, shiftHour, shiftMin, jobPosition)">Post</a>
+		</div>
+	</form>
+</div>
+<div style="height: 100px"></div>
+

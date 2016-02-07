@@ -9,6 +9,10 @@ var UserSchema = new mongoose.Schema({
 	email: String,
 	username: String,
 	password: String,
+	phoneNumber: String,
+	addresses: [{type: Schema.Types.ObjectId, ref: 'Address'}],
+	employer: false,
+	_Shifts: [{type: Schema.Types.ObjectId, ref: 'Shift'}],
 	created_at: {type: Date, default: Date.now}
 });
 

@@ -1,4 +1,7 @@
 var emails = require('./../server/controllers/emails.js');
+var shifts = require('./../server/controllers/shifts.js');
+var addresses = require('./../server/controllers/addresses.js');
+var users = require('./../server/controllers/users.js');
 
 module.exports = function(app, passport){
 
@@ -42,8 +45,55 @@ module.exports = function(app, passport){
 		})(req, res, next); 
 	});
 
+	app.post('/postShift', function(req, res) {
+		shifts.postShift(req, res);
+	});
+
+	app.post('/getShifts', function(req, res){
+		shifts.getShifts(req, res);
+	});
+
+	app.post('/deleteShift', function(req, res){
+		shifts.deleteShift(req, res);
+	});
+
+	app.post('/addAddress', function(req, res){
+		addresses.add(req, res);
+	});
+
+	app.post('/deleteAddress', function(req, res){
+		addresses.delete(req, res);
+	});
+
+	app.post('/getUser', function(req, res){
+		users.getUser(req, res);
+	});
+
+	app.post('/updateUser', function(req, res){
+		users.update(req, res);
+	})
+
+
+
 	// app.get('/user', function(req, res){
 	// 		var item = {user: "Anthony", pass: "this is working"};
 	// 		res.json(item);
 	// 	});
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

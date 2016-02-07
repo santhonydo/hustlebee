@@ -1,0 +1,85 @@
+<div style="height: 80px"></div>
+
+<div class="container">
+    <h3>Edit Profile</h3>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+		<div class="col-md-3">
+			<div class="text-center">
+				<img src="./static/images/profile_image_temp.png" style="height: 100px; width: 100px;" class="avatar img-circle" alt="avatar">
+				<h6>Hello, {{user.firstName}} {{user.lastName}}!</h6>
+
+				<!-- <input type="file" class="form-control"> -->
+			</div>
+		</div>
+      
+		      <!-- edit form column -->
+		<div class="col-md-9 personal-info">
+			<div class="alert alert-info alert-dismissable">
+				<a class="panel-close close" data-dismiss="alert">×</a> 
+				<i class="fa fa-coffee"></i>
+				Your information <strong>must</strong> be complete and up-to-date to post shifts.
+			</div>
+			
+			<div ng-show="success" class="alert alert-success">{{successMessage}}</div>
+			
+		<h3>Personal info</h3>
+
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">First name:</label>
+				<div class="col-lg-8">
+					<input class="form-control" type="text" ng-model="user.firstName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Last name:</label>
+				<div class="col-lg-8">
+					<input class="form-control" type="text" ng-model="user.lastName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Company:</label>
+				<div class="col-lg-8">
+					<input class="form-control" type="text" ng-model="user.companyName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Address:</label>
+				<div class="col-lg-8">
+					<div class="input-group">
+						<select class="form-control" name="address" ng-model="address" ng-options="address as address.label for address in addresses">
+						</select>
+						<div class="input-group-addon" style="background-color: white; border-color: white;" >
+							<i class="icon-plus" style="font-size: 140%; color: green; cursor: pointer; margin-right: 20px" ng-click="add()"></i>
+							<i class="icon-trash-o" style="font-size: 140%; color: red; cursor: pointer;" ng-click="delete(address.value)"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Email:</label>
+				<div class="col-lg-8">
+					<input class="form-control" type="text" ng-model="user.email">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label" >Phone Number:</label>
+				<div class="col-lg-8">
+					<input class="form-control" type="text" ng-model="user.phoneNumber">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-3 control-label"></label>
+				<div class="col-md-8">
+					<input type="button" class="btn btn-primary" value="Save Changes" ng-click="updateUser(user)">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<hr>
+<div style="height: 100px"></div>
+
