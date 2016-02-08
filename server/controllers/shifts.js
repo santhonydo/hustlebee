@@ -1,18 +1,33 @@
 var mongoose = require('mongoose');
+var sendgrid = require('sendgrid')('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');
 
 var Shift = mongoose.model('Shift');
 
 module.exports = function () {
 	return {
 		postShift: function(req, res){
-
-			var shift = new Shift(req.body);
+			var shiftData = req.body.shift;
+			var userData = req.body.userInfo;
+			var shift = new Shift(shiftData);
 
 			shift.save(function(err, data){
 				if (err){
 					console.log('error saving shift to database');
 				} else {
 					console.log('successfully added a shift');
+					sendgrid.send({
+						to : 'santhonydo@gmail.com',
+						from: 'shifts@hustlebee.com',
+						subject: 'New Shift!',
+						text: 'We got a new shift!',
+						html: '<h1>New Shift Added!</h1><p>Shift Date: ' + shiftData.date + '</p><p>Start Time (24H): ' + shiftData.startTime + '</p><p>Shift Duration: ' + shiftData.duration + '</p><p>Shift Position: ' + shiftData.position + '</p><p>Shift Address: ' + shiftData.shiftAddress + '</p><p>Shift Employer Name: ' + userData.firstName + ' ' + userData.lastName + ' </p><p>Company: ' + userData.companyName + ' </p><p>Phone Number: ' + ' ' + userData.phoneNumber + ' </p><p>Email: ' + userData.email + '</p>'
+					}, function(err, json){
+						if (err){
+							return console.log(err);
+						}
+						console.log(json);
+					});
+
 					res.json(data);
 				}
 			})

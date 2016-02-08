@@ -177,7 +177,6 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 	};
 
 	factory.getShifts = function(data, callback){
-		console.log('in getShifts factory: ' + data['username']);
 		$http.post('/getShifts', data).success(function(data){
 			callback(data);
 		})
@@ -220,7 +219,6 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 
 hustleBeeAppModule.controller('HomepageController', function($scope, $location, $uibModal, $state, $stateParams, hustleBeeAppFactory){
 	$scope.emailSignUp = function(signupForm){
-		console.log('test');
 		if(angular.isUndefined($scope.signup)){
 			$scope.error = "Opps! Did you forget to enter all your information?";
 			$scope.success = ''
@@ -256,7 +254,6 @@ hustleBeeAppModule.controller('HomepageController', function($scope, $location, 
 
 hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope, $uibModal, $location, $state, $stateParams, hustleBeeAppFactory){
 
-	console.log('in dashboard after logout');
 	var auth = hustleBeeAppFactory;
 	
 	$rootScope.loggedIn = false;
@@ -283,9 +280,7 @@ hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope
 		})
 	}
 
-	$scope.logout = function(){
-		// console.log(hustleBeeAppFactory.getUserStatus());
-		
+	$scope.logout = function(){		
 		hustleBeeAppFactory.logout(function(success){
 			if(success){
 				$state.go('dashboard.businesses');
@@ -296,8 +291,6 @@ hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope
 })
 
 hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $uibModalInstance, $location, $state, $stateParams, hustleBeeAppFactory){
-
- 	// console.log(hustleBeeAppFactory.getUserStatus());
 
  	$scope.error = false;
 	$scope.disabled = true;
@@ -323,20 +316,28 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $ui
 	}
 
 	$scope.register = function(newUser){
-		hustleBeeAppFactory.register(newUser, function(data){
-			if(data.username){
-				$uibModalInstance.dismiss('cancel');
-				$state.go('dashboard.userHome');
-				$scope.disabled = false;
-				$scope.newUser = {};
-				
-			} else {
-				$scope.error = true;
-				$scope.errorMessage = "Something went wrong!";
-				$scope.disabled = false;
-				$scope.newUser = {};
-			}
-		})
+		if (angular.isUndefined(newUser)){
+			$scope.error = true;
+			$scope.errorMessage = "All fields are required.";
+		} else if ((newUser.firstName === '') || (newUser.lastName === '') || (newUser.companyName === '') || (newUser.email === '') || (newUser.username === '') || (newUser.password === '')){
+			$scope.error = true;
+			$scope.errorMessage = "All fields are required.";
+		} else {
+			hustleBeeAppFactory.register(newUser, function(data){
+				if(data.username){
+					$uibModalInstance.dismiss('cancel');
+					$state.go('dashboard.userHome');
+					$scope.error = false;
+					$scope.disabled = false;
+					$scope.newUser = {};
+				} else {
+					$scope.error = true;
+					$scope.errorMessage = data[0];
+					$scope.disabled = false;
+					$scope.newUser = {};
+				}
+			})
+		}
 	}
 })
 
@@ -348,10 +349,17 @@ hustleBeeAppModule.controller('BusinessHomeController', function($scope, $uibMod
 	} else {
 		$rootScope.loggedIn = false;
 	}
-
-	console.log(hustleBeeAppFactory.getUserStatus());
 	
-	$scope.jobPositions = ["Outpatient Pharmacist - $100/hr", "Inpatient Pharmacist - $120/hr", "Pharmacy Technician - $35/hr", "Pharmacy Clerk - $25/hr"];
+	$scope.jobPositions = [{
+		value: "Outpatient Pharmacist", 
+		label: "Outpatient Pharmacist"
+	}, {
+		value: "Inpatient Pharmacist",
+		label: "Inpatient Pharmacist"
+	}, {
+		value: "Pharmacy Technician",
+		label: "Pharmacy Technician"
+	}];
 
 	$scope.postingJob = function(jobPost){
 		if(auth.getUserStatus() === true){
@@ -370,8 +378,6 @@ hustleBeeAppModule.controller('BusinessHomeController', function($scope, $uibMod
 
 hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootScope, $state, $stateParams, hustleBeeAppFactory){
 	
-	console.log('UserHomePageController');
-
 	var auth = hustleBeeAppFactory.getUserStatus();
 	var user = hustleBeeAppFactory.getUserData();
 
@@ -393,11 +399,20 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 				$scope.message = false;
 
 				for(item in allShifts){
-					if(allShifts[item]['accepted'] === true){
+					if(allShifts[item]['accepted'] === 0){
+						allShifts[item]['accepted'] = 'Pending';
+					} else if(allShifts[item]['accepted'] === 1) {
 						allShifts[item]['accepted'] = 'Accepted';
 					} else {
-						allShifts[item]['accepted'] = 'Pending';
+						allShifts[item]['accepted'] = 'Completed';
 					}
+
+					var shiftDurationTimeFormat= '';
+					var shiftHour = Math.floor((allShifts[item]['duration']) / 60);
+					var shiftMinutes = (allShifts[item]['duration'] % 60);
+					shiftDurationTimeFormat = shiftHour + 'H' + shiftMinutes + 'M';
+
+					allShifts[item]['duration'] = shiftDurationTimeFormat;
 				}
 			} else {
 				$scope.errorMessage = "You have no posted shifts. Go post one and enjoy a 'me' day!"
@@ -420,8 +435,6 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 })
 
 hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $stateParams, hustleBeeAppFactory){
-
-	console.log('in JobPostingController');
 	
 	$scope.error = false;
 	
@@ -445,7 +458,6 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 				var addressToAdd = {};
 				addressToAdd.value = addressObj._id;
 				addressToAdd.label = addressStr;
-				console.log(addressToAdd);
 				$scope.addresses.push(addressToAdd);
 			} else {
 				addressStr = street + ' Suite ' + suite + ', ' + city + ', ' + state + ' ' + zipcode;
@@ -459,8 +471,6 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 	}
 
 	getUserAddresses();
-
-	console.log(hustleBeeAppFactory.getUserStatus());
 
 	$scope.startTimeHours = [{value: 0, label: "00"}, {value: 1, label: "1"}, {value: 2, label: "2"}, {value: 3, label: "3"}, {value: 4, label: "4"}, {value: 5, label: "5"}, {value: 6, label: "6"}, {value: 7, label: "7"}, {value: 8, label: "8"}, {value: 9, label: "9"}, {value: 10, label: "10"}, {value: 11, label: "11"}, {value: 12, label: "12"}, {value: 13, label: "13"}, {value: 14, label: "14"}, {value: 15, label: "15"}, {value: 16, label: "16"}, {value: 17, label: "17"}, {value: 18, label: "18"}, {value: 19, label: "19"}, {value: 20, label: "20"}, {value: 21, label: "21"}, {value: 22, label: "22"}, {value: 23, label: "23"} ];
 
@@ -483,7 +493,6 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 	
 	$scope.post = function(shiftDate, startTimeHour, startTimeMin, shiftHour, shiftMin, jobPosition, address){
 		if (angular.isUndefined(jobPosition) || angular.isUndefined(shiftDate) || angular.isUndefined(startTimeHour) || angular.isUndefined(startTimeMin) || angular.isUndefined(shiftHour) || angular.isUndefined(shiftMin) || angular.isUndefined(address)) {
-			console.log('empty field');
 			$scope.errorMessage = "All fields are required. Go to Profile > Settings to add location.";
 			$scope.error = true;
 		} else {
@@ -500,14 +509,19 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			shift["duration"] = shiftDuration;
 			shift["position"] = jobPosition.value;
 			shift["employer"] = userId;
-			shift["accepted"] = false;
+			shift["accepted"] = 0;
 			shift["shiftAddress"] = shiftAddress;
 
-			hustleBeeAppFactory.postShift(shift, function(data){
+			var shiftData = {};
+			shiftData.shift = shift;
+			shiftData.userInfo = userInfo;
+
+
+			hustleBeeAppFactory.postShift(shiftData, function(data){
 				if(data){
 					$state.go('dashboard.userHome');
 				} else {
-					console.log('error posting shift');
+					return
 				}
 			})
 		}
@@ -515,8 +529,6 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 })
 
 hustleBeeAppModule.controller('SettingsController', function($scope, $state, $uibModal, $stateParams, hustleBeeAppFactory){
-
-	console.log('SettingsController');
 	
 	$scope.success = false;
 
@@ -540,7 +552,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 				var addressToAdd = {};
 				addressToAdd.value = addressObj._id;
 				addressToAdd.label = addressStr;
-				console.log(addressToAdd);
+				
 				$scope.addresses.push(addressToAdd);
 			} else {
 				addressStr = street + ' Suite ' + suite + ', ' + city + ', ' + state + ' ' + zipcode;
@@ -591,7 +603,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 
 	$scope.updateUser = function(user){
 		if(angular.isUndefined(user.phoneNumber)){
-			console.log('missing fields');
+			return
 		} else {
 			hustleBeeAppFactory.updateUser(user, function(data){
 				if(data){
@@ -606,8 +618,6 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 })
 
 hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $state, $uibModalInstance, hustleBeeAppFactory){
-	
-	console.log('ModalController');
 
 	$scope.error = false;
 	$scope.success = false;
@@ -623,7 +633,6 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
 
 	$scope.addAddress = function(address, state){
 		if(angular.isUndefined(address) || angular.isUndefined(state)){
-			console.log('missing info');
 			$scope.error = true;
 			$scope.errorMessage = "All fields are required.";
 		} else {
