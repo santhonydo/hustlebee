@@ -4,7 +4,7 @@ hustleBeeAppModule.run(function ($state, $rootScope, hustleBeeAppFactory, $locat
 	$rootScope.$on('$stateChangeStart', function (event, to) {
 		var auth = hustleBeeAppFactory;
 		if((to.data && to.data.loggedInUser === true) && (auth.getUserStatus() === null || auth.getUserStatus() === false)){
-			$state.go('dashboard.businesses');
+			$state.go('business.home');
 			event.preventDefault();
 		}
 	})
@@ -19,40 +19,40 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider){
 
 	$stateProvider
 		.state('home', {
-			url: '/',
+			url: '',
 			templateUrl: '/static/partials/homepage.html',
 			caseInsensitiveMatch: true,
 			controller: 'HomepageController'
 		})
 
-		.state('dashboard', {
-			url: '/dashboard.login',
+		.state('business', {
+			url: '',
 			templateUrl: '/static/partials/dashboard.html',
 			caseInsensitiveMatch: true,
 			controller: 'DashboardController'
 		})
 
-		.state('dashboard.login', {
-			url: '/dashboard.login',
+		.state('business.login', {
+			url: '/business/login',
 			templateUrl: '/static/partials/login.html',
 			caseInsensitiveMatch: true
 		})
 
-		.state('dashboard.register', {
-			url: '/dashboard.register',
+		.state('business.register', {
+			url: '/business/register',
 			templateUrl: '/static/partials/register.html',
 			caseInsensitiveMatch: true
 		})
 
-		.state('dashboard.businesses', {
-			url: '/dashboard.businesses',
+		.state('business.home', {
+			url: '/business/home',
 			templateUrl: '/static/partials/businessesHome.html',
 			caseInsensitiveMatch: true,
 			controller: 'BusinessHomeController'
 		})
 
-		.state('dashboard.userHome', {
-			url: '/dashboard.userHome',
+		.state('business.user', {
+			url: '/business/user',
 			templateUrl: '/static/partials/userBusinessHome.html',
 			caseInsensitiveMatch: true,
 			controller: 'UserHomePageController',
@@ -61,8 +61,8 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider){
 			}
 		})
 
-		.state('dashboard.postShift', {
-			url: '/dashboard.postShift',
+		.state('business.postShift', {
+			url: '/business/postShift',
 			templateUrl: '/static/partials/postJob.html',
 			caseInsensitiveMatch: true,
 			controller: 'JobPostingController',
@@ -71,8 +71,8 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider){
 			}
 		})
 
-		.state('dashboard.settings', {
-			url: '/dashboard.settings',
+		.state('business.settings', {
+			url: '/business/settings',
 			templateUrl: '/static/partials/settings.html',
 			caseInsensitiveMatch: true,
 			controller: 'SettingsController',
@@ -244,9 +244,9 @@ hustleBeeAppModule.controller('HomepageController', function($scope, $location, 
 		var auth = hustleBeeAppFactory.getUserStatus();
 
 		if (auth === true){
-			$state.go('dashboard.userHome');
+			$state.go('business.user');
 		} else {
-			$state.go('dashboard.businesses');
+			$state.go('business.home');
 		}
 	}
 
@@ -283,7 +283,7 @@ hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope
 	$scope.logout = function(){		
 		hustleBeeAppFactory.logout(function(success){
 			if(success){
-				$state.go('dashboard.businesses');
+				$state.go('business.home');
 			}
 		})
 	}
@@ -303,7 +303,7 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $ui
 		hustleBeeAppFactory.login(user, function(data){
 			if(data.username){
 				$uibModalInstance.dismiss('cancel');
-				$state.go('dashboard.userHome');
+				$state.go('business.user');
 				$scope.disabled = false;
 				$scope.user = {};
 			} else {
@@ -326,7 +326,7 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $ui
 			hustleBeeAppFactory.register(newUser, function(data){
 				if(data.username){
 					$uibModalInstance.dismiss('cancel');
-					$state.go('dashboard.userHome');
+					$state.go('business.user');
 					$scope.error = false;
 					$scope.disabled = false;
 					$scope.newUser = {};
@@ -363,7 +363,7 @@ hustleBeeAppModule.controller('BusinessHomeController', function($scope, $uibMod
 
 	$scope.postingJob = function(jobPost){
 		if(auth.getUserStatus() === true){
-			$state.go('dashboard.userHome');
+			$state.go('business.user');
 		} else {
 			var modalInstance = $uibModal.open({
 				animation: true,
@@ -519,7 +519,7 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 
 			hustleBeeAppFactory.postShift(shiftData, function(data){
 				if(data){
-					$state.go('dashboard.userHome');
+					$state.go('business.user');
 				} else {
 					return
 				}
@@ -632,8 +632,13 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
 	}
 
 	$scope.addAddress = function(address, state){
-		if(angular.isUndefined(address) || angular.isUndefined(state)){
+		if(angular.isUndefined(address)) {
 			$scope.error = true;
+			$scope.errorMessage = "All fields are required.";
+		} else if(angular.isUndefined(address.street) || angular.isUndefined(address.street) || angular.isUndefined(address.city) || angular.isUndefined(address.zipcode) || angular.isUndefined(state)){
+
+			$scope.error = true;
+			$scope.success = false;
 			$scope.errorMessage = "All fields are required.";
 		} else {
 			var	address = address;
@@ -650,8 +655,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
 					$scope.state = {};
 				}
 			})
-		}
-		
+		}	
 	}
 
 })

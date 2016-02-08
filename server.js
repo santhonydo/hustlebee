@@ -24,8 +24,8 @@ require('./config/mongoose.js');
 require('./server/controllers/register.js');
 require('./server/controllers/login.js');
 require('./config/routes.js')(app, passport);
-// require('./server/controllers/api.js')(router);
-// app.use('/api', router);
+require('./server/controllers/api.js')(router);
+app.use('/api', router);
 
 var initPassport = require('./server/controllers/init.js');
 initPassport(passport);
