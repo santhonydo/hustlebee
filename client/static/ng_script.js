@@ -316,7 +316,7 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $ui
 	}
 
 	$scope.register = function(newUser){
-		if (angular.isUndefined(newUser)){
+		if (angular.isUndefined(newUser.firstName) || angular.isUndefined(newUser.lastName) || angular.isUndefined(newUser.companyName) || angular.isUndefined(newUser.email) || angular.isUndefined(newUser.username) || angular.isUndefined(newUser.password)){
 			$scope.error = true;
 			$scope.errorMessage = "All fields are required.";
 		} else if ((newUser.firstName === '') || (newUser.lastName === '') || (newUser.companyName === '') || (newUser.email === '') || (newUser.username === '') || (newUser.password === '')){
