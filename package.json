@@ -18,6 +18,7 @@
     "mongoose": "^4.3.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "sendgrid": "^2.0.0",
     "stormpath-sdk-angularjs": "^0.9.0"
   }
 }
