@@ -1,0 +1,20 @@
+<div style="height: 80px"></div>
+<div class="container">
+	<div class="col-md-offset-2 col-md-8">
+		<div ng-show="success" class="alert alert-info">{{successMessage}}</div>
+		<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+		<div ng-show="info" class="alert alert-info">{{infoMessage}}</div>
+		<h4>Forgot your password?</h4>
+		<form>
+			<span class="help-block">Enter the email address you used to log in to your account.
+			<br>
+			We'll send you an email with instructions to choose a new password.
+			</span>
+			<div class="form-group input-group">
+				<span class="input-group-addon">@</span>
+				<input class="form-control" placeholder="Email" type="email" ng-model="user.email">
+			</div>
+			<button class="btn btn-primary" ng-click="emailReset(user)">Reset Password</button>
+		</form>
+	</div>
+</div>

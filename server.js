@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var flash = require('connect-flash');
 var app = express();
+var async = require('async');
 
 //configure passport
 var passport = require('passport');

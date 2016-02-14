@@ -44,6 +44,26 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider){
 			caseInsensitiveMatch: true
 		})
 
+		.state('business.forgot', {
+			url: '/business/forgot',
+			templateUrl: '/static/partials/forgot.html',
+			caseInsensitiveMatch: true,
+			controller: 'ForgotPasswordController'
+		})
+
+		.state('business.reset', {
+			url: '/business/reset/:id',
+			caseInsensitiveMatch: true,
+			controller: 'ResetPasswordController'
+		})
+
+		.state('business.resetPassword', {
+			url: '/business/resetPassword',
+			templateUrl: '/static/partials/resetPassword.html',
+			caseInsensitiveMatch: true,
+			controller: 'NewPasswordController'
+		})
+
 		.state('business.home', {
 			url: '/business/home',
 			templateUrl: '/static/partials/businessesHome.html',
@@ -170,6 +190,36 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 		return deferred.promise;
 	};
 
+	factory.forgot = function(data, callback){
+		$http.post('/forgot', data).success(function(data){
+			userInfo = data;
+			callback(data);
+		})
+	};
+
+	factory.reset = function(data, callback) {
+		$http.post('/reset', data).success(function(data){
+			if(data === null) {
+				var userError = "Expired token";
+				userInfo = userError;
+			} else {
+				userInfo = data;
+			}
+
+			callback(data);
+		})
+	}
+
+	factory.newPassword = function(data, callback){
+		$http.post('/newPassword', data).success(function(data){
+			if(data.message === 'Error reseting'){
+				var userError = "Expired token";
+				userInfo = userError;
+			}
+			callback(data);
+		})
+	};
+
 	factory.postShift = function(data, callback){
 		$http.post('/postShift', data).success(function(data){
 			callback(data);
@@ -290,7 +340,7 @@ hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope
 
 })
 
-hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $uibModalInstance, $location, $state, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $uibModal, $uibModalInstance, $location, $state, $stateParams, hustleBeeAppFactory){
 
  	$scope.error = false;
 	$scope.disabled = true;
@@ -343,7 +393,108 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $ui
 			})
 		}
 	}
+
+	$scope.forgot = function(){
+		$uibModalInstance.dismiss('cancel');
+		$state.go('business.forgot');
+	}
+
+
 })
+
+hustleBeeAppModule.controller('ForgotPasswordController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
+	
+	$scope.error = false;
+	$scope.success = false;
+	$scope.info = false;
+	
+	var userData = hustleBeeAppFactory.getUserData()
+	
+	if(userData === 'Expired token'){
+		$scope.info = true;
+		$scope.infoMessage = 'Password reset token is invalid or has expired.'
+	}
+	
+	$scope.emailReset = function(user){
+		$scope.info = false;
+
+		if (user === false){
+			$scope.error = true;
+			$scope.errorMessage = "Email is required."
+			return
+		}
+		hustleBeeAppFactory.forgot(user, function(success){
+			if(success.msg === 'No account with that email address exists.'){
+				$scope.user = {};
+				$scope.error = true;
+				$scope.success = false;
+				$scope.errorMessage = success.msg;
+			} else {
+				$scope.user = {};
+				$scope.error = false;
+				$scope.success = true;
+				$scope.successMessage = success.msg;
+			}
+		})
+	}
+})
+
+hustleBeeAppModule.controller('ResetPasswordController', function($scope, $state, $stateParams, hustleBeeAppFactory){
+
+	hustleBeeAppFactory.reset($stateParams, function(success){
+		if(success){
+			$state.go('business.resetPassword');
+		} else {
+			$state.go('business.forgot');
+		}
+	})
+})
+
+hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, $stateParams, hustleBeeAppFactory){
+
+	$scope.error = false;
+	$scope.success = false;
+	$scope.info = false;
+
+	var userData = hustleBeeAppFactory.getUserData();
+
+	if(userData === null){
+		$state.go('business.forgot');	
+	} else {
+		$scope.passwordReset = function(user){
+			if(angular.isUndefined(user.password) || angular.isUndefined(user.passwordAgain) || (user.password === '') || (user.passwordAgain === '')) {
+				$scope.error = true;
+				$scope.errorMessage = "All fields are required."
+			} else {
+				$scope.error = false;
+				$scope.errorMessage = "";
+
+				if (user.password != user.passwordAgain){
+					$scope.error = true;
+					$scope.errorMessage = "Passwords do not match. Try again!"
+					$scope.user = {};
+				} else {
+					$scope.error = false;
+					$scope.errorMessage = "";
+					var userReset = {};
+					userReset.token = userData.resetPasswordToken;
+					userReset.password = user.password;
+					hustleBeeAppFactory.newPassword(userReset, function(success){
+						if(success.message === 'Error reseting') {
+							$state.go('business.forgot');
+						} 
+						if(success.message === 'success'){
+							$scope.user = {};
+							$scope.success = true;
+							$scope.successMessage = "Your password has been successfully changed.";
+						}
+					})
+				}
+			}
+		}
+	}
+})
+
 
 hustleBeeAppModule.controller('BusinessHomeController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
 	var auth = hustleBeeAppFactory
