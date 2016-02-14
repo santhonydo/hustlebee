@@ -1,6 +1,14 @@
+var mongoose = require('mongoose');
+var Shift = mongoose.model('Shift');
+
 module.exports = function(router){
 	router.get('/jobPost', function(req, res){
-		var job = {title: 'pharmacy', position: 'pharmacist'}
-		res.send(job);
+		Shift.find({}, function(err, shifts){
+			if(err){
+				res.json({error: "Error retrieving shifts"});
+			}else{
+				res.json(shifts);
+			}
+		})
 	})
 }
