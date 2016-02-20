@@ -7,12 +7,13 @@ var User = mongoose.model('User');
 
 module.exports = function(router){
 
-	router.get('/jobPost', function(req, res){
+	router.get('/allShifts', function(req, res){
 		Shift.find({}, function(err, shifts){
 			if(err){
 				res.json({error: "Error retrieving shifts"});
 			}else{
-				res.json(shifts);
+				var resultCount = shifts.length;
+				res.json({resultCount: resultCount, results: shifts});
 			}
 		})
 	});

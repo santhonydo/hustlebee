@@ -2,7 +2,7 @@ var emails = require('./../server/controllers/emails.js');
 var shifts = require('./../server/controllers/shifts.js');
 var addresses = require('./../server/controllers/addresses.js');
 var users = require('./../server/controllers/users.js');
-var sendgrid = require('sendgrid')('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');
+var sendgrid = require('sendgrid')('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');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
