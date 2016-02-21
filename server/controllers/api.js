@@ -7,8 +7,9 @@ var User = mongoose.model('User');
 
 module.exports = function(router){
 
-	router.get('/allShifts', function(req, res){
-		Shift.find({}, function(err, shifts){
+	router.post('/allShifts', function(req, res){
+		var skipInt = req.body.skip
+		Shift.find({'accepted': 0}).skip(skipInt).limit(20).populate('employer').exec(function(err, shifts){
 			if(err){
 				res.json({error: "Error retrieving shifts"});
 			}else{

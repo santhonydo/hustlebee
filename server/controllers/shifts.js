@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var sendgrid = require('sendgrid')('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');
 
 var Shift = mongoose.model('Shift');
 
@@ -9,7 +9,6 @@ module.exports = function () {
 			var shiftData = req.body.shift;
 			var userData = req.body.userInfo;
 			var shift = new Shift(shiftData);
-
 			shift.save(function(err, data){
 				if (err){
 					console.log('error saving shift to database');
