@@ -7,7 +7,7 @@ var ShiftSchema = new mongoose.Schema({
 	duration: Number,
 	position: String,
 	accepted: Number,
-	shiftAddress: String,
+	shiftAddress: Object,
 	employer: {type: Schema.Types.ObjectId, ref: 'User'},
 	employee: {type: Schema.Types.ObjectId, ref: 'User'},
 	created_at: {type: Date, default: Date.now}

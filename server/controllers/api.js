@@ -8,11 +8,19 @@ var User = mongoose.model('User');
 module.exports = function(router){
 
 	router.post('/allShifts', function(req, res){
-		var skipInt = req.body.skip
-		Shift.find({'accepted': 0}).skip(skipInt).limit(20).populate('employer').exec(function(err, shifts){
+		var skipInt = req.body.skip;
+		var limitInt = 10;
+		var toGeoCode = req.body.toGeoCode;
+
+		if (toGeoCode == true) {
+			limitInt = 0;
+		}
+
+		Shift.find({'accepted': 0}).skip(skipInt).limit(limitInt).populate('employer').exec(function(err, shifts){
 			if(err){
 				res.json({error: "Error retrieving shifts"});
 			}else{
+				console.log(shifts)
 				var resultCount = shifts.length;
 				res.json({resultCount: resultCount, results: shifts});
 			}

@@ -1,4 +1,4 @@
-var hustleBeeAppModule = angular.module('hustleBeeApp', ['ngRoute', 'ui.router', 'ui.bootstrap', 'ngMessages', 'stormpath','stormpath.templates', 'angulartics', 'angulartics.google.analytics']);
+var hustleBeeAppModule = angular.module('hustleBeeApp', ['ngRoute', 'ui.router', 'ui.bootstrap', 'ngMessages', 'stormpath','stormpath.templates', 'angulartics', 'angulartics.google.analytics', 'uiGmapgoogle-maps']);
 
 hustleBeeAppModule.run(function ($state, $rootScope, hustleBeeAppFactory, $location) {
 	$rootScope.$on('$stateChangeStart', function (event, to) {
@@ -10,8 +10,14 @@ hustleBeeAppModule.run(function ($state, $rootScope, hustleBeeAppFactory, $locat
 	})
 })
 
-hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider){
-	// $urlRouterProvider.otherwise('/');
+hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
+
+	uiGmapGoogleMapApiProvider.configure({
+		key: 'AIzaSyD2n9kPrHgQmlZupGpnMpJhuffDFPx7GdE',
+		v: '3.20',
+		libraries: 'weather,geometry,visualization'
+	});
+
 	$urlRouterProvider.otherwise(function($injector, $location){
 		var $state = $injector.get("$state");
 		$state.go('home');
@@ -261,6 +267,20 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 	factory.updateUser = function(data, callback){
 		$http.post('/updateUser', data).success(function(data){
 			callback(data);
+		})
+	}
+
+	factory.geoCode = function(data, callback){
+		var address = data.replace(/ /g, '+');
+		$http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address).success(function(data){
+			if (data.status == "OK") {
+				var lat = data.results[0].geometry.location.lat;
+				var lng = data.results[0].geometry.location.lng;
+				var coordinate = {latitude: lat, longitude: lng};
+				callback({status: "OK", coordinate: coordinate});
+			} else {
+				callback({error: 'Geocode error'});
+			}
 		})
 	}
 
@@ -568,11 +588,21 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 					shiftDurationTimeFormat = shiftHour + 'H' + shiftMinutes + 'M';
 
 					allShifts[item]['duration'] = shiftDurationTimeFormat;
+
+					var shiftAddress = allShifts[item]['shiftAddress'];
+					var shiftAddressStr = ''
+					if(shiftAddress['suite']) {
+						shiftAddressStr = shiftAddress['street'] + " Suite " + shiftAddress['suite'] + ", " + shiftAddress["city"] + ", " + shiftAddress["state"] + " " + shiftAddress["zipcode"];
+					} else {
+						shiftAddressStr = shiftAddress['street'] + ", " + shiftAddress["city"] + ", " + shiftAddress["state"] + " " + shiftAddress["zipcode"];
+					}
+
+					allShifts[item]['shiftAddress'] = shiftAddressStr;
+					
 				}
 			} else {
 				$scope.errorMessage = "You have no posted shifts. Go post one and enjoy a 'me' day!"
 			}
-
 			$scope.allShifts = allShifts;
 		})
 	}
@@ -611,13 +641,13 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			if (angular.isUndefined(suite) || suite === ''){
 				addressStr = street + ', ' + city + ', ' + state + ' ' + zipcode;
 				var addressToAdd = {};
-				addressToAdd.value = addressObj._id;
+				addressToAdd.value = item;
 				addressToAdd.label = addressStr;
 				$scope.addresses.push(addressToAdd);
 			} else {
 				addressStr = street + ' Suite ' + suite + ', ' + city + ', ' + state + ' ' + zipcode;
 				var addressToAdd = {};
-				addressToAdd.value = addressObj._id;
+				addressToAdd.value = item;
 				addressToAdd.label = addressStr;
 				$scope.addresses.push(addressToAdd);
 			}
@@ -657,7 +687,7 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			var hourToMins = shiftHour.value * 60;
 			var shiftDuration = hourToMins + shiftMin.value;
 			var startTime = startTimeHour.value + ":" + startTimeMin.value;
-			var shiftAddress = address.label;
+			var shiftAddress = userInfo.addresses[address.value];
 			var shift = {};
 			shift["date"] = shiftDate;
 			shift["startTime"] = startTime;
@@ -772,7 +802,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 
 })
 
-hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $state, $uibModalInstance, hustleBeeAppFactory){
+hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $state, $uibModalInstance, hustleBeeAppFactory, uiGmapGoogleMapApi){
 
 	$scope.error = false;
 	$scope.success = false;
@@ -799,17 +829,33 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
 			var	address = address;
 			address.state = state.value;
 			address.userId = userInfo._id;
+
+			var geoCodeAddress = address.street + " " + address.city + " " + address.state + " " + address.zipcode;
 			
-			hustleBeeAppFactory.addAddress(address, function(data){
-				if(data){
+			hustleBeeAppFactory.geoCode(geoCodeAddress, function(data){
+				if (data.status == "OK") {
 					$scope.error = false;
-					$scope.success = true;
-					$scope.successMessage = "Address added successfully! Add another?";
-					$rootScope.$broadcast('updateUser');
-					$scope.address = {};
-					$scope.state = {};
+					$scope.errorMessage = ""
+					address.coordinate = data.coordinate;
+
+					hustleBeeAppFactory.addAddress(address, function(data){
+						if(data){
+							$scope.success = true;
+							$scope.successMessage = "Address added successfully! Add another?";
+							$rootScope.$broadcast('updateUser');
+							$scope.address = {};
+							$scope.state = {};
+						}
+					})
+				} else {
+					$scope.error = true;
+					$scope.errorMessage = "Invalid address."
+					return
 				}
 			})
+			
+			
+			
 		}	
 	}
 
