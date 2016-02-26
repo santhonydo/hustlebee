@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var ShiftSchema = new mongoose.Schema({
 	date: String,
+	startTime: Number,
 	duration: Number,
 	position: String,
 	accepted: Number,

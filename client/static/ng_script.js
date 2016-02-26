@@ -686,7 +686,7 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			var userId = userInfo._id;
 			var hourToMins = shiftHour.value * 60;
 			var shiftDuration = hourToMins + shiftMin.value;
-			var startTime = startTimeHour.value + ":" + startTimeMin.value;
+			var startTime = (startTimeHour.value*60)  + startTimeMin.value;
 			var shiftAddress = userInfo.addresses[address.value];
 			var shift = {};
 			shift["date"] = shiftDate;
