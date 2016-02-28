@@ -12,7 +12,7 @@ var UserSchema = new mongoose.Schema({
 	phoneNumber: String,
 	addresses: [{type: Schema.Types.ObjectId, ref: 'Address'}],
 	employer: false,
-	_Shifts: [{type: Schema.Types.ObjectId, ref: 'Shift'}],
+	shifts: [{type: Schema.Types.ObjectId, ref: 'Shift'}],
 	resetPasswordToken: String,
   	resetPasswordExpires: Date,
 	created_at: {type: Date, default: Date.now}

@@ -7,6 +7,40 @@ var User = mongoose.model('User');
 
 module.exports = function(router){
 
+	router.post('/assignShift', function(req, res) {
+		var userID = req.body.userID;
+		var shiftID = req.body.shiftID;
+
+		User.findOne({_id: userID}, function(err, user){
+			if(err) {
+				res.json({error: "Error adding shift"})
+			}
+
+			if(user) {
+				user.shifts.push(shiftID);
+				user.save(function(err){
+					if(err){
+						console.log('Error adding shift to user');
+						res.json({error: "Error finding user to add shift"})
+					} else {
+						console.log('Shift linked to user successfully!');
+					}
+				})
+
+				Shift.update({'_id' : shiftID}, {"$set": {"accepted" : 1, "employee": userID}}, function(err){
+					if(err){
+						console.log("Error finding shift");
+						res.json({error: "Error updating shift status"})
+					} else {
+						console.log("shift status updated")
+						res.json({success: "success"})
+					}
+				})
+				
+			}
+		})
+	});
+
 	router.post('/allShifts', function(req, res){
 		var skipInt = req.body.skip;
 		var limitInt = 10;
@@ -20,15 +54,25 @@ module.exports = function(router){
 			if(err){
 				res.json({error: "Error retrieving shifts"});
 			}else{
-				console.log(shifts)
 				var resultCount = shifts.length;
 				res.json({resultCount: resultCount, results: shifts});
 			}
 		})
 	});
 
+	router.post('/getUserShifts', function(req, res){
+		var employeeID = req.body.userID;
+		Shift.find({"employee" : employeeID}).populate('employer').exec(function(err, shifts){
+			if(err){
+				res.json({error: "Error finding user shifts"});
+			} else {
+				var resultCount = shifts.length;
+				res.json({resultCount: resultCount, results: shifts});
+			}
+		})
+	})
+
 	router.post('/registeration', function(req, res) {
-		console.log(req.body);
 		User.findOne({'email' : req.body.email}, function(err, user){
 			if(err) {
 				res.json({regError: "Error registering user"})
