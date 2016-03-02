@@ -271,13 +271,16 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 	}
 
 	factory.geoCode = function(data, callback){
+
 		var address = data.replace(/ /g, '+');
-		$http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address).success(function(data){
-			if (data.status == "OK") {
-				var lat = data.results[0].geometry.location.lat;
-				var lng = data.results[0].geometry.location.lng;
-				var coordinate = {latitude: lat, longitude: lng};
-				callback({status: "OK", coordinate: coordinate});
+		
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({ 'address': address }, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+                var coordinate = {latitude: latitude, longitude: longitude};
+                callback({status: "OK", coordinate: coordinate});
 			} else {
 				callback({error: 'Geocode error'});
 			}

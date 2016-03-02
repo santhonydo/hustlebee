@@ -20,7 +20,6 @@ app.use(bodyParser.json());
 app.use(cookieParser('hustlebeeapp'));
 app.use(flash());
 
-
 require('./config/mongoose.js');
 require('./server/controllers/register.js');
 require('./server/controllers/login.js');
