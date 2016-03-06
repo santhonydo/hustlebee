@@ -70,7 +70,32 @@ module.exports = function(router){
 				res.json({resultCount: resultCount, results: shifts});
 			}
 		})
-	})
+	});
+
+	router.post('/updateShiftStatus', function(req, res){
+		var shiftID = req.body.shiftID;
+		var shiftStatus = req.body.shiftStatus;
+		var clockedInTimeStr = req.body.shiftClockedInTime;
+		var clockedOutTimeStr = req.body.shiftClockedOutTime;
+
+		if (shiftStatus == undefined) {
+			Shift.update({'_id': shiftID}, {$set: {clockedInTime: clockedInTimeStr}}, function(err){
+				if(err){
+					console.log('error updating clocked in time');
+				} else {
+					console.log('successfully updated clocked in time');
+				}
+			})
+		} else {
+			Shift.update({'_id': shiftID}, {$set: {clockedOutTime: clockedOutTimeStr, completed: shiftStatus}}, function(err){
+				if(err){
+					console.log('error updating clocked out time');
+				} else {
+					console.log('successfully updated clocked out time');
+				}
+			})
+		}
+	});
 
 	router.post('/registeration', function(req, res) {
 		User.findOne({'email' : req.body.email}, function(err, user){
