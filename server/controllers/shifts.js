@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var sendgrid = require('sendgrid')('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');
 
 var Shift = mongoose.model('Shift');
 
