@@ -78,26 +78,30 @@ module.exports = function(router){
 		var clockedInTimeStr = req.body.shiftClockedInTime;
 		var clockedOutTimeStr = req.body.shiftClockedOutTime;
 
+		console.log(shiftStatus);
+
 		if (shiftStatus == undefined) {
 			Shift.update({'_id': shiftID}, {$set: {clockedInTime: clockedInTimeStr}}, function(err){
 				if(err){
 					console.log('error updating clocked in time');
 				} else {
-					console.log('successfully updated clocked in time');
+					res.json({success: "clocked in"})
 				}
 			})
 		} else {
-			Shift.update({'_id': shiftID}, {$set: {clockedOutTime: clockedOutTimeStr, completed: shiftStatus}}, function(err){
+			Shift.update({'_id': shiftID}, {$set: {clockedOutTime: clockedOutTimeStr, accepted: shiftStatus}}, function(err){
 				if(err){
 					console.log('error updating clocked out time');
 				} else {
-					console.log('successfully updated clocked out time');
+					res.json({success: "clocked out"})
 				}
 			})
 		}
 	});
 
 	router.post('/registeration', function(req, res) {
+		console.log(req.body)
+
 		User.findOne({'email' : req.body.email}, function(err, user){
 			if(err) {
 				res.json({regError: "Error registering user"})
@@ -110,8 +114,12 @@ module.exports = function(router){
 
 				newUser.firstName = req.body.firstName;
 				newUser.lastName = req.body.lastName;
+				newUser.stateOfLicensure = req.body.stateOfLicensure;
+				newUser.licenseNumber = req.body.licenseNumber;
+				newUser.occupation = req.body.occupation;
 				newUser.email = req.body.email;
 				newUser.password = createHash(req.body.password);
+				newUser.status = 0;
 				newUser.employer = false;
 
 				newUser.save(function(err, user) {
@@ -126,9 +134,16 @@ module.exports = function(router){
 	});
 
 	router.post('/logIn', function(req, res){
+
 		User.findOne({'email' : req.body.email}, function(err, user){
 			if(err) {
-				res.json({logInError: "Error logging in user"})
+				res.json({logInError: "Error logging in user"});
+				return
+			}
+
+			if(!user){
+				res.json({noUserFound: "No user"});
+				return
 			}
 
 			if (isValidPassword(user, req.body.password)) {

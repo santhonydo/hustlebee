@@ -24,6 +24,9 @@
 				<img src="./static/images/sadness.jpg" style="height: 400px; width: 250px;" alt="avatar">
 			</div>
 		</div>
+		<div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-1 col-md-8 col-sm-8 col-xs-10">
+			<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+		</div>
 		
 		<div class="col-md-12 col-sm-12 col-xs-12"> 
 			<table ng-show="shiftTable" class="table">

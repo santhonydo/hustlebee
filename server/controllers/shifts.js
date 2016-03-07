@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var sendgrid = require('sendgrid')('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');
 
 var Shift = mongoose.model('Shift');
 
@@ -47,14 +48,27 @@ module.exports = function () {
 		deleteShift: function(req, res){
 			var shiftId = req.body.id;
 
-			Shift.remove({_id: shiftId}, function(err, removed){
-				if (err) {
-					console.log('error removing shift from db');
+			Shift.findOne({_id: shiftId}, function(err, shift){
+				if(err){
+					console.log("Error finding shift");
 				} else {
-					var success = {removed: "removed"};
-					res.json(success);
+					if (shift.accepted == 0) {
+						Shift.remove({_id: shiftId}, function(err, removed){
+							if (err) {
+								console.log('error removing shift from db');
+							} else {
+								var success = {removed: "removed"};
+								res.json(success);
+							}
+						})
+					} else {
+						var error = {error: "cannot delete"};
+						res.json(error);
+					}
 				}
 			})
+
+			
 		}
 	}	
 }()

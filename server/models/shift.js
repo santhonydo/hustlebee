@@ -8,7 +8,7 @@ var ShiftSchema = new mongoose.Schema({
 	duration: Number,
 	position: String,
 	accepted: Number,
-	completed: {type: Boolean, default: false},
+	// completed: {type: Boolean, default: false},
 	clockedInTime: Date, 
 	clockedOutTime: Date,
 	shiftAddress: Object,

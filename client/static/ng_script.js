@@ -559,6 +559,8 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 	var auth = hustleBeeAppFactory.getUserStatus();
 	var user = hustleBeeAppFactory.getUserData();
 
+	$scope.error = false
+
 	if (auth === true) {
 		$rootScope.loggedIn = true;
 	}
@@ -615,7 +617,10 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 	$scope.deleteShift = function(shiftId){
 		var shiftId = {id: shiftId};
 		hustleBeeAppFactory.deleteShift(shiftId, function(success){
-			if(success){
+			if (success.error == "cannot delete"){
+				$scope.error = true;
+				$scope.errorMessage = "Cannot delete shifts that are in progress. Please contact us if you have additional questions."
+			} else {
 				$scope.loadShifts();
 			}
 		})
