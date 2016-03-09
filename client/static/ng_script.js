@@ -675,13 +675,13 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 
 	$scope.jobPositions = [{
 		value: "Outpatient Pharmacist", 
-		label: "Outpatient Pharmacist - $100/hr"
+		label: "Outpatient Pharmacist - $80 Hourly"
 	}, {
 		value: "Inpatient Pharmacist",
-		label: "Inpatient Pharmacist - $120/hr"
+		label: "Inpatient Pharmacist - $90 Hourly"
 	}, {
 		value: "Pharmacy Technician",
-		label: "Pharmacy Technician - $40/hr"
+		label: "Pharmacy Technician - $40 Hourly"
 	}];
 	
 	$scope.post = function(shiftDate, startTimeHour, startTimeMin, shiftHour, shiftMin, jobPosition, address){
@@ -697,6 +697,10 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			var startTime = (startTimeHour.value*60)  + startTimeMin.value;
 			var shiftAddress = userInfo.addresses[address.value];
 			var shift = {};
+			var pharmacistJobDescription = "The Pharmacist is responsible for ensuring proper drug distribution and control; assessing and ensuring rational and effective drug therapy according to patient age, weight, and disease state; communicating drug information to physicians, other health care professionals and patients; maintaining effective and efficient workflow and supervising ancillary staff.";
+
+			var technicianJobDescription = "The Pharmacy Technician will prepare, package, document, and label drug products under the direct technical supervision of the Pharmacist.  Performs all required data entry and filing associated with the process and performs functions related to drug purchasing and inventory control procedures.  Technician will participate in the Pharmacy Department Performance Improvement projects/programs and collect data for workload measurements as needed or required."
+
 			shift["date"] = shiftDate;
 			shift["startTime"] = startTime;
 			shift["duration"] = shiftDuration;
@@ -704,6 +708,23 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			shift["employer"] = userId;
 			shift["accepted"] = 0;
 			shift["shiftAddress"] = shiftAddress;
+
+
+			if (shift["position"] == "Outpatient Pharmacist") {
+				shift["description"] = pharmacistJobDescription;
+				shift["wage"] = "$65"
+			}
+
+			if (shift["position"] == "Inpatient Pharmacist") {
+				shift["description"] = pharmacistJobDescription;
+				shift["wage"] = "$70"
+			}
+
+			if (shift["position"] == "Pharmacy Technician") {
+				
+				shift["description"] = technicianJobDescription;
+				shift["wage"] = "$30"
+			}
 
 			var shiftData = {};
 			shiftData.shift = shift;

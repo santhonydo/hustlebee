@@ -8,10 +8,11 @@ var ShiftSchema = new mongoose.Schema({
 	duration: Number,
 	position: String,
 	accepted: Number,
-	// completed: {type: Boolean, default: false},
 	clockedInTime: Date, 
 	clockedOutTime: Date,
 	shiftAddress: Object,
+	description: String,
+	wage: String,
 	employer: {type: Schema.Types.ObjectId, ref: 'User'},
 	employee: {type: Schema.Types.ObjectId, ref: 'User'},
 	created_at: {type: Date, default: Date.now}
