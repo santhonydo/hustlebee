@@ -709,7 +709,6 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			shift["accepted"] = 0;
 			shift["shiftAddress"] = shiftAddress;
 
-
 			if (shift["position"] == "Outpatient Pharmacist") {
 				shift["description"] = pharmacistJobDescription;
 				shift["wage"] = "$65"
@@ -729,7 +728,6 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			var shiftData = {};
 			shiftData.shift = shift;
 			shiftData.userInfo = userInfo;
-
 
 			hustleBeeAppFactory.postShift(shiftData, function(data){
 				if(data){

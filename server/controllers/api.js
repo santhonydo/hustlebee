@@ -118,6 +118,7 @@ module.exports = function(router){
 				newUser.licenseNumber = req.body.licenseNumber;
 				newUser.occupation = req.body.occupation;
 				newUser.email = req.body.email;
+				newUser.phoneNumber = req.body.phoneNumber;
 				newUser.password = createHash(req.body.password);
 				newUser.status = 0;
 				newUser.employer = false;
@@ -154,6 +155,21 @@ module.exports = function(router){
 		})
 	});
 
+	router.post('/updateUserProfile', function(req, res) {
+		var userID = req.body.userID;
+		var firstName = req.body.firstName;
+		var lastName = req.body.lastName;
+		var email = req.body.email;
+		var phoneNumber = req.body.phoneNumber;
+		
+		User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}}, {new: true},function(err, result) {
+			if(err) {
+				res.json({error: "Error"})
+			} else {
+				res.json(result);
+			}
+		})
+	});	
 }
 
 var isValidPassword = function(user, password){
