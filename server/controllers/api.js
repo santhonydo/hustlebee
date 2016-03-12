@@ -1,7 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var bCrypt = require('bcrypt-nodejs');
-
+var sendgrid = require('sendgrid')('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');
 var Shift = mongoose.model('Shift');
 var User = mongoose.model('User');
 
@@ -78,8 +78,6 @@ module.exports = function(router){
 		var clockedInTimeStr = req.body.shiftClockedInTime;
 		var clockedOutTimeStr = req.body.shiftClockedOutTime;
 
-		console.log(shiftStatus);
-
 		if (shiftStatus == undefined) {
 			Shift.update({'_id': shiftID}, {$set: {clockedInTime: clockedInTimeStr}}, function(err){
 				if(err){
@@ -100,8 +98,6 @@ module.exports = function(router){
 	});
 
 	router.post('/registeration', function(req, res) {
-		console.log(req.body)
-
 		User.findOne({'email' : req.body.email}, function(err, user){
 			if(err) {
 				res.json({regError: "Error registering user"})
@@ -135,7 +131,6 @@ module.exports = function(router){
 	});
 
 	router.post('/logIn', function(req, res){
-
 		User.findOne({'email' : req.body.email}, function(err, user){
 			if(err) {
 				res.json({logInError: "Error logging in user"});
@@ -154,6 +149,77 @@ module.exports = function(router){
 			}
 		})
 	});
+
+	router.post('/resetPassword', function(req, res){
+		var email = req.body.email
+		var randomText = "";
+    	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    	for (var i=0; i < 6; i++) {
+        	randomText += possible.charAt(Math.floor(Math.random() * possible.length));
+    	}
+
+    	User.findOne({'email': email}, function(err, user){
+    		if (err) {
+    			return res.json({error: "Unknown error"})
+    		}
+
+    		if (!user){
+    			return res.json({error: "No user found"})
+    		}
+
+    		user.resetPasswordToken = randomText;
+    		user.resetPasswordExpires = Date.now() + 3600000;
+
+    		user.save(function(err){
+	   			if(err) {
+					res.json({error: "Unknown error"})
+	    		} else {
+	    			sendgrid.send({
+						to : email,
+						from: 'support@hustlebee.com',
+						subject: 'HustleBee Password Reset',
+						text: 'We got a new shift!',
+						html: 'You are receiving this because you (or someone else) have requested the reset of the password for your account. </br> </br>Here is your reset token: <strong>' + randomText + '</strong></br></br>If you did not request this, please ignore this email and your password will remain unchanged.\n'
+					}, function(err, json){
+						if (err) {
+							res.json({error: "Unknown error"})
+						} else {
+							res.json({resetEmailSent: "success"})
+						}
+					});
+	   			}
+   			})
+    	})
+	})
+
+	router.post('/tokenResetPassword', function(req, res){
+		var token = req.body.resetToken
+		var password = req.body.password
+		User.findOne({resetPasswordToken: token, resetPasswordExpires: {$gt: Date.now()}}, function(err, user){
+			if (err) {
+				console.log(err);
+				return
+			}
+			if(!user){
+				return res.json({tokenExpired: 'Error resetting'});
+			}
+
+			var hashPass = createHash(password);
+			console.log(hashPass);
+			user.password = hashPass;
+
+			user.resetPasswordToken = undefined;
+			user.resetPasswordExpires = undefined;
+			user.save(function(err){
+				if(err) {
+					res.json({error: "Unknown error"})
+	    		} else {
+	    			res.json({success: "Password updated"})
+	    		}
+			});
+		})
+	})
 
 	router.post('/updateUserProfile', function(req, res) {
 		var userID = req.body.userID;

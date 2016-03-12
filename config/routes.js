@@ -97,7 +97,6 @@ module.exports = function(app, passport){
 	});
 
 	app.post('/newPassword', function(req, res){
-		console.log(req.body);
 		async.waterfall([
 			function(done){
 				User.findOne({resetPasswordToken: req.body.token, resetPasswordExpires: {$gt: Date.now()} }, function(err, user){
