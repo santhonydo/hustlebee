@@ -10,6 +10,10 @@ module.exports = function(router){
 	router.post('/assignShift', function(req, res) {
 		var userID = req.body.userID;
 		var shiftID = req.body.shiftID;
+		var employeeFirstName = req.body.employeeFirstName;
+		var employeeLastName = req.body.employeeLastName;
+		var employeeEmail = req.body.employeeEmail;
+		var employeePhoneNumber = req.body.employeePhoneNumber;
 
 		User.findOne({_id: userID}, function(err, user){
 			if(err) {
@@ -20,23 +24,48 @@ module.exports = function(router){
 				user.shifts.push(shiftID);
 				user.save(function(err){
 					if(err){
-						console.log('Error adding shift to user');
 						res.json({error: "Error finding user to add shift"})
 					} else {
 						console.log('Shift linked to user successfully!');
 					}
 				})
 
-				Shift.update({'_id' : shiftID}, {"$set": {"accepted" : 1, "employee": userID}}, function(err){
-					if(err){
-						console.log("Error finding shift");
-						res.json({error: "Error updating shift status"})
+				Shift.findByIdAndUpdate(shiftID, {$set: {accepted: 1, employee: userID}}, {new: true}).populate('employer').exec(function(err, shift) {
+					if(err) {
+						res.json({error: "Error"})
 					} else {
-						console.log("shift status updated")
-						res.json({success: "success"})
+						var employerEmail = shift.employer.email;
+						var employerFirstName = shift.employer.firstName;
+						var shiftDate = shift.date;
+
+						sendgrid.send({
+						to : [employerEmail, 'santhonydo@gmail.com'],
+						from: 'support@hustlebee.com',
+						subject: 'Shift accepted',
+						html: 'Hi, ' + employerFirstName + 
+								', </br></br>' + 
+								'Your shift for ' + shiftDate + ', has been accepted. Below are some information regarding the employee.' + 
+								'</br></br>' + 
+								'<strong>Name: </strong>' +  employeeFirstName + ' ' + employeeLastName +
+								'</br></br>' + 
+								'<strong>Email: </strong>' + employeeEmail +
+								'</br></br>' + 
+								'<strong>Phone #: </strong>' + employeePhoneNumber +
+								'</br></br>' +
+								'If you have any questions or concerns regarding this employee, please contact us at support@hustlebee.com.' +
+								'</br></br>' +
+								'Best regards,' +
+								'</br></br>' +
+								'The HustleBee Team'
+					}, function(err, json){
+						if (err) {
+							res.json({error: "Unknown error"})
+						} else {
+							res.json(shift)
+						}
+					});
 					}
 				})
-				
 			}
 		})
 	});
@@ -227,12 +256,21 @@ module.exports = function(router){
 		var lastName = req.body.lastName;
 		var email = req.body.email;
 		var phoneNumber = req.body.phoneNumber;
-		
-		User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}}, {new: true},function(err, result) {
-			if(err) {
-				res.json({error: "Error"})
+
+		console.log('here')
+		User.findOne({"email": email}, function(err, user){
+			console.log('in here')
+			if(user) {
+				console.log("user exists")
+				res.json({userExist: "Email taken"})
 			} else {
-				res.json(result);
+				User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}}, {new: true},function(err, result) {
+					if(err) {
+						res.json({error: "Error"})
+					} else {
+						res.json(result);
+					}
+				})
 			}
 		})
 	});	
