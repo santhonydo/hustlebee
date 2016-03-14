@@ -675,13 +675,13 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 
 	$scope.jobPositions = [{
 		value: "Outpatient Pharmacist", 
-		label: "Outpatient Pharmacist - $80 Hourly"
+		label: "Outpatient Pharmacist - $65 + 20% Service Fee/Hr"
 	}, {
 		value: "Inpatient Pharmacist",
-		label: "Inpatient Pharmacist - $90 Hourly"
+		label: "Inpatient Pharmacist - $70 + 20% Service Fee/Hr"
 	}, {
 		value: "Pharmacy Technician",
-		label: "Pharmacy Technician - $40 Hourly"
+		label: "Pharmacy Technician - $20 + 20% Service Fee/Hr"
 	}];
 	
 	$scope.post = function(shiftDate, startTimeHour, startTimeMin, shiftHour, shiftMin, jobPosition, address){

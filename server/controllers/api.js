@@ -42,7 +42,7 @@ module.exports = function(router){
 						to : [employerEmail, 'santhonydo@gmail.com'],
 						from: 'support@hustlebee.com',
 						subject: 'Shift accepted',
-						html: 'Hi, ' + employerFirstName + 
+						html: 'Hi ' + employerFirstName + 
 								', </br></br>' + 
 								'Your shift for ' + shiftDate + ', has been accepted. Below are some information regarding the employee.' + 
 								'</br></br>' + 
