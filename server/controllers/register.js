@@ -2,6 +2,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var bCrypt = require('bcrypt-nodejs');
+var sendgrid = require('sendgrid')('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');
 
 module.exports = function(passport) {
 
@@ -37,13 +38,32 @@ module.exports = function(passport) {
                         newUser.employer = true;
 
                         // save the user
-                        newUser.save(function(err) {
+                        newUser.save(function(err, result) {
                             if (err){
                                 console.log('Error in Saving user: '+err);  
                                 throw err;  
                             }
-                            console.log('User Registration succesful');    
-                            return done(null, newUser);
+                            if (result) {
+                                console.log('User Registration succesful');
+                                sendgrid.send({
+                                    to : ['anthony@hustlebee.com', 'tracy@hustlebee.com', req.param('email')],
+                                    from: 'anthony@hustlebee.com',
+                                    subject: 'Welcome to HustleBee!',
+                                    html: 'Hi ' + req.param('firstName') + 
+                                        ', </br></br>' + 
+                                        'My name is Dr. Anthony Do, PharmD, one of HustleBee co-founders. I would like to personally welcome you to HustleBee. </br></br> One of our customer representatives will contact you shortly to orient you on our platform and answer any questions you may have. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com. </br></br>My team and I are thrilled to be apart of your healthcare team.' +
+                                        'Best regards,' +
+                                        '</br></br>' +
+                                        'Anthony & The HustleBee Team'
+                                }, function(err, json){
+                                    if (err){
+                                        return console.log(err);
+                                    }
+                                    console.log(json);
+                                }); 
+
+                                return done(null, newUser);
+                            }
                         });
                     }
                 });

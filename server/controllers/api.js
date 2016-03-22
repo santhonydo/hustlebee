@@ -39,9 +39,9 @@ module.exports = function(router){
 						var shiftDate = shift.date;
 
 						sendgrid.send({
-						to : [employerEmail, 'santhonydo@gmail.com'],
+						to : [employerEmail, 'anthony@hustlebee.com', 'tracy@hustlebee.com'],
 						from: 'support@hustlebee.com',
-						subject: 'Shift accepted',
+						subject: 'Shift Accepted',
 						html: 'Hi ' + employerFirstName + 
 								', </br></br>' + 
 								'Your shift for ' + shiftDate + ', has been accepted. Below are some information regarding the employee.' + 
@@ -152,6 +152,22 @@ module.exports = function(router){
 					if(err) {
 						console.log("Error in saving user: " + err);
 					} else {
+						sendgrid.send({
+                            to : ['anthony@hustlebee.com', 'tracy@hustlebee.com', req.body.email],
+                            from: 'anthony@hustlebee.com',
+                            subject: 'Welcome to HustleBee!',
+                            html: 'Hi ' + req.body.firstName + 
+                                ', </br></br>' + 
+                                'My name is Dr. Anthony Do, PharmD, one of HustleBee co-founders. I would like to personally welcome you to HustleBee. </br></br> One of our customer representatives will contact you shortly to orient you on our platform and collect some information to verify your license. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com. </br></br>My team and I are thrilled to have you as apart of our healthcare team. </br></br>' +
+                                'Best regards,' +
+                                '</br></br>' +
+                                'Anthony & The HustleBee Team'
+                        }, function(err, json){
+                            if (err){
+                                return console.log(err);
+                            }
+                            console.log(json);
+                        }); 
 						res.json(user);
 					}
 				})
@@ -255,24 +271,35 @@ module.exports = function(router){
 		var firstName = req.body.firstName;
 		var lastName = req.body.lastName;
 		var email = req.body.email;
+		var currentEmail = req.body.currentEmail;
 		var phoneNumber = req.body.phoneNumber;
+		console.log(email);
+		console.log(currentEmail);
 
-		console.log('here')
-		User.findOne({"email": email}, function(err, user){
-			console.log('in here')
-			if(user) {
-				console.log("user exists")
-				res.json({userExist: "Email taken"})
-			} else {
-				User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}}, {new: true},function(err, result) {
-					if(err) {
-						res.json({error: "Error"})
-					} else {
-						res.json(result);
-					}
-				})
-			}
-		})
+		if (email != currentEmail) {
+			User.findOne({"email": email}, function(err, user){
+				if(user) {
+					console.log("user exists")
+					res.json({userExist: "Email taken"})
+				} else {
+					User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}}, {new: true},function(err, result) {
+						if(err) {
+							res.json({error: "Error"})
+						} else {
+							res.json(result);
+						}
+					})
+				}
+			})
+		} else {
+			User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}}, {new: true},function(err, result) {
+				if(err) {
+					res.json({error: "Error"})
+				} else {
+					res.json(result);
+				}
+			})
+		}
 	});	
 }
 

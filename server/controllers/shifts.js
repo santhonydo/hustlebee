@@ -24,7 +24,7 @@ module.exports = function () {
 				} else {
 					console.log('successfully added a shift');
 					sendgrid.send({
-						to : 'santhonydo@gmail.com',
+						to : 'anthony@hustlebee.com',
 						from: 'support@hustlebee.com',
 						subject: 'New Shift!',
 						html: '<h1>New Shift Added!</h1><p>Shift Date: ' + shiftData.date + '</p><p>Start Time (24H): ' + shiftData.startTime + '</p><p>Shift Duration: ' + shiftData.duration + '</p><p>Shift Position: ' + shiftData.position + '</p><p>Shift Address: ' + shiftAddressSt + " " + shiftAddressCt + '</p><p>Shift Employer Name: ' + userData.firstName + ' ' + userData.lastName + ' </p><p>Company: ' + userData.companyName + ' </p><p>Email: ' + userData.email + '</p>'
