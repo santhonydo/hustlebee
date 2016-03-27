@@ -39,7 +39,8 @@ module.exports = function(router){
 						var shiftDate = shift.date;
 
 						sendgrid.send({
-						to : [employerEmail, 'anthony@hustlebee.com', 'tracy@hustlebee.com'],
+						to : employerEmail,
+						bcc: ['anthony@hustlebee.com', 'tracy@hustlebee.com'],
 						from: 'support@hustlebee.com',
 						subject: 'Shift Accepted',
 						html: 'Hi ' + employerFirstName + 
@@ -153,12 +154,13 @@ module.exports = function(router){
 						console.log("Error in saving user: " + err);
 					} else {
 						sendgrid.send({
-                            to : ['anthony@hustlebee.com', 'tracy@hustlebee.com', req.body.email],
+                            to : req.body.email,
+                            bcc: ['anthony@hustlebee.com', 'tracy@hustlebee.com'], 
                             from: 'anthony@hustlebee.com',
                             subject: 'Welcome to HustleBee!',
                             html: 'Hi ' + req.body.firstName + 
                                 ', </br></br>' + 
-                                'My name is Dr. Anthony Do, PharmD, one of HustleBee co-founders. I would like to personally welcome you to HustleBee. </br></br> One of our customer representatives will contact you shortly to orient you on our platform and collect some information to verify your license. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com. </br></br>My team and I are thrilled to have you as apart of our healthcare team. </br></br>' +
+                                'My name is Dr. Anthony Do, PharmD, one of HustleBee co-founders. I would like to personally welcome you to HustleBee. </br></br> Our customer representative will contact you shortly to orient you on our platform and collect some information to verify your license. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com. </br></br>My team and I are thrilled to have you as apart of our healthcare team. </br></br>' +
                                 'Best regards,' +
                                 '</br></br>' +
                                 'Anthony & The HustleBee Team'

@@ -8,39 +8,50 @@
 			<div class="col-md-12">
 				<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 				<div class="col-md-6">
-					<div class="form-group">
-						<input type="text" class="form-control" name="firstName" ng-model="newUser.firstName" placeholder="First Name">
+					<div class="form-group" ng-class="{'has-error': jobPostingForm.firstName.$invalid}">
+						<input type="text" class="form-control" name="firstName" ng-model="newUser.firstName" placeholder="First Name" ng-pattern="/^[a-zA-Z]*$/" required>
 					</div>
 				</div>	
 				<div class="col-md-6">
-					<div class="form-group">
-						<input type="text" class="form-control" name="lastName" ng-model="newUser.lastName" placeholder="Last Name">
+					<div class="form-group" ng-class="{'has-error': jobPostingForm.lastName.$invalid}">
+						<input type="text" class="form-control" name="lastName" ng-model="newUser.lastName" placeholder="Last Name" ng-pattern="/^[a-zA-Z]*$/" required>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<div class="form-group">
-						<input type="text" class="form-control" name="companyName" ng-model="newUser.companyName" placeholder="Company">
+					<div class="form-group" ng-class="{'has-error': jobPostingForm.companyName.$invalid}">
+						<input type="text" class="form-control" name="companyName" ng-model="newUser.companyName" placeholder="Company" required>
 					</div>
 				</div>	
-		
 				<div class="col-md-6">
-					<div class="form-group">
-						<input type="email" class="form-control" name="email" ng-model="newUser.email" placeholder="Email">
+					<div class="form-group" ng-class="{'has-error': jobPostingForm.phone.$invalid}">
+						<input type="text" class="form-control" name="phone" ng-model="newUser.phone" placeholder="Phone Number" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
 					</div>
 				</div>
 			</div>
+
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<div class="form-group">
-						<input type="text" class="form-control" name="username" ng-model="newUser.username" placeholder="Username">
+					<div class="form-group" ng-class="{'has-error': jobPostingForm.email.$invalid}">
+						<input type="email" class="form-control" name="email" ng-model="newUser.email" placeholder="Email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
 					</div>
-				</div>	
-		
+				</div>
 				<div class="col-md-6">
-					<div class="form-group">
-						<input type="password" class="form-control" name="password" ng-model="newUser.password" placeholder="Password">
+					<div class="form-group" ng-class="{'has-error': jobPostingForm.username.$invalid}">
+						<input type="text" class="form-control" name="username" ng-model="newUser.username" placeholder="Username" required>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">	
+				<div class="col-md-6">
+					<div class="form-group" ng-class="{'has-error': jobPostingForm.password.$invalid}">
+						<input type="password" class="form-control" name="password" ng-model="newUser.password" placeholder="Password" required>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group" ng-class="{'has-error': jobPostingForm.confirmPassword.$invalid}">
+						<input type="password" class="form-control" name="confirmPassword" ng-model="newUser.confirmPassword" placeholder="Confirm Password" required>
 					</div>
 				</div>
 			</div>

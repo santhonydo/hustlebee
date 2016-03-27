@@ -29,12 +29,14 @@ module.exports = function(passport) {
                         var newUser = new User();
 
                         // set the user's local credentials
+
                         newUser.username = username;
                         newUser.password = createHash(password);
                         newUser.email = req.param('email');
                         newUser.firstName = req.param('firstName');
                         newUser.lastName = req.param('lastName');
                         newUser.companyName = req.param('companyName');
+                        newUser.phoneNumber = req.param('phone');
                         newUser.employer = true;
 
                         // save the user
@@ -46,12 +48,13 @@ module.exports = function(passport) {
                             if (result) {
                                 console.log('User Registration succesful');
                                 sendgrid.send({
-                                    to : ['anthony@hustlebee.com', 'tracy@hustlebee.com', req.param('email')],
+                                    to : req.param('email'),
+                                    bcc: ['anthony@hustlebee.com', 'tracy@hustlebee.com'],
                                     from: 'anthony@hustlebee.com',
                                     subject: 'Welcome to HustleBee!',
                                     html: 'Hi ' + req.param('firstName') + 
                                         ', </br></br>' + 
-                                        'My name is Dr. Anthony Do, PharmD, one of HustleBee co-founders. I would like to personally welcome you to HustleBee. </br></br> One of our customer representatives will contact you shortly to orient you on our platform and answer any questions you may have. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com. </br></br>My team and I are thrilled to be apart of your healthcare team.' +
+                                        'My name is Dr. Anthony Do, PharmD, one of HustleBee co-founders. I would like to personally welcome you to HustleBee. </br></br> Our customer representative will contact you shortly to orient you on our platform and answer any questions you may have. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com. </br></br>My team and I are thrilled to be apart of your healthcare team. </br></br>' +
                                         'Best regards,' +
                                         '</br></br>' +
                                         'Anthony & The HustleBee Team'

@@ -393,12 +393,15 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $ui
 			$scope.error = true;
 			$scope.errorMessage = "All fields are required.";
 		} else
-		if (angular.isUndefined(newUser.firstName) || angular.isUndefined(newUser.lastName) || angular.isUndefined(newUser.companyName) || angular.isUndefined(newUser.email) || angular.isUndefined(newUser.username) || angular.isUndefined(newUser.password)){
+		if (angular.isUndefined(newUser.firstName) || angular.isUndefined(newUser.lastName) || angular.isUndefined(newUser.companyName) || angular.isUndefined(newUser.email) || angular.isUndefined(newUser.username) || angular.isUndefined(newUser.password) || angular.isUndefined(newUser.phone) || angular.isUndefined(newUser.confirmPassword)){
 			$scope.error = true;
 			$scope.errorMessage = "All fields are required.";
-		} else if ((newUser.firstName === '') || (newUser.lastName === '') || (newUser.companyName === '') || (newUser.email === '') || (newUser.username === '') || (newUser.password === '')){
+		} else if ((newUser.firstName === '') || (newUser.lastName === '') || (newUser.companyName === '') || (newUser.email === '') || (newUser.username === '') || (newUser.password === '') || (newUser.phone === '') || (newUser.confirmPassword === '')){
 			$scope.error = true;
 			$scope.errorMessage = "All fields are required.";
+		} else if (newUser.password != newUser.confirmPassword) {
+			$scope.error = true;
+			$scope.errorMessage = "Passwords do not match."
 		} else {
 			hustleBeeAppFactory.register(newUser, function(data){
 				if(data.username){
@@ -421,8 +424,6 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $ui
 		$uibModalInstance.dismiss('cancel');
 		$state.go('business.forgot');
 	}
-
-
 })
 
 hustleBeeAppModule.controller('ForgotPasswordController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
@@ -745,6 +746,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 	$scope.success = false;
 
 	var userInfo = hustleBeeAppFactory.getUserData();
+	console.log(userInfo);
 
 	var getUserInfo = function(){
 		$scope.user = userInfo;
