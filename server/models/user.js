@@ -13,6 +13,8 @@ var UserSchema = new mongoose.Schema({
 	stateOfLicensure: String,
 	occupation: String,
 	licenseNumber: String,
+	licenseExpirationDate: String,
+	zipcode: Number,
 	status: Number,
 	addresses: [{type: Schema.Types.ObjectId, ref: 'Address'}],
 	employer: false,

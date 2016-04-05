@@ -142,6 +142,8 @@ module.exports = function(router){
 				newUser.lastName = req.body.lastName;
 				newUser.stateOfLicensure = req.body.stateOfLicensure;
 				newUser.licenseNumber = req.body.licenseNumber;
+				newUser.licenseExpirationDate = req.body.licenseExpirationDate;
+				newUser.zipcode = req.body.zipcode;
 				newUser.occupation = req.body.occupation;
 				newUser.email = req.body.email;
 				newUser.phoneNumber = req.body.phoneNumber;
@@ -275,8 +277,7 @@ module.exports = function(router){
 		var email = req.body.email;
 		var currentEmail = req.body.currentEmail;
 		var phoneNumber = req.body.phoneNumber;
-		console.log(email);
-		console.log(currentEmail);
+		var licenseExpirationDate = req.body.licenseExpirationDate;
 
 		if (email != currentEmail) {
 			User.findOne({"email": email}, function(err, user){
@@ -284,7 +285,7 @@ module.exports = function(router){
 					console.log("user exists")
 					res.json({userExist: "Email taken"})
 				} else {
-					User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}}, {new: true},function(err, result) {
+					User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, licenseExpirationDate: licenseExpirationDate}}, {new: true},function(err, result) {
 						if(err) {
 							res.json({error: "Error"})
 						} else {
@@ -294,7 +295,7 @@ module.exports = function(router){
 				}
 			})
 		} else {
-			User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber}}, {new: true},function(err, result) {
+			User.findByIdAndUpdate(userID, {$set: {firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, licenseExpirationDate: licenseExpirationDate}}, {new: true},function(err, result) {
 				if(err) {
 					res.json({error: "Error"})
 				} else {
