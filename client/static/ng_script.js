@@ -331,7 +331,8 @@ hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope
 	$scope.error = false;
 	$scope.disabled = true;
 
-	$scope.logout = function(){		
+	$scope.logout = function(){	
+		$rootScope.loggedIn = false;	
 		hustleBeeAppFactory.logout(function(success){
 			if(success){
 				$state.go('login');
@@ -450,6 +451,7 @@ hustleBeeAppModule.controller('ForgotPasswordController', function($scope, $uibM
 
 hustleBeeAppModule.controller('ResetPasswordController', function($scope, $state, $stateParams, hustleBeeAppFactory){
 
+	console.log('in reset pass controller')
 	hustleBeeAppFactory.reset($stateParams, function(success){
 		if(success){
 			$state.go('business.resetPassword');
@@ -467,6 +469,7 @@ hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, 
 
 	var userData = hustleBeeAppFactory.getUserData();
 
+	console.log('in NewPasswordController')
 	$scope.backToLogin = function() {
 		console.log('here')
 		$state.go('login');
