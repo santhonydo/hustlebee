@@ -38,6 +38,7 @@ module.exports = function(passport) {
                         newUser.companyName = req.param('companyName');
                         newUser.phoneNumber = req.param('phone');
                         newUser.employer = true;
+                        newUser.status = 0;
 
                         // save the user
                         newUser.save(function(err, result) {

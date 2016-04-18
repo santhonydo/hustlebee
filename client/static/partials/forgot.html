@@ -14,7 +14,12 @@
 				<span class="input-group-addon">@</span>
 				<input class="form-control" placeholder="Email" type="email" ng-model="user.email">
 			</div>
-			<button class="btn btn-primary" ng-click="emailReset(user)">Reset Password</button>
+			<div class="text-center">
+				<button class="btn btn-primary" ng-click="emailReset(user)">Reset Password</button>
+			</div>
+			<div class="text-center">
+				<a style="cursor: pointer; color: gray;" ng-click="backToLogin()">Back to Login</a>
+			</div>
 		</form>
 	</div>
 </div>

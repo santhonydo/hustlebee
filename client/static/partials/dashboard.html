@@ -7,11 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">HustleBee</a>
+      <a href="#" class="navbar-brand" style="padding-top: 10px; padding-left: 20px"><img src="./static/images/hustlebee_logo.png" alt="Hustlebee Logo"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 20px">
       <ul class="nav navbar-nav">
         <li ng-show="loggedIn"><a ui-sref="business.postShift">Post A Shift</a></li>
         <li ng-show="loggedIn"><a ui-sref="business.user">Shift Status</a></li>
@@ -25,12 +25,6 @@
       </ul>
   
       <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="loggedIn">
-          <a style='cursor: pointer;' ng-click="login()">Login</a>
-        </li>
-        <li ng-hide="loggedIn">
-          <a style='cursor: pointer;' ng-click="register()">Register</a>
-        </li>
         <li ng-show="loggedIn">
           <a style='cursor: pointer;' ng-click="logout()">Log out</a>
         </li>    

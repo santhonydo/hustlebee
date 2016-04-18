@@ -1,0 +1,81 @@
+<div class="jumbotron2" style="background: url(./static/images/medteam.jpg) no-repeat center center;-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;">
+	<div class="container">
+		<div class="row" style="margin-top: 40px; margin-bottom: 20px">
+			<div class="col-md-12 text-center">
+				<img src="./static/images/hustlebee_logo.png" alt="Hustlebee Logo">
+			</div>
+    	</div>
+		<div class="col-md-offset-2 col-md-8 well" style="background-color: rgba(245, 245, 245, 0.9);">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3 class="fh5co-sub">Employer Registration</h3>
+				</div>
+	    	</div>
+	    	<form name="jobPostingForm">
+				<div class="row">
+					<div class="col-md-12">
+						<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': jobPostingForm.firstName.$invalid}">
+								<input type="text" class="form-control" name="firstName" ng-model="newUser.firstName" placeholder="First Name" ng-pattern="/^[a-zA-Z]*$/" required>
+							</div>
+						</div>	
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': jobPostingForm.lastName.$invalid}">
+								<input type="text" class="form-control" name="lastName" ng-model="newUser.lastName" placeholder="Last Name" ng-pattern="/^[a-zA-Z]*$/" required>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': jobPostingForm.companyName.$invalid}">
+								<input type="text" class="form-control" name="companyName" ng-model="newUser.companyName" placeholder="Company" required>
+							</div>
+						</div>	
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': jobPostingForm.phone.$invalid}">
+								<input type="text" class="form-control" name="phone" ng-model="newUser.phone" placeholder="Phone Number" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': jobPostingForm.email.$invalid}">
+								<input type="email" class="form-control" name="email" ng-model="newUser.email" placeholder="Email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': jobPostingForm.username.$invalid}">
+								<input type="text" class="form-control" name="username" ng-model="newUser.username" placeholder="Username" required>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">	
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': jobPostingForm.password.$invalid}">
+								<input type="password" class="form-control" name="password" ng-model="newUser.password" placeholder="Password" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group" ng-class="{'has-error': jobPostingForm.confirmPassword.$invalid}">
+								<input type="password" class="form-control" name="confirmPassword" ng-model="newUser.confirmPassword" placeholder="Confirm Password" required>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 text-center">
+						<button type="button" class="btn btn-default" ng-click="registerUser(newUser)">Register</button>
+						<p>Already have an account? <a style="cursor: pointer; color: #FEC900;" ng-click="backToLogin()">Login here</a></p>
+					</div>
+				</div>
+			</form>
+		</div>	
+   </div>
+</div>
+
+
+
+	
