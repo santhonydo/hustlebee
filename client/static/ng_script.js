@@ -212,7 +212,6 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 	}
 
 	factory.newPassword = function(data, callback){
-		console.log(data);
 		$http.post('/newPassword', data).success(function(data){
 			if(data.message === 'Error reseting'){
 				var userError = "Expired token";
@@ -452,7 +451,6 @@ hustleBeeAppModule.controller('ForgotPasswordController', function($scope, $uibM
 
 hustleBeeAppModule.controller('ResetPasswordController', function($scope, $state, $stateParams, hustleBeeAppFactory){
 
-	console.log('in reset pass controller')
 	hustleBeeAppFactory.reset($stateParams, function(success){
 		if(success){
 			$state.go('business.resetPassword');
@@ -470,9 +468,7 @@ hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, 
 
 	var userData = hustleBeeAppFactory.getUserData();
 
-	console.log('in NewPasswordController')
 	$scope.backToLogin = function() {
-		console.log('here')
 		$state.go('login');
 	}
 
@@ -590,7 +586,6 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 	
 	var auth = hustleBeeAppFactory;
 	var userInfo = hustleBeeAppFactory.getUserData();
-	console.log(userInfo)
 	if (userInfo.status == 1) {
 		$scope.unverified = false;
 	} else {
