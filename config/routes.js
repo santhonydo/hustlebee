@@ -22,6 +22,7 @@ module.exports = function(app, passport){
 	});
 
 	app.post('/login', function(req, res, next){
+		console.log('route login')
 		passport.authenticate('login', function(err, user, info){
 			if(err){
 				console.log('error logging in: ' + err);
@@ -101,6 +102,7 @@ module.exports = function(app, passport){
 			function(done){
 				User.findOne({resetPasswordToken: req.body.token, resetPasswordExpires: {$gt: Date.now()} }, function(err, user){
 					if(!user){
+						console.log('no user found to reset');
 						return res.json({message: 'Error reseting'});
 					}
 
@@ -109,6 +111,7 @@ module.exports = function(app, passport){
 					user.resetPasswordExpires = undefined;
 
 					user.save(function(err){
+						console.log('new passowrd saved');
 						req.logIn(user, function(err){
 							done(err, user);
 						})
@@ -126,6 +129,7 @@ module.exports = function(app, passport){
 					if(err) {
 						console.log('Error sending email' + err)
 					} else {
+						console.log('success: ' + success)
 						res.json(success);
 					}
 				});
