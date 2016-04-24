@@ -3,7 +3,6 @@ var User = mongoose.model('User');
 var bCrypt = require('bcrypt-nodejs');
 var sendgrid = require('sendgrid')('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');
 
-
 module.exports = (function(){
 	return {
 		getUser: function(req, res){

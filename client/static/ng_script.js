@@ -289,8 +289,6 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 
 hustleBeeAppModule.controller('HomepageController', function($scope, $location, $uibModal, $state, $stateParams, hustleBeeAppFactory){
 
-	// $scope.error = "Error test";
-	// $scope.success = "Registration success! We will be in touch soon."
 	$scope.workerOccupation = [{value: "Outpatient Pharmacist", label: "Outpatient Pharmacist"}, {value: "Inpatient Pharmacist", label: "Inpatient Pharmacist"}, {value: "Intern Pharmacist", label: "Intern Pharmacist"}, {value: "Pharmacy Technician", label: "Pharmacy Technician"}]
 
 	$scope.workerStateLicense = [
