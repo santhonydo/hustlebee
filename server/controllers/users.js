@@ -70,7 +70,7 @@ module.exports = (function(){
 					} else {
 						sendgrid.send({
                             to : userInfo.email,
-                            bcc: ['anthony@hustlebee.com'], 
+                            bcc: ['anthony@hustlebee.com', 'tracy@hustlebee.com'], 
                             from: 'anthony@hustlebee.com',
                             subject: 'Welcome to HustleBee!',
                             html: '<p>Hi ' + userInfo.firstName + ' ' + userInfo.lastName + ', </p> <p>' + 

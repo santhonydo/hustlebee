@@ -369,7 +369,7 @@ hustleBeeAppModule.controller('HomepageController', function($scope, $location, 
 					$scope.newUser = {};
 					$scope.occupation = "";
 					$scope.stateLicense = "";
-					$scope.success = "Woohoo, success! :) Our service representative will be intouch with you shortly."
+					$scope.success = "Woohoo, success! :) Our service representative will be in touch with you shortly."
 				}
 			})
 		}
