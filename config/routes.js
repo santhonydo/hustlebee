@@ -12,8 +12,8 @@ var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(app, passport){
 
-	app.post('/signUp', function (req, res){
-		emails.signup(req, res);
+	app.post('/hustlebeeSignup', function (req, res){
+		users.hustlebeeSignup(req, res);
 	});
 
 	app.get('/logout', function(req, res){
