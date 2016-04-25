@@ -1,4 +1,4 @@
-<div style="height: 80px"></div>
+<!-- <div style="height: 80px"></div>
 <div class="container">
 	<div class="col-md-offset-2 col-md-8">
 		<div ng-show="success" class="alert alert-info">{{successMessage}}</div>
@@ -22,4 +22,46 @@
 			</div>
 		</form>
 	</div>
+</div> -->
+
+<div class="jumbotron2" style="background: url(./static/images/medteam.jpg) no-repeat center center;-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;">
+	<div class="container">
+		<div class="row" style="margin-top: 80px; margin-bottom: 20px">
+			<div class="col-md-12 text-center">
+				<img src="./static/images/hustlebee_logo.png" alt="Hustlebee Logo">
+			</div>
+    	</div>
+		<div class="col-md-offset-2 col-md-8 well" style="background-color: rgba(245, 245, 245, 0.9);">
+	    	<div class="row">
+	    		<div class="col-md-offset-2 col-md-8">
+					<div ng-show="success" class="alert alert-info">{{successMessage}}</div>
+					<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+					<div ng-show="info" class="alert alert-info">{{infoMessage}}</div>
+					<h4>Forgot your password?</h4>
+					<form>
+						<span class="help-block">Enter the email address you used to log in to your account.
+						<br>
+						We'll send you an email with instructions to choose a new password.
+						</span>
+						<div class="form-group input-group">
+							<span class="input-group-addon">@</span>
+							<input class="form-control" placeholder="Email" type="email" ng-model="user.email">
+						</div>
+						<div class="text-center">
+							<button class="btn btn-primary" ng-click="emailReset(user)">Send instructions</button>
+						</div>
+						<div class="text-center">
+							<a style="cursor: pointer; color: gray;" ng-click="backToLogin()">Back to Login</a>
+						</div>
+					</form>
+				</div>
+	    	</div>
+		</div>	
+   </div>
 </div>
+
+
+

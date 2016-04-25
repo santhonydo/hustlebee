@@ -1,4 +1,4 @@
-<div id="fh5co-offcanvass">
+<!-- <div id="fh5co-offcanvass">
 	<ul>
 		<li class="active"><a href="#" data-nav-section="home">Home</a></li>
 		<li><a href="#" data-nav-section="features">What is HustleBee?</a></li>
@@ -13,21 +13,82 @@
 		<a href="http://twitter.com/share?text=HustleBee,%20on-demand%20work%20for%20healthcare%20professionals%20Link&url=http://www.hustlebee.com"><i class="icon-twitter"></i></a>
 		<a href="http://www.facebook.com/sharer.php?u=http://www.hustlebee.com"><i class="icon-facebook"></i></a>
 	</p>
-</div>
+</div> -->
 
-<div id="fh5co-menu" class="navbar">
+
+<!-- <div id="fh5co-menu" class="navbar">
+
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+
 				<span class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#fh5co-navbar" aria-expanded="false" aria-controls="navbar"><span>Menu</span> <i></i></span>
-				<!-- <a class="navbar-brand"><span>Hustle<span style="color: #ffdc00">Bee</span></span></a> -->
 				<a href="#" class="navbar-brand" style="padding-top: 20px; padding-left: 0px"><img src="./static/images/hustlebee_logo.png" alt="Hustlebee Logo"></a>
 
 			</div>
 		</div>
 	</div>
+</div> -->
+
+<!-- <nav class="navbar navbar-default navbar-fixed-top" style="background-color: transparent; border-color: transparent;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar">Link 1</span>
+        <span class="icon-bar">Link 2</span>
+        <span class="icon-bar">Link 3</span>
+      </button>
+      <a href="#" class="navbar-brand" style="padding-top: 10px; padding-left: 20px"><img src="./static/images/hustlebee_logo.png" alt="Hustlebee Logo"></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 20px">
+      <ul class="nav navbar-nav">
+        <li ng-show="loggedIn"><a ui-sref="business.postShift">Post A Shift</a></li>
+        <li ng-show="loggedIn"><a ui-sref="business.user">Shift Status</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="loggedIn">Profile<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+    
+            <li><a ui-sref="business.settings">Settings</a></li>
+          </ul>
+        </li>
+      </ul>
+  
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-show="loggedIn">
+          <a style='cursor: pointer;' ng-click="logout()">Log out</a>
+        </li>    
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+ <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: transparent; border-color: transparent;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand" style="padding-top: 10px"><img src="./static/images/hustlebee_logo.png" alt="Hustlebee Logo"></a>
+        </div>
+        <div class="collapse navbar-collapse" style="border-color: transparent;">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li style="cursor: pointer"><a><span class="navtextcolor" style="color: white" ng-click="businessPage()">Employer Login</span></a></li>
+            <li style="cursor: pointer"><a data-nav-section="features"><span class="navtextcolor" style="color: white">What is HustleBee?</span></a></li>
+            <li style="cursor: pointer"><a data-nav-section="design"><span class="navtextcolor" style="color: white">How it works</span></a></li>
+            <li style="cursor: pointer"><a data-nav-section="signup"><span class="navtextcolor" style="color: white">Get started</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
 </div>
 
+<div id="startchange"></div>
 <div id="fh5co-page">
 	<div id="fh5co-wrap">
 		<header id="fh5co-hero" data-section="home" role="banner" style="background: url(./static/images/bg_2.jpg) top left; background-size: cover;" >
@@ -38,11 +99,8 @@
 						<div class="col-md-6 col-sm-12 col-xs-12 fh5co-text">
 							<h2 class="to-animate intro-animate-1">Find <span style="color: #ffdc00">on-demand</span> work in healthcare.</h2>
 							<p class="to-animate intro-animate-2">Are you a licensed healthcare professional looking to earn extra cash on your spare time? Become a hustle bee to find part-time work near you.</p>
-							<p class="to-animate intro-animate-3" style="text-align: center;">	
-								<a href="#" data-nav-section="features" style="font-family: 'Montserrat', arial, sans-serif; text-transform: uppercase; letter-spacing: 4xp; font-size: 11px; font-weight: 400; ">Learn More!</a>
-							</p>
 							<p class="to-animate intro-animate-4" style="text-align:center;">
-								<span ng-click="businessPage()" class="btn btn-primary btn-md" style="margin-right:0px; margin-bottom: 0px">Employer Login</span>
+								<a href="#" data-nav-section="features" class="btn btn-primary btn-md" style="margin-right:0px; margin-bottom: 0px">Learn More</a>
 							</p>
 																	
 						</div>
@@ -351,6 +409,27 @@
 
 <!-- Main JS -->
 <script src="./static/js/main.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){       
+   		var scroll_start = 0;
+   		var startchange = $('#startchange');
+   		var offset = startchange.offset();
+    	if (startchange.length){
+   			$(document).scroll(function() { 
+      			scroll_start = $(this).scrollTop();
+      			if(scroll_start > offset.top) {
+          			$(".navbar-default").css('background-color', 'white');
+          			$(".navbar-default").css('border-color', '#ffdc00');
+          			$('.navtextcolor').css('color', 'black');
+       			} else {
+         			$('.navbar-default').css('background-color', 'transparent');
+         			$(".navbar-default").css('border-color', 'transparent');
+         			$('.navtextcolor').css('color', 'white');
+      			}
+   			});
+    	}
+	})
+</script>
 
 
 

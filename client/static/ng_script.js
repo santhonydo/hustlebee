@@ -54,20 +54,20 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 			controller: 'AuthController'
 		})
 
-		.state('business.forgot', {
+		.state('forgot', {
 			url: '/business/forgot',
 			templateUrl: '/static/partials/forgot.html',
 			caseInsensitiveMatch: true,
 			controller: 'ForgotPasswordController'
 		})
 
-		.state('business.reset', {
+		.state('reset', {
 			url: '/business/reset/:id',
 			caseInsensitiveMatch: true,
 			controller: 'ResetPasswordController'
 		})
 
-		.state('business.resetPassword', {
+		.state('resetPassword', {
 			url: '/business/resetPassword',
 			templateUrl: '/static/partials/resetPassword.html',
 			caseInsensitiveMatch: true,
@@ -460,7 +460,7 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
 	}
 
 	$scope.forgot = function(){
-		$state.go('business.forgot');
+		$state.go('forgot');
 	}
 
 	$scope.register = function(){
@@ -518,9 +518,9 @@ hustleBeeAppModule.controller('ResetPasswordController', function($scope, $state
 
 	hustleBeeAppFactory.reset($stateParams, function(success){
 		if(success){
-			$state.go('business.resetPassword');
+			$state.go('resetPassword');
 		} else {
-			$state.go('business.forgot');
+			$state.go('forgot');
 		}
 	})
 })
@@ -557,7 +557,7 @@ hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, 
 				userReset.password = user.password;
 				hustleBeeAppFactory.newPassword(userReset, function(success){
 					if(success.message === 'Error reseting') {
-						$state.go('business.forgot');
+						$state.go('forgot');
 					} 
 					if(success.message === 'success'){
 						$scope.user = {};
