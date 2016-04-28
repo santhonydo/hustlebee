@@ -1,0 +1,24 @@
+<div class="container">
+  <div style="margin-top: 100px;">
+    <div class="row">
+      <div>
+        Total number of registered Users: {{mainInfo.length}}
+      </div>
+      <div id="searchBar">
+        <input type="text" ng-model="filter_name" class="col-md-4">
+        <button>Search</button>
+        <button ng-click="employeeFilter()">Hustlebees</button>
+        <button ng-click="employerFilter()">Employers</button>
+        <button ng-click="verified()">Verified</button>
+        <button ng-click="clear()">Clear</button>
+      </div>
+      <div class="post col-md-4" ng-repeat="info in mainInfo.slice().reverse() | filter:filter_name">
+        <div ng-click="moreInfo(info)">
+          <p>{{info.employer == true ? 'Employer' : 'Employee'}}</p>
+          <h4>Date Registered:</h4><p> {{info.created_at | date: 'dd/MM/yyyy'}}</p>
+          <h4>Company:</h4><p> {{info.companyName}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

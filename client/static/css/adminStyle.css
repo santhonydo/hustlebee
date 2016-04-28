@@ -1,0 +1,9 @@
+.post{
+  border-radius: 4px;
+  border: 2px solid black;
+  text-align: center;
+  padding-top: 20px;
+}
+#searchBar{
+  margin-bottom: 15px;
+}

@@ -1,0 +1,44 @@
+<div class="modal-header">
+  <button type="button" ng-click="close()" class="close">&times;</button>
+  <h3 class="modal-title">{{info.employer == true ? "Employer" : "Employee"}} {{info.companyName}}</h3>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <p ng-if="info.addresses.length == 0">User has not added any addresses yet</p>
+        <div ng-if="info.addresses.length > 0">
+          <h4>Addresses</h4>
+          <div ng-repeat="address in info.addresses">
+            {{address.city}}
+            {{address.street}}
+            {{address.zipcode}}
+          </div>
+        </div>
+        <h4>Basic Information</h4>
+        <p>Registration Date: {{info.created_at | date: 'dd/MM/yyyy'}}</p>
+        <p>Email Address: {{info.email}}</p>
+        <p>Name: {{info.firstName}} {{info.lastName}}</p>
+        <p>Phone Number: {{info.phoneNumber}}</p>
+        <p>Username: {{info.username}}</p>
+        <p>Zipcode: {{info.zipcode}}</p>
+        <div>
+          <p>License Number: {{info.licenseNumber}}</p>
+          <p>License location: {{info.stateOfLicense}}</p>
+          <p>License expiration: {{info.licenseExpirationDate}}</p>
+        </div>
+        <p>STATUS: {{info.status}}</p>
+        <button ng-click="changeInfo(info)">Change user information</button>
+      </div>
+      <div class="col-md-6">
+        <h4>Shifts</h4>
+        <div ng-if="info.shifts.length == 0">
+          <h3>No shifts have been posted yet</h3>
+        </div>
+        <div ng-if="info.shifts.length  >=1 ">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -165,6 +165,15 @@ module.exports = function(app, passport){
 		users.update(req, res);
 	})
 
+	app.post('/adminUpdateUser', function(req, res){
+    console.log('herer');
+		users.adminUpdate(req, res);
+	})
+
+  app.get('/getInfo', function(req, res){
+    users.getInfo(req, res);
+  })
+
 	var createHash = function(password){
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
