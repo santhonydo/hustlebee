@@ -3,6 +3,8 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 
 	var userInfo = null;
 
+  var mainInfo;
+
 	var factory = {};
 
 	factory.isLoggedIn = function() {
@@ -159,6 +161,14 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 		})
 	}
 
+  factory.adminUpdateUser = function(data, callback){
+    console.log('update user information');
+    $http.post('/adminUpdateUser', data).success(function(data){
+      console.log('hi');
+      callback(data);
+    })
+  }
+
 	factory.geoCode = function(data, callback){
 
 		var address = data.replace(/ /g, '+');
@@ -175,6 +185,17 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 			}
 		})
 	}
+
+  factory.getInfo = function(callback){
+    $http.get('/getInfo').success(function(data){
+      mainInfo = data;
+      callback(data);
+    })
+  }
+
+  factory.useInfo = function(callback){
+    callback(mainInfo)
+  }
 
 	return factory;
 });

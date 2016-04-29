@@ -31,6 +31,26 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 			controller: 'HomepageController'
 		})
 
+  .state('admin', {
+    url: '',
+    templateUrl: '/static/partials/adminDashboard.html',
+    caseInsensitiveMatch: true,
+    controller: 'AdminController'
+  })
+
+  .state('admin.login', {
+    url: '/admin',
+    templateUrl: '/static/partials/adminLogin.html',
+    caseInsensitiveMatch: true,
+  })
+
+  .state('admin.main', {
+    url: '/admin/main',
+    templateUrl: '/static/partials/adminMain.html',
+    caseInsensitiveMatch: true,
+    controller: 'AdminMainController'
+  })
+
 		//Business Section
 
 		.state('business', {

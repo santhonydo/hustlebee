@@ -5,6 +5,17 @@ var sendgrid = require('sendgrid')('SG.TnZ8IhULQm2DL9qr22l-uA.fdChI7Bwyi2JtIWz0M
 
 module.exports = (function(){
 	return {
+    getInfo: function(req, res){
+      User.find({}).populate('addresses').exec(function(err, results){
+        if(err){
+          console.log(err);
+        }
+        else{
+          console.log(results);
+          res.json(results);
+        }
+      })
+    },
 		getUser: function(req, res){
 			User.findOne({_id: req.body.id}).populate('addresses').exec(function(err, user){
 				if(err){
@@ -18,6 +29,20 @@ module.exports = (function(){
 		update: function(req, res){
 			var userInfo = req.body;
 			User.update({_id: userInfo._id}, {$set: {companyName: userInfo.companyName, firstName: userInfo.firstName, lastName: userInfo.lastName, email: userInfo.email, phoneNumber: userInfo.phoneNumber}}, function(err){
+				if(err){
+					console.log('Error updating user info');
+				} else {
+					console.log('Successfuly updated user info');
+					var success = {msg: 'Saved successfully!'};
+					res.json(success)
+				}
+			})
+		},
+
+		adminUpdate: function(req, res){
+			var userInfo = req.body;
+      console.log(userInfo);
+			User.update({_id: userInfo._id}, {$set: {firstName: userInfo.firstName, lastName: userInfo.lastName, email: userInfo.email, phoneNumber: userInfo.phoneNumber, zipcode: userInfo.zipcode, licenseNumber: userInfo.licenseNumber, licenseExpirationDate: userInfo.licenseExpirationDate, stateOfLicense: userInfo.stateOfLicense, status: userInfo.status, username: userInfo.username}}, function(err){
 				if(err){
 					console.log('Error updating user info');
 				} else {

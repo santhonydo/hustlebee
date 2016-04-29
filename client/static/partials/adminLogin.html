@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="modal-header">
+    <button type="button" ng-click="close()" class="close">&times;</button>
+    <h3 class="modal-title">Login!</h3>
+  </div>
+  <div class="modal-body">
+    <form name="jobPostingForm">
+      <div class="row">
+        <div class="col-md-12">
+          <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" ng-model="user.password" placeholder="Password">
+
+            </div>
+            <a class="pull-right" ng-click="forgot()" style="cursor: pointer;">Forgot password?</a>
+          </div>
+        </div>
+      </div>
+  </div>
+    </form>
+</div>
+
+<div class="modal-footer">	
+  <button type="button" class="btn btn-default" ng-click="login(user)">Login</button>
+</div>
