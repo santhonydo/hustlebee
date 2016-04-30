@@ -45,7 +45,10 @@ hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal
     $rootScope.loggedIn = false;
   }
 
-
+  $scope.adminLogin = function(data){
+    console.log("in admin login", data)
+    hustleBeeAppFactory.adminLogin(data);
+  }
 })
 
 hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
@@ -57,6 +60,9 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       }
     })
   };
+
+  hustleBeeAppFactory.checkStatus();
+  
 
   getInfo();
 

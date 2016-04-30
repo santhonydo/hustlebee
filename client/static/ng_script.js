@@ -42,6 +42,7 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
     url: '/admin',
     templateUrl: '/static/partials/adminLogin.html',
     caseInsensitiveMatch: true,
+    controller: 'AdminLoginController'
   })
 
   .state('admin.main', {

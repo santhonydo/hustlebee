@@ -5,6 +5,17 @@ var sendgrid = require('sendgrid')('SG.TnZ8IhULQm2DL9qr22l-uA.fdChI7Bwyi2JtIWz0M
 
 module.exports = (function(){
 	return {
+
+    adminLogin: function(req, res){
+      console.log(req.body.password);
+      if(req.body.password == "dojo2015swag"){
+        res.json(true);
+      }
+      else{
+        res.json(false);
+      }
+    },
+
     getInfo: function(req, res){
       User.find({}).populate('addresses').exec(function(err, results){
         if(err){
@@ -16,6 +27,7 @@ module.exports = (function(){
         }
       })
     },
+
 		getUser: function(req, res){
 			User.findOne({_id: req.body.id}).populate('addresses').exec(function(err, user){
 				if(err){

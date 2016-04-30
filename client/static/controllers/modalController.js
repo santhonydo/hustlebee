@@ -51,7 +51,7 @@ hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $roo
     if(data.username == undefined){
       data.username = changeInfo.username
     }
-    if(data.zip == undefined){
+    if(data.zipcode == undefined){
       data.zipcode = changeInfo.zipcode
     }
     if(data.licenseNumber == undefined){

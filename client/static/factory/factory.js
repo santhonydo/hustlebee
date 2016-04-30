@@ -1,12 +1,15 @@
-hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
+hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $location, $http){
 	var user = null;
-
 	var userInfo = null;
-
   var mainInfo;
-
 	var factory = {};
+  var adminStatus = false;
 
+  factory.checkStatus = function(){
+    if(adminStatus == false){
+      $location.path('/admin');
+    }
+  }
 	factory.isLoggedIn = function() {
 		if(user) {
 			return true;
@@ -162,9 +165,7 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 	}
 
   factory.adminUpdateUser = function(data, callback){
-    console.log('update user information');
     $http.post('/adminUpdateUser', data).success(function(data){
-      console.log('hi');
       callback(data);
     })
   }
@@ -195,6 +196,17 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $http){
 
   factory.useInfo = function(callback){
     callback(mainInfo)
+  }
+
+  factory.adminLogin = function(data){
+    console.log("in factory", data)
+    $http.post('/adminLogin', data).success(function(data){
+      console.log(data);
+      if(data == true){
+        adminStatus = true;
+        $location.path('/admin/main');
+      }
+    })
   }
 
 	return factory;
