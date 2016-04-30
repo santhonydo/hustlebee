@@ -174,6 +174,11 @@ module.exports = function(app, passport){
     users.getInfo(req, res);
   })
 
+  app.post('/adminLogin', function(req, res){
+    console.log("hi");
+    users.adminLogin(req, res);
+  })
+
 	var createHash = function(password){
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
