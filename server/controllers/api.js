@@ -43,21 +43,7 @@ module.exports = function(router){
 						bcc: ['anthony@hustlebee.com', 'tracy@hustlebee.com'],
 						from: 'support@hustlebee.com',
 						subject: 'Shift Accepted',
-						html: 'Hi ' + employerFirstName + 
-								', </br></br>' + 
-								'Your shift for ' + shiftDate + ', has been accepted. Below are some information regarding the employee.' + 
-								'</br></br>' + 
-								'<strong>Name: </strong>' +  employeeFirstName + ' ' + employeeLastName +
-								'</br></br>' + 
-								'<strong>Email: </strong>' + employeeEmail +
-								'</br></br>' + 
-								'<strong>Phone #: </strong>' + employeePhoneNumber +
-								'</br></br>' +
-								'If you have any questions or concerns regarding this employee, please contact us at support@hustlebee.com.' +
-								'</br></br>' +
-								'Best regards,' +
-								'</br></br>' +
-								'The HustleBee Team'
+						html: '<p>Hi ' + employerFirstName + ', </p><p>Your shift for ' + shiftDate + ', has been accepted.</p><p>Our customer representative will contact you shortly to confirm the shift before releasing employee contact information. If you have any urgent matters, please do not hesistate to email us at support@hustlebee.com.</p><p>Best regards,</p><p>The Hustlebee Team</p>.'
 					}, function(err, json){
 						if (err) {
 							res.json({error: "Unknown error"})
@@ -159,13 +145,8 @@ module.exports = function(router){
                             to : req.body.email,
                             bcc: ['anthony@hustlebee.com', 'tracy@hustlebee.com'], 
                             from: 'anthony@hustlebee.com',
-                            subject: 'Welcome to HustleBee!',
-                            html: 'Hi ' + req.body.firstName + 
-                                ', </br></br>' + 
-                                'My name is Dr. Anthony Do, PharmD, one of HustleBee co-founders. I would like to personally welcome you to HustleBee. </br></br> Our customer representative will contact you shortly to orient you on our platform and collect some information to verify your license. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com. </br></br>My team and I are thrilled to have you as apart of our healthcare team. </br></br>' +
-                                'Best regards,' +
-                                '</br></br>' +
-                                'Anthony & The HustleBee Team'
+                            subject: 'Welcome to Hustlebee!',
+                            html: '<p>Hi ' + req.body.firstName + ' ' + req.body.lastName + ',</p><p>My name is Dr. Anthony Do, PharmD, one of Hustlebee co-founders. I would like to personally welcome you to Hustlebee.</p></p>Our customer representative will contact you shortly to orient you on our platform and collect some information to verify your license. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com.</p><p>My team and I are thrilled to have you as part of our healthcare team.</p><p>Best regards,</p><p>Anthony & The HustleBee Team </p>'
                         }, function(err, json){
                             if (err){
                                 return console.log(err);
@@ -227,9 +208,8 @@ module.exports = function(router){
 	    			sendgrid.send({
 						to : email,
 						from: 'support@hustlebee.com',
-						subject: 'HustleBee Password Reset',
-						text: 'We got a new shift!',
-						html: 'You are receiving this because you (or someone else) have requested the reset of the password for your account. </br> </br>Here is your reset token: <strong>' + randomText + '</strong></br></br>If you did not request this, please ignore this email and your password will remain unchanged.\n'
+						subject: 'Hustlebee Password Reset',
+						html: '<p>Hi,</p><p>You are receiving this because you (or someone else) have requested a password reset for your Hustlebee account.</p><p>Here is your reset token: <strong>' + randomText + '</strong></p><p>If you did not request this, please ignore this email and your password will remain unchanged.</p><p>Best regards,</p><p>The Hustlebee Team</p>'
 					}, function(err, json){
 						if (err) {
 							res.json({error: "Unknown error"})

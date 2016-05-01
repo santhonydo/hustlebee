@@ -112,9 +112,9 @@ hustleBeeAppModule.controller('ResetPasswordController', function($scope, $state
 
 	hustleBeeAppFactory.reset($stateParams, function(success){
 		if(success){
-			$state.go('business.resetPassword');
+			$state.go('resetPassword');
 		} else {
-			$state.go('business.forgot');
+			$state.go('forgot');
 		}
 	})
 })

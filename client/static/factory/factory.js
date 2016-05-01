@@ -199,9 +199,7 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $locati
   }
 
   factory.adminLogin = function(data){
-    console.log("in factory", data)
     $http.post('/adminLogin', data).success(function(data){
-      console.log(data);
       if(data == true){
         adminStatus = true;
         $location.path('/admin/main');

@@ -65,7 +65,7 @@
   </div>
 </nav> -->
 
- <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: transparent; border-color: transparent;">
+ <div class="navbar navbar-default navbar-appearance navbar-fixed-top" role="navigation" style="background-color: transparent; border-color: transparent;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -179,7 +179,7 @@
 				    	<div class="row">
 				    		<div class="col-md-8 col-md-offset-2 fh5co-section-heading text-center">
 								<h2 class="fh5co-lead to-animate">How it works</h2>
-								<p class="fh5co-sub to-animate">Set your own schedule and work whenever you feel like it. Simply switch your status to available and watch the shifts roll in. If you choose to accept shifts, just show up for work and get paid.</p>
+								<p class="fh5co-sub to-animate">Set your own schedule and work whenever you feel like it. Simply accept shifts you want to work, show up for work and get paid.</p>
 							</div>
 				    		<div class="col-md-4 fh5co-text-wrap">
 				    			<div class="row text-center">
@@ -205,15 +205,15 @@
 									</div>
 									<div class="col-md-12 col-sm-6 col-xs-6 col-xxs-12 fh5co-text animate-object features-2-animate-6">
 										<span class="fh5co-icon"><i class="icon-credit-card"></i></span>
-										<h4 class="fh5co-uppercase-sm">Payday*</h4>
+										<h4 class="fh5co-uppercase-sm">Payday</h4>
 										<p>Direct deposit into your bank. Go ahead, book that dream vacation.</p>
 									</div>
-									
 								</div>
 				    		</div>
 				    		<div class="col-md-4 col-md-pull-4 fh5co-image animate-object features-2-animate-2">
 				    			<p class="text-center">
 				    			<img src="./static/images/iphone_6_white.png" class="" alt="HustleBee iPhone app">
+				    			<p class="text-center" style="font-size: 10px">*Features not yet available.</p>
 				    			</p>
 				    		</div>
 				    	</div>
@@ -418,12 +418,12 @@
    			$(document).scroll(function() { 
       			scroll_start = $(this).scrollTop();
       			if(scroll_start > offset.top) {
-          			$(".navbar-default").css('background-color', 'white');
-          			$(".navbar-default").css('border-color', '#ffdc00');
+          			$(".navbar-appearance").css('background-color', 'white');
+          			$(".navbar-appearance").css('border-color', '#ffdc00');
           			$('.navtextcolor').css('color', 'black');
        			} else {
-         			$('.navbar-default').css('background-color', 'transparent');
-         			$(".navbar-default").css('border-color', 'transparent');
+         			$('.navbar-appearance').css('background-color', 'transparent');
+         			$(".navbar-appearance").css('border-color', 'transparent');
          			$('.navtextcolor').css('color', 'white');
       			}
    			});

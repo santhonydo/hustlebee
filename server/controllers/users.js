@@ -108,11 +108,8 @@ module.exports = (function(){
                             to : userInfo.email,
                             bcc: ['anthony@hustlebee.com', 'tracy@hustlebee.com'], 
                             from: 'anthony@hustlebee.com',
-                            subject: 'Welcome to HustleBee!',
-                            html: '<p>Hi ' + userInfo.firstName + ' ' + userInfo.lastName + ', </p> <p>' + 
-                                'My name is Dr. Anthony Do, PharmD, one of HustleBee co-founders. I would like to personally welcome you to HustleBee. </p></p>Our customer representative will contact you shortly to orient you on our platform and collect some information to verify your license. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com. </p><p>My team and I are thrilled to have you as part of our healthcare team. </p><p>' +
-                                'Best regards,</p><p>' +
-                                'Anthony & The HustleBee Team </p>'
+                            subject: 'Welcome to Hustlebee!',
+                            html: '<p>Hi ' + userInfo.firstName + ' ' + userInfo.lastName + ', </p><p>My name is Dr. Anthony Do, PharmD, one of Hustlebee co-founders. I would like to personally welcome you to Hustlebee.</p><p>Our customer representative will contact you shortly to orient you on our platform and collect some information to verify your license. If you have any additional questions or comments, you can contact us at support@hustlebee.com or email me directly at anthony@hustlebee.com.</p><p>My team and I are thrilled to have you as part of our healthcare team. </p><p>Best regards,</p><p>Anthony & The Hustlebee Team</p>'
                         }, function(err, json){
                             if (err){
                                 return console.log(err);

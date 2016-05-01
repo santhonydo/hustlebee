@@ -2,7 +2,6 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
 
   $scope.error = false;
   $scope.disabled = true;
-  console.log(info);
   $scope.info = info;
 
   $scope.changeInfo = function(data){
@@ -33,9 +32,7 @@ hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $roo
   $scope.userInfo = {};
 
   $scope.update = function(data){
-    console.log($scope.info._id)
     data._id = $scope.info._id;
-    console.log(data);
     if(data == undefined){
       $uibModalInstance.dismiss('cancel')
     }

@@ -46,7 +46,6 @@ hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal
   }
 
   $scope.adminLogin = function(data){
-    console.log("in admin login", data)
     hustleBeeAppFactory.adminLogin(data);
   }
 })

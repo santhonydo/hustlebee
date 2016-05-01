@@ -84,7 +84,7 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 	} else {
 		$scope.unverified = true;
 		$scope.alertMessage = true;
-		$scope.alertDetailMessage = "You cannot post until your account has been verified. Account verification can take up to 24 hours. If you need emergency shift coverage, contact us at support@hustlebee.com."
+		$scope.alertDetailMessage = "You cannot post shifts until we verify your account. Account verification can take up to 24 hours. If you need emergency shift coverage, contact us at support@hustlebee.com."
 	}
 
 	var getUserAddresses = function(){
@@ -153,12 +153,28 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 	
 	$scope.post = function(month, date, year, startTimeHour, startTimeMin, shiftHour, shiftMin, jobPosition, address){
 
-		var shiftDate = month.value + '/' + date.value + '/' + year.value;
+		var shiftDate = null;
+		var dateIsValid = function() {
+			shiftDate = month.value + '/' + date.value + '/' + year.value;
+			
+			var startTimeHourInt = parseInt(startTimeHour.value);
+			var startTimeMinInt = parseInt(startTimeMin.value);
+			var currentDate = new Date();
+   
+    		var shiftDateFormat = new Date (year.value, month.value - 1, date.value)
+    		shiftDateFormat.setHours(startTimeHourInt,startTimeMinInt,0,0);
+    		
+    		if (shiftDateFormat >= currentDate) {
+    			return true
+    		} else {
+    			return false
+    		}
+		}
 
 		if (angular.isUndefined(jobPosition) || angular.isUndefined(month) || angular.isUndefined(date) || angular.isUndefined(year) || angular.isUndefined(startTimeHour) || angular.isUndefined(startTimeMin) || angular.isUndefined(shiftHour) || angular.isUndefined(shiftMin) || angular.isUndefined(address)) {
 			$scope.errorMessage = "All fields are required.";
 			$scope.error = true;
-		} else if (!dateIsValid(shiftDate)) {
+		} else if (!dateIsValid()) {
 			$scope.error = true;
 			$scope.errorMessage = "Invalid date."
 		} else {

@@ -79,9 +79,8 @@ module.exports = function(app, passport){
     			sendgrid.send({
 					to : user.email,
 					from: 'support@hustlebee.com',
-					subject: 'HustleBee Password Reset',
-					text: 'We got a new shift!',
-					html: 'You are receiving this because you (or someone else) have requested the reset of the password for your account. \n\n' + 'Please click on the following link, or paste this into your browser to complete the process:\n\n' + 'http://' + req.headers.host + '/#/business/reset/' + token + '\n\n' + 'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+					subject: 'Hustlebee Password Reset',
+					html: '<p>Hi,</p><p>You are receiving this because you (or someone else) have requested a password reset for your Hustlebee account.</p><p>Please click on the following link, or paste this into your browser to complete the process: http://' + req.headers.host + '/#/business/reset/' + token + '</p><p>If you did not request this, please ignore this email and your password will remain unchanged.</p><p>Best regards,</p><p>The Hustlebee Team</p>'
 				}, function(err, json){
 					req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
 					res.json({msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.'})
@@ -122,9 +121,8 @@ module.exports = function(app, passport){
 				sendgrid.send({
 					to : user.email,
 					from: 'support@hustlebee.com',
-					subject: 'Your password has been changed',
-					text: 'We got a new shift!',
-					html: 'Hello,\n\n' + 'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+					subject: 'Your Hustlebee password has been changed',
+					html: '<p>Hi,</p><p>This is a confirmation that the password for your Hustlebee account, ' + user.email + ' has just been changed.</p><p>If you did not perform this action, please contact us immediately at support@hustlebee.com.<p>Best regards,</p><p>The Hustlebee Team</p>'
 				}, function(err, success){
 					if(err) {
 						console.log('Error sending email' + err)
@@ -166,27 +164,20 @@ module.exports = function(app, passport){
 	})
 
 	app.post('/adminUpdateUser', function(req, res){
-    console.log('herer');
 		users.adminUpdate(req, res);
 	})
 
-  app.get('/getInfo', function(req, res){
-    users.getInfo(req, res);
-  })
+  	app.get('/getInfo', function(req, res){
+   		users.getInfo(req, res);
+  	})
 
-  app.post('/adminLogin', function(req, res){
-    console.log("hi");
-    users.adminLogin(req, res);
-  })
+  	app.post('/adminLogin', function(req, res){
+    	users.adminLogin(req, res);
+  	})
 
 	var createHash = function(password){
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
-
-	// app.get('/user', function(req, res){
-	// 		var item = {user: "Anthony", pass: "this is working"};
-	// 		res.json(item);
-	// 	});
 }
 
 

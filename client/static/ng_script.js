@@ -38,7 +38,7 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
     controller: 'AdminController'
   })
 
-  .state('admin.login', {
+  .state('adminLogin', {
     url: '/admin',
     templateUrl: '/static/partials/adminLogin.html',
     caseInsensitiveMatch: true,
@@ -82,13 +82,13 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 			controller: 'ForgotPasswordController'
 		})
 
-		.state('business.reset', {
+		.state('reset', {
 			url: '/business/reset/:id',
 			caseInsensitiveMatch: true,
 			controller: 'ResetPasswordController'
 		})
 
-		.state('business.resetPassword', {
+		.state('resetPassword', {
 			url: '/business/resetPassword',
 			templateUrl: '/static/partials/resetPassword.html',
 			caseInsensitiveMatch: true,
