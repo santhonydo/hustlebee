@@ -5,7 +5,7 @@ hustleBeeAppModule.controller('AdminController', function($scope, $rootScope, $u
   $rootScope.loggedIn = false;
 
   if (auth.getUserStatus() === true) {
-    $rootScope.loggedIn = true
+    $rootScope.loggedIn = true;
   }
 
   $scope.login = function() {
@@ -14,8 +14,8 @@ hustleBeeAppModule.controller('AdminController', function($scope, $rootScope, $u
       size: 'sm',
       templateUrl: '/static/partials/login_modal.html',
       controller: 'AuthController'
-    })
-  }
+    });
+  };
 
   $scope.register = function() {
     var modalInstance = $uibModal.open({
@@ -23,21 +23,21 @@ hustleBeeAppModule.controller('AdminController', function($scope, $rootScope, $u
       size: 'md',
       templateUrl: '/static/partials/register_modal.html',
       controller: 'AuthController'
-    })
-  }
+    });
+  };
 
   $scope.logout = function(){		
     hustleBeeAppFactory.logout(function(success){
       if(success){
         $state.go('business.home');
       }
-    })
-  }
+    });
+  };
 
-})
+});
 
 hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
-  var auth = hustleBeeAppFactory
+  var auth = hustleBeeAppFactory;
 
   if (auth.getUserStatus() === true) {
     $rootScope.loggedIn = true;
@@ -47,17 +47,17 @@ hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal
 
   $scope.adminLogin = function(data){
     hustleBeeAppFactory.adminLogin(data);
-  }
-})
+  };
+});
 
 hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
-  var auth = hustleBeeAppFactory
+  var auth = hustleBeeAppFactory;
   var getInfo = function(){
     hustleBeeAppFactory.getInfo(function(data){
       if(data){
         $scope.mainInfo = data;
       }
-    })
+    });
   };
 
   hustleBeeAppFactory.checkStatus();
@@ -74,49 +74,49 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
 
   $scope.clear = function(){
     getInfo();
-  }
+  };
 
 
   $scope.employeeFilter = function(){
     $scope.mainInfo = [];
     hustleBeeAppFactory.useInfo(function(data){
-      for(x in data){
-        if(data[x].employer == false){
+      for(var x in data){
+        if(data[x].employer === false){
           $scope.mainInfo.push(data[x]);
         }
       }
-    })
-  }
+    });
+  };
 
   $scope.employerFilter = function(){
     $scope.mainInfo = [];
     hustleBeeAppFactory.useInfo(function(data){
-      for(x in data){
-        if(data[x].employer == true){
+      for(var x in data){
+        if(data[x].employer === true){
           $scope.mainInfo.push(data[x]);
         }
       }
-    })
-  }
+    });
+  };
 
   $scope.verified = function(){
     $scope.mainInfo = [];
     hustleBeeAppFactory.useInfo(function(data){
-      for(x in data){
+      for(var x in data){
         if(data[x].status == 1){
           $scope.mainInfo.push(data[x]);
         }
       }
-    })
-  }
+    });
+  };
 
   $scope.$on("updatelist", function(){
     hustleBeeAppFactory.getInfo(function(data){
       if(data){
         $scope.mainInfo = data;
       }
-    })
-  })
+    });
+  });
 
 
 
@@ -132,9 +132,9 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
           return theinfo;
         }
       }
-    })
-  }
-})
+    });
+  };
+});
 
 
 
