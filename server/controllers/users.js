@@ -6,8 +6,14 @@ var sendgrid = require('sendgrid')('SG.TnZ8IhULQm2DL9qr22l-uA.fdChI7Bwyi2JtIWz0M
 module.exports = (function(){
 	return {
 
+    adminDelete: function(req,res){
+      User.remove({_id: req.body._id}, function(err,user){
+        console.log('user deleted')
+        res.json(true)
+      });
+    },
+
     adminLogin: function(req, res){
-      console.log(req.body.password);
       if(req.body.password == "dojo2015swag"){
         res.json(true);
       }
@@ -54,7 +60,7 @@ module.exports = (function(){
 		adminUpdate: function(req, res){
 			var userInfo = req.body;
       console.log(userInfo);
-			User.update({_id: userInfo._id}, {$set: {firstName: userInfo.firstName, lastName: userInfo.lastName, email: userInfo.email, phoneNumber: userInfo.phoneNumber, zipcode: userInfo.zipcode, licenseNumber: userInfo.licenseNumber, licenseExpirationDate: userInfo.licenseExpirationDate, stateOfLicense: userInfo.stateOfLicense, status: userInfo.status, username: userInfo.username}}, function(err){
+			User.update({_id: userInfo._id}, {$set: {firstName: userInfo.firstName, lastName: userInfo.lastName, email: userInfo.email, phoneNumber: userInfo.phoneNumber, zipcode: userInfo.zipcode, licenseNumber: userInfo.licenseNumber, licenseExpirationDate: userInfo.licenseExpirationDate, stateOfLicensure: userInfo.stateOfLicensure, status: userInfo.status, username: userInfo.username}}, function(err){
 				if(err){
 					console.log('Error updating user info');
 				} else {
