@@ -61,7 +61,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
     });
   };
 
-  //hustleBeeAppFactory.checkStatus();
+  hustleBeeAppFactory.checkStatus();
   
 
   getInfo();
