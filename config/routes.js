@@ -175,24 +175,11 @@ module.exports = function(app, passport){
     	users.adminLogin(req, res);
   	})
 
+    app.post('/adminDelete', function(req,res){
+      console.log('in routes');
+      users.adminDelete(req, res);
+    })
 	var createHash = function(password){
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

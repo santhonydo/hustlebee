@@ -3,6 +3,7 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
   $scope.error = false;
   $scope.disabled = true;
   $scope.info = info;
+  console.log(info);
 
   $scope.changeInfo = function(data){
     var modalInstance = $uibModal.open({
@@ -15,14 +16,49 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
           return data;
         }
       }
+    });
+  };
+
+  $scope.deleteUser = function(deleteInfo) {
+    var modalInstance = $uibModal.open({
+      animation: true,
+      size: 'sm',
+      templateUrl: '/static/partials/deleteUserModal.html',
+      controller: 'deleteModalController',
+      resolve: {
+        userDeleteInfo: function(){
+          return deleteInfo;
+        }
+      }
+    });
+  };
+
+  $scope.close = function() {
+    $uibModalInstance.dismiss('cancel');
+  };
+
+});
+
+hustleBeeAppModule.controller('deleteModalController', function($scope, $rootScope, $uibModal, $uibModalStack, $uibModalInstance, userDeleteInfo, $location, $state, $stateParams, hustleBeeAppFactory){
+
+  $scope.error = false;
+  $scope.disabled = true;
+  $scope.info = userDeleteInfo;
+
+  $scope.adminDelete = function(data){
+    hustleBeeAppFactory.adminDelete(data, function(output){
+      if(output === true){
+        $rootScope.$broadcast('updatelist');
+        $uibModalStack.dismissAll();
+      }
     })
   }
 
   $scope.close = function() {
     $uibModalInstance.dismiss('cancel');
-  }
+  };
 
-})
+});
 
 hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $rootScope, $uibModal, $uibModalInstance, $uibModalStack, changeInfo, $location, $state, $stateParams, hustleBeeAppFactory){
 
@@ -33,50 +69,50 @@ hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $roo
 
   $scope.update = function(data){
     data._id = $scope.info._id;
-    if(data == undefined){
-      $uibModalInstance.dismiss('cancel')
+    if(data === undefined){
+      $uibModalInstance.dismiss('cancel');
     }
-    if(data.email == undefined){
-      data.email = changeInfo.email
+    if(data.email === undefined){
+      data.email = changeInfo.email;
     }
-    if(data.firstName == undefined){
-      data.firstName = changeInfo.firstName
+    if(data.firstName === undefined){
+      data.firstName = changeInfo.firstName;
     }
-    if(data.lastName == undefined){
-      data.lastName = changeInfo.lastName
+    if(data.lastName === undefined){
+      data.lastName = changeInfo.lastName;
     }
-    if(data.username == undefined){
-      data.username = changeInfo.username
+    if(data.username === undefined){
+      data.username = changeInfo.username;
     }
-    if(data.zipcode == undefined){
-      data.zipcode = changeInfo.zipcode
+    if(data.zipcode === undefined){
+      data.zipcode = changeInfo.zipcode;
     }
-    if(data.licenseNumber == undefined){
-      data.licenseNumber = changeInfo.licenseNumber
+    if(data.licenseNumber === undefined){
+      data.licenseNumber = changeInfo.licenseNumber;
     }
-    if(data.licenseExpirationDate == undefined){
-      data.licenseExpirationDate = changeInfo.licenseExpirationDate
+    if(data.licenseExpirationDate === undefined){
+      data.licenseExpirationDate = changeInfo.licenseExpirationDate;
     }
-    if(data.stateOfLicense == undefined){
-      data.stateOfLicense = changeInfo.stateOfLicense
+    if(data.stateofLicensure === undefined){
+      data.stateofLicensure = changeInfo.stateOfLicensure;
     }
-    if(data.status == undefined){
-      data.status = changeInfo.status
+    if(data.status === undefined){
+      data.status = changeInfo.status;
     }
-    if(data.phoneNumber == undefined){
-      data.phoneNumber = changeInfo.phoneNumber
+    if(data.phoneNumber === undefined){
+      data.phoneNumber = changeInfo.phoneNumber;
     }
     hustleBeeAppFactory.adminUpdateUser(data, function(output){
       $rootScope.$broadcast('updatelist');
-      $uibModalStack.dismissAll()
-    })
-  }
+      $uibModalStack.dismissAll();
+    });
+  };
 
   $scope.close = function() {
     $uibModalInstance.dismiss('cancel');
-  }
+  };
 
-})
+});
 
 hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $state, $uibModalInstance, hustleBeeAppFactory, uiGmapGoogleMapApi){
 
@@ -90,7 +126,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
   $scope.close = function() {
     $uibModalInstance.dismiss('cancel');
     $rootScope.$broadcast('updateUser');
-  }
+  };
 
   $scope.addAddress = function(address, state){
     if(angular.isUndefined(address)) {
@@ -102,6 +138,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
       $scope.success = false;
       $scope.errorMessage = "All fields are required.";
     } else {
+      //address should be renamed
       var address = address;
       address.state = state.value;
       address.userId = userInfo._id;
@@ -111,7 +148,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
       hustleBeeAppFactory.geoCode(geoCodeAddress, function(data){
         if (data.status == "OK") {
           $scope.error = false;
-          $scope.errorMessage = ""
+          $scope.errorMessage = "";
           address.coordinate = data.coordinate;
 
           hustleBeeAppFactory.addAddress(address, function(data){
@@ -122,17 +159,17 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
               $scope.address = {};
               $scope.state = {};
             }
-          })
+          });
         } else {
           $scope.error = true;
-          $scope.errorMessage = "Invalid address."
-          return
+          $scope.errorMessage = "Invalid address.";
+          return;
         }
-      })
+      });
     } 
-  }
+  };
 
-})
+});
 
 
 

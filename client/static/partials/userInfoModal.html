@@ -18,6 +18,7 @@
         </div>
         <h4>Basic Information</h4>
         <p>Registration Date: {{info.created_at | date: 'dd/MM/yyyy'}}</p>
+        <p>Occupation: {{info.occupation}}</p>
         <p>Email Address: {{info.email}}</p>
         <p>Name: {{info.firstName}} {{info.lastName}}</p>
         <p>Phone Number: {{info.phoneNumber}}</p>
@@ -25,11 +26,12 @@
         <p>Zipcode: {{info.zipcode}}</p>
         <div>
           <p>License Number: {{info.licenseNumber}}</p>
-          <p>License location: {{info.stateOfLicense}}</p>
+          <p>License location: {{info.stateOfLicensure}}</p>
           <p>License expiration: {{info.licenseExpirationDate}}</p>
         </div>
         <p>STATUS: {{info.status}}</p>
         <button ng-click="changeInfo(info)">Change user information</button>
+        <button  ng-click="deleteUser(info)" class="btn btn-danger">Delete User</button>
       </div>
       <div class="col-md-6">
         <h4>Shifts</h4>
