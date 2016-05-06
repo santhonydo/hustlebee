@@ -91,10 +91,11 @@ hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $roo
       data.licenseNumber = changeInfo.licenseNumber;
     }
     if(data.licenseExpirationDate === undefined){
+      console.log(changeInfo.licenseExpirationDate);
       data.licenseExpirationDate = changeInfo.licenseExpirationDate;
     }
-    if(data.stateofLicensure === undefined){
-      data.stateofLicensure = changeInfo.stateOfLicensure;
+    if(data.stateOfLicensure === undefined){
+      data.stateOfLicensure = changeInfo.stateOfLicensure;
     }
     if(data.status === undefined){
       data.status = changeInfo.status;
