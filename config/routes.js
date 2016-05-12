@@ -171,6 +171,11 @@ module.exports = function(app, passport){
    		users.getInfo(req, res);
   	})
 
+    app.post('/getPictures', function(req, res){
+      console.log(req.body);
+      users.getPictures(req, res);
+    })
+
   	app.post('/adminLogin', function(req, res){
     	users.adminLogin(req, res);
   	})

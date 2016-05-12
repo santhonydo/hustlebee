@@ -3,7 +3,10 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
   $scope.error = false;
   $scope.disabled = true;
   $scope.info = info;
-  console.log(info);
+  hustleBeeAppFactory.getPictures(info._id, function(data){
+    $scope.info.url =  data;
+    console.log(data);
+  });
 
   $scope.changeInfo = function(data){
     var modalInstance = $uibModal.open({
@@ -91,7 +94,6 @@ hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $roo
       data.licenseNumber = changeInfo.licenseNumber;
     }
     if(data.licenseExpirationDate === undefined){
-      console.log(changeInfo.licenseExpirationDate);
       data.licenseExpirationDate = changeInfo.licenseExpirationDate;
     }
     if(data.stateOfLicensure === undefined){
@@ -145,7 +147,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
       address.userId = userInfo._id;
 
       var geoCodeAddress = address.street + " " + address.city + " " + address.state + " " + address.zipcode;
-      
+
       hustleBeeAppFactory.geoCode(geoCodeAddress, function(data){
         if (data.status == "OK") {
           $scope.error = false;
