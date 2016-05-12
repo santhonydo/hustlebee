@@ -21,7 +21,7 @@
             <th>Zip</th>
             <th>Status</th>
           </tr>
-          <tr ng-click="moreInfo(info)" ng-repeat="info in mainInfo.slice().reverse() | filter:filter_name">
+          <tr class="hover" ng-click="moreInfo(info)" ng-repeat="info in mainInfo.slice().reverse() | filter:filter_name">
             <td>{{info.firstName}} {{info.lastName}}</td>
             <td>{{info.occupation}}</td>
             <td>{{info.employer === true ? 'Employer' : 'Hustlebee'}}</td>

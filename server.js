@@ -33,6 +33,6 @@ initPassport(passport);
 app.use(express.static(path.join(__dirname, './client')));
 
 app.listen(8888, function(){
-	console.log('Listening on port 8888');
+  console.log('Listening on port 8888');
 })
 
