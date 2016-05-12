@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="col-md-6">
-        <img src={{info.url}} width="200px" height="200px">
+        <img ng-click="openPicture()" src={{info.url}} width="200px" height="200px">
         <p ng-if="info.addresses.length == 0">User has not added any addresses yet</p>
         <div ng-if="info.addresses.length > 0">
           <h4>Addresses</h4>

@@ -3,10 +3,15 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
   $scope.error = false;
   $scope.disabled = true;
   $scope.info = info;
+  $scope.info.url = "blank";
+
   hustleBeeAppFactory.getPictures(info._id, function(data){
     $scope.info.url =  data;
-    console.log(data);
   });
+
+  $scope.openPicture = function(){
+    window.open(info.url, 'yourWindowName', 'width=200,height=150');
+  }
 
   $scope.changeInfo = function(data){
     var modalInstance = $uibModal.open({
