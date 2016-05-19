@@ -5,6 +5,7 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
   $scope.info = info;
   $scope.info.url = "blank";
 
+
   hustleBeeAppFactory.getPictures(info._id, function(data){
     $scope.info.url =  data;
   });

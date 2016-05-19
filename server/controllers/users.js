@@ -33,6 +33,16 @@ module.exports = (function(){
 			})
 		},
 
+    checkPictureUpdates: function(req, res){
+      var AWS = require('aws-sdk');
+      AWS.config.loadFromPath('./config/config.json');
+      var s3 = new AWS.S3();
+      var params = {Bucket: 'hustlebee'};
+      s3.listObjectsV2(params, function(err, data){
+        res.json(data);
+      })
+    },
+
 		getPictures: function(req, res){
 			var AWS = require('aws-sdk');
 			AWS.config.loadFromPath('./config/config.json');

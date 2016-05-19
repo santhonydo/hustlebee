@@ -172,7 +172,6 @@ module.exports = function(app, passport){
   	})
 
     app.post('/getPictures', function(req, res){
-      console.log(req.body);
       users.getPictures(req, res);
     })
 
@@ -181,8 +180,11 @@ module.exports = function(app, passport){
   	})
 
     app.post('/adminDelete', function(req,res){
-      console.log('in routes');
       users.adminDelete(req, res);
+    })
+
+    app.get('/checkPictureUpdates', function(req, res){
+      users.checkPictureUpdates(req, res);
     })
 	var createHash = function(password){
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
