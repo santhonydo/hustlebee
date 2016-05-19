@@ -16,3 +16,11 @@ table{
 .hover:hover{
   background-color: lightgrey;
 }
+
+.alert{
+  background-color: pink;
+}
+
+.dangerButton{
+  margin-top: 10px;
+}

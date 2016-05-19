@@ -215,8 +215,13 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $locati
   }
 
   factory.adminDelete = function(data, callback){
-    console.log(data)
     $http.post('/adminDelete', data).success(function(output){
+      callback(output);
+    })
+  }
+
+  factory.checkPictureUpdates = function(callback){
+    $http.get('/checkPictureUpdates').success(function(output){
       callback(output);
     })
   }

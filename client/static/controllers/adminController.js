@@ -52,19 +52,51 @@ hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal
 });
 
 hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
+
+  $scope.alerts = [];
+  $scope.closeAlert = function(index){
+    $scope.alerts.splice(index, 1);
+  }
+  var numDaysBetween = function(date1, date2){
+    otherDate = Date.parse(date1);
+    var diff = Math.abs(otherDate - date2.getTime());
+    return diff / (1000 * 60 * 60 * 24);
+  }
+  var newDate = new Date()
+
   var auth = hustleBeeAppFactory;
+
   var getInfo = function(){
     hustleBeeAppFactory.getInfo(function(data){
       if(data){
         $scope.mainInfo = data;
       }
     });
+    hustleBeeAppFactory.checkPictureUpdates(function(data){
+      for(x in data.Contents){
+        for(y in $scope.mainInfo){
+          if($scope.mainInfo[y]._id == data.Contents[x].Key.slice(8)){
+            $scope.mainInfo[y].date = new Date(data.Contents[x].LastModified).toString();
+            if(numDaysBetween(data.Contents[x].LastModified, newDate) < 2 && $scope.mainInfo[y].status == 0){
+              $scope.alerts.push({
+                type: 'Update', msg: $scope.mainInfo[y].companyName + " has added/modified their profile picture recently!"
+              });
+            }
+          }
+        }
+      }
+    console.log($scope.mainInfo)
+    })
   };
 
+
+
   hustleBeeAppFactory.checkStatus();
-  
+
+
 
   getInfo();
+
 
   if (auth.getUserStatus() === true) {
     $rootScope.loggedIn = true;
