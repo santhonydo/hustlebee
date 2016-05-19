@@ -52,6 +52,65 @@ hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal
 });
 
 hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
+  $scope.filters = {
+    employee: 'all',
+    verified: 'all'
+  }
+
+  $scope.changeEmployer = function(selection){
+    $scope.filters.employee = selection;
+    $scope.theFilter();
+  }
+
+  $scope.changeVerified = function(selection){
+    $scope.filters.verified = selection;
+    $scope.theFilter();
+  }
+
+  $scope.theFilter = function(){
+    $scope.mainInfo = [];
+    var theArray1 = [];
+    var theArray2 = [];
+    hustleBeeAppFactory.useInfo(function(data){
+      if($scope.filters.employee == 'employeeFilter'){
+        for(var x in data){
+          if(data[x].employer == false){
+            theArray1.push(data[x]);
+          }
+        }
+      }
+      else if($scope.filters.employee == 'employerFilter'){
+        for(var x in data){
+          if(data[x].employer == true){
+            theArray1.push(data[x]);
+          }
+        }
+      }else{
+        for(var x in data){
+          theArray1.push(data[x]);
+        }
+      }
+      if($scope.filters.verified == 'verified'){
+        for(var x in theArray1){
+          if(theArray1[x].status == 1){
+            $scope.mainInfo.push(theArray1[x]);
+          }
+        }
+      }
+      else if($scope.filters.verfied == 'nonverified'){
+        for(var x in theArray1){
+          if(theArray1[x].status != 1){
+            $scope.mainInfo.push(theArray1[x]);
+          }
+        }
+      }else{
+        for(var x in theArray1){
+          $scope.mainInfo.push(theArray1[x]);
+        }
+      }
+    })
+  }
+
 
   $scope.alerts = [];
   $scope.closeAlert = function(index){
@@ -85,7 +144,6 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
           }
         }
       }
-    console.log($scope.mainInfo)
     })
   };
 
@@ -98,6 +156,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
   getInfo();
 
 
+
   if (auth.getUserStatus() === true) {
     $rootScope.loggedIn = true;
   } else {
@@ -105,43 +164,6 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
   }
 
 
-  $scope.clear = function(){
-    getInfo();
-  };
-
-
-  $scope.employeeFilter = function(){
-    $scope.mainInfo = [];
-    hustleBeeAppFactory.useInfo(function(data){
-      for(var x in data){
-        if(data[x].employer === false){
-          $scope.mainInfo.push(data[x]);
-        }
-      }
-    });
-  };
-
-  $scope.employerFilter = function(){
-    $scope.mainInfo = [];
-    hustleBeeAppFactory.useInfo(function(data){
-      for(var x in data){
-        if(data[x].employer === true){
-          $scope.mainInfo.push(data[x]);
-        }
-      }
-    });
-  };
-
-  $scope.verified = function(){
-    $scope.mainInfo = [];
-    hustleBeeAppFactory.useInfo(function(data){
-      for(var x in data){
-        if(data[x].status == 1){
-          $scope.mainInfo.push(data[x]);
-        }
-      }
-    });
-  };
 
   $scope.$on("updatelist", function(){
     hustleBeeAppFactory.getInfo(function(data){
