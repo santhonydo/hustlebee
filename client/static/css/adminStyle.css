@@ -32,3 +32,18 @@ th{
 td{
   padding: 5px 5px 5px 5px;
 }
+
+#searchBar{
+  background-color: lightblue;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+
+#searchBar p{
+  margin-bottom: 5px;
+}
+
+#adminModal p{
+  margin-bottom: 5px;
+}
