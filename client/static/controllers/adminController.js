@@ -97,7 +97,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
           }
         }
       }
-      else if($scope.filters.verfied == 'nonverified'){
+      else if($scope.filters.verified == 'nonverified'){
         for(var x in theArray1){
           if(theArray1[x].status != 1){
             $scope.mainInfo.push(theArray1[x]);
@@ -138,7 +138,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
             $scope.mainInfo[y].date = new Date(data.Contents[x].LastModified).toString();
             if(numDaysBetween(data.Contents[x].LastModified, newDate) < 2 && $scope.mainInfo[y].status == 0){
               $scope.alerts.push({
-                type: 'Update', msg: $scope.mainInfo[y].companyName + " has added/modified their profile picture recently!"
+                type: 'Update', msg: $scope.mainInfo[y].firstName + " " + $scope.mainInfo[y].lastName + " has added/modified their profile picture recently!"
               });
             }
           }
@@ -149,7 +149,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
 
 
 
-  hustleBeeAppFactory.checkStatus();
+  //hustleBeeAppFactory.checkStatus();
 
 
 
