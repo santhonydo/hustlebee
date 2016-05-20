@@ -52,25 +52,26 @@ hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal
 });
 
 hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
+  //PAGE AND VARIABLE SETUP///////////////////////////////////////////////////////
+  //filter set up
   $scope.filters = {
     employee: 'all',
     verified: 'all'
   }
-
+  //filter attribute change
   $scope.changeEmployer = function(selection){
     $scope.filters.employee = selection;
     $scope.theFilter();
   }
-
+  //filter attribute change
   $scope.changeVerified = function(selection){
     $scope.filters.verified = selection;
     $scope.theFilter();
   }
-
+  //main filter function
   $scope.theFilter = function(){
     $scope.mainInfo = [];
     var theArray1 = [];
-    var theArray2 = [];
     hustleBeeAppFactory.useInfo(function(data){
       if($scope.filters.employee == 'employeeFilter'){
         for(var x in data){
@@ -111,7 +112,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
     })
   }
 
-
+  //alerts
   $scope.alerts = [];
   $scope.closeAlert = function(index){
     $scope.alerts.splice(index, 1);
@@ -122,9 +123,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
     return diff / (1000 * 60 * 60 * 24);
   }
   var newDate = new Date()
-
   var auth = hustleBeeAppFactory;
-
   var getInfo = function(){
     hustleBeeAppFactory.getInfo(function(data){
       if(data){
@@ -146,25 +145,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       }
     })
   };
-
-
-
-  hustleBeeAppFactory.checkStatus();
-
-
-
-  getInfo();
-
-
-
-  if (auth.getUserStatus() === true) {
-    $rootScope.loggedIn = true;
-  } else {
-    $rootScope.loggedIn = false;
-  }
-
-
-
+  //reload page if the series of modals closes
   $scope.$on("updatelist", function(){
     hustleBeeAppFactory.getInfo(function(data){
       if(data){
@@ -172,10 +153,8 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       }
     });
   });
-
-
-
-
+  
+  //launches user info modal and passes information to it
   $scope.moreInfo = function(theinfo) {
     var modalInstance = $uibModal.open({
       animation: true,
@@ -189,6 +168,17 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       }
     });
   };
+  //PAGE AND VARIABLE SETUP ENDS//////////////////////////////////////////////////
+
+  //authentication and retrieval of initial info
+  hustleBeeAppFactory.checkStatus();
+  getInfo();
+  if (auth.getUserStatus() === true) {
+    $rootScope.loggedIn = true;
+  } else {
+    $rootScope.loggedIn = false;
+  }
+
 });
 
 
