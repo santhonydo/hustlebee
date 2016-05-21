@@ -72,6 +72,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
   $scope.theFilter = function(){
     $scope.mainInfo = [];
     var theArray1 = [];
+    var theArray2 = [];
     hustleBeeAppFactory.useInfo(function(data){
       if($scope.filters.employee == 'employeeFilter'){
         for(var x in data){
@@ -94,19 +95,35 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       if($scope.filters.verified == 'verified'){
         for(var x in theArray1){
           if(theArray1[x].status == 1){
-            $scope.mainInfo.push(theArray1[x]);
+            theArray2.push(theArray1[x]);
           }
         }
       }
       else if($scope.filters.verified == 'nonverified'){
         for(var x in theArray1){
           if(theArray1[x].status != 1){
-            $scope.mainInfo.push(theArray1[x]);
+            theArray2.push(theArray1[x]);
           }
         }
       }else{
         for(var x in theArray1){
-          $scope.mainInfo.push(theArray1[x]);
+          theArray2.push(theArray1[x]);
+        }
+      }
+      if($scope.date.start != null && $scope.date.end != null){
+        var date1, date2;
+        date1 = Date.parse($scope.date.start);
+        date2 = Date.parse($scope.date.end);
+        for(x in theArray2){
+          var date3 = Date.parse(theArray2[x].date)
+          if(date3 >= date1 && date3 <= date2){
+            $scope.mainInfo.push(theArray2[x]);
+          }
+        }
+      }
+      else{
+        for(x in theArray2){
+          $scope.mainInfo.push(theArray2[x]);
         }
       }
     })
@@ -153,7 +170,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       }
     });
   });
-  
+
   //launches user info modal and passes information to it
   $scope.moreInfo = function(theinfo) {
     var modalInstance = $uibModal.open({
@@ -168,6 +185,14 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       }
     });
   };
+  /////////Calender stuff/////////
+
+  $scope.date = {
+    start: null,
+    end: null 
+  }
+
+
   //PAGE AND VARIABLE SETUP ENDS//////////////////////////////////////////////////
 
   //authentication and retrieval of initial info
