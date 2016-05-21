@@ -52,21 +52,23 @@ hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal
 });
 
 hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
+  //PAGE AND VARIABLE SETUP///////////////////////////////////////////////////////
+  //filter set up
   $scope.filters = {
     employee: 'all',
     verified: 'all'
   }
-
+  //filter attribute change
   $scope.changeEmployer = function(selection){
     $scope.filters.employee = selection;
     $scope.theFilter();
   }
-
+  //filter attribute change
   $scope.changeVerified = function(selection){
     $scope.filters.verified = selection;
     $scope.theFilter();
   }
-
+  //main filter function
   $scope.theFilter = function(){
     $scope.mainInfo = [];
     var theArray1 = [];
@@ -93,25 +95,41 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       if($scope.filters.verified == 'verified'){
         for(var x in theArray1){
           if(theArray1[x].status == 1){
-            $scope.mainInfo.push(theArray1[x]);
+            theArray2.push(theArray1[x]);
           }
         }
       }
       else if($scope.filters.verified == 'nonverified'){
         for(var x in theArray1){
           if(theArray1[x].status != 1){
-            $scope.mainInfo.push(theArray1[x]);
+            theArray2.push(theArray1[x]);
           }
         }
       }else{
         for(var x in theArray1){
-          $scope.mainInfo.push(theArray1[x]);
+          theArray2.push(theArray1[x]);
+        }
+      }
+      if($scope.date.start != null && $scope.date.end != null){
+        var date1, date2;
+        date1 = Date.parse($scope.date.start);
+        date2 = Date.parse($scope.date.end);
+        for(x in theArray2){
+          var date3 = Date.parse(theArray2[x].date)
+          if(date3 >= date1 && date3 <= date2){
+            $scope.mainInfo.push(theArray2[x]);
+          }
+        }
+      }
+      else{
+        for(x in theArray2){
+          $scope.mainInfo.push(theArray2[x]);
         }
       }
     })
   }
 
-
+  //alerts
   $scope.alerts = [];
   $scope.closeAlert = function(index){
     $scope.alerts.splice(index, 1);
@@ -122,9 +140,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
     return diff / (1000 * 60 * 60 * 24);
   }
   var newDate = new Date()
-
   var auth = hustleBeeAppFactory;
-
   var getInfo = function(){
     hustleBeeAppFactory.getInfo(function(data){
       if(data){
@@ -146,25 +162,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       }
     })
   };
-
-
-
-  //hustleBeeAppFactory.checkStatus();
-
-
-
-  getInfo();
-
-
-
-  if (auth.getUserStatus() === true) {
-    $rootScope.loggedIn = true;
-  } else {
-    $rootScope.loggedIn = false;
-  }
-
-
-
+  //reload page if the series of modals closes
   $scope.$on("updatelist", function(){
     hustleBeeAppFactory.getInfo(function(data){
       if(data){
@@ -173,9 +171,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
     });
   });
 
-
-
-
+  //launches user info modal and passes information to it
   $scope.moreInfo = function(theinfo) {
     var modalInstance = $uibModal.open({
       animation: true,
@@ -189,6 +185,25 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       }
     });
   };
+  /////////Calender stuff/////////
+
+  $scope.date = {
+    start: null,
+    end: null 
+  }
+
+
+  //PAGE AND VARIABLE SETUP ENDS//////////////////////////////////////////////////
+
+  //authentication and retrieval of initial info
+  hustleBeeAppFactory.checkStatus();
+  getInfo();
+  if (auth.getUserStatus() === true) {
+    $rootScope.loggedIn = true;
+  } else {
+    $rootScope.loggedIn = false;
+  }
+
 });
 
 
