@@ -20,37 +20,44 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 
 	$urlRouterProvider.otherwise(function($injector, $location){
 		var $state = $injector.get("$state");
-		$state.go('home');
+		$state.go('initial');
 	})
 
 	$stateProvider
-		.state('home', {
+
+		.state('initial', {
 			url: '',
+			templateUrl: '/static/partials/userSelectionPage.html',
+			caseInsensitiveMatch: true,
+		})
+
+		.state('home', {
+			url: '/employee',
 			templateUrl: '/static/partials/homepage.html',
 			caseInsensitiveMatch: true,
 			controller: 'HomepageController'
 		})
 
-  .state('admin', {
-    url: '',
-    templateUrl: '/static/partials/adminDashboard.html',
-    caseInsensitiveMatch: true,
-    controller: 'AdminController'
-  })
+	  .state('admin', {
+	    url: '',
+	    templateUrl: '/static/partials/adminDashboard.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'AdminController'
+	  })
 
-  .state('adminLogin', {
-    url: '/admin',
-    templateUrl: '/static/partials/adminLogin.html',
-    caseInsensitiveMatch: true,
-    controller: 'AdminLoginController'
-  })
+	  .state('adminLogin', {
+	    url: '/admin',
+	    templateUrl: '/static/partials/adminLogin.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'AdminLoginController'
+	  })
 
-  .state('admin.main', {
-    url: '/admin/main',
-    templateUrl: '/static/partials/adminMain.html',
-    caseInsensitiveMatch: true,
-    controller: 'AdminMainController'
-  })
+	  .state('admin.main', {
+	    url: '/admin/main',
+	    templateUrl: '/static/partials/adminMain.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'AdminMainController'
+	  })
 
 		//Business Section
 
@@ -59,6 +66,13 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 			templateUrl: '/static/partials/dashboard.html',
 			caseInsensitiveMatch: true,
 			controller: 'DashboardController'
+		})
+
+		.state('employerInfoPage', {
+			url: '/business',
+			templateUrl: '/static/partials/employerInfoPage.html',
+			caseInsensitiveMatch: true,
+			controller: 'EmployerInfoPageController'
 		})
 
 		.state('login', {

@@ -90,7 +90,7 @@ hustleBeeAppModule.controller('HomepageController', function($scope, $location, 
 		if (auth === true){
 			$state.go('business.user');
 		} else {
-			$state.go('login');
+			$state.go('employerInfoPage');
 		}
 	}
 });
