@@ -113,6 +113,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       if($scope.date.start != null && $scope.date.end != null){
         var date1, date2;
         date1 = Date.parse($scope.date.start);
+        $scope.date.end.setDate($scope.date.end.getDate() + 1);
         date2 = Date.parse($scope.date.end);
         for(x in theArray2){
           var date3 = Date.parse(theArray2[x].date)

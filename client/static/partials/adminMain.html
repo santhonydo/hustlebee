@@ -31,10 +31,10 @@
             <option value="nonverified">Not verified</option>
           </select>
         </div>
-      <div class="col-lg-2">
-        <input ng-model="date.start" ng-change="theFilter()" type="date">
-        <input ng-model="date.end" ng-change="theFilter()" type="date">
-      </div>
+        <div class="col-lg-2">
+          <input ng-model="date.start" ng-change="theFilter()" type="date">
+          <input ng-model="date.end" ng-change="theFilter()" type="date">
+        </div>
       </div>
       <div>
         <table class="col-md-12">
@@ -56,7 +56,8 @@
             <td>{{info.zipcode}}</td>
             <td>{{info.status}}</td>
             <td>{{info.created_at | date: 'MMMM/dd/yyyy'}}</td>
-            <td>{{info.date | date: 'MMMM / dd / yyyy'}}</td>
+            <td ng-if="info.date != undefined">{{info.date | date: 'MMMM / dd / yyyy'}}</td>
+            <td ng-if="info.date == undefined">User has not uploaded a photo yet.</td>
           </tr>
         </table>
       </div>

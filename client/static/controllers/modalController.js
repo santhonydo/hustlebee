@@ -17,7 +17,7 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
   $scope.changeInfo = function(data){
     var modalInstance = $uibModal.open({
       animation: true,
-      size: 'sm',
+      size: 'lg',
       templateUrl: '/static/partials/infoChangeModal.html',
       controller: 'InfoChangeModalController',
       resolve: {
