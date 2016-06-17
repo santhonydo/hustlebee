@@ -10,6 +10,22 @@ hustleBeeAppModule.run(function ($state, $rootScope, hustleBeeAppFactory, $locat
 	})
 })
 
+hustleBeeAppModule.directive('fileModel', ['$parse', function ($parse) {
+return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+        var model = $parse(attrs.fileModel);
+        var modelSetter = model.assign;
+
+        element.bind('change', function(){
+            scope.$apply(function(){
+                modelSetter(scope, element[0].files[0]);
+            });
+        });
+    }
+};
+}]);
+
 hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
 
 	uiGmapGoogleMapApiProvider.configure({
@@ -40,24 +56,74 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 
 	  .state('admin', {
 	    url: '',
-	    templateUrl: '/static/partials/adminDashboard.html',
+	    templateUrl: '/static/partials/admin/adminDashboard.html',
 	    caseInsensitiveMatch: true,
 	    controller: 'AdminController'
 	  })
 
 	  .state('adminLogin', {
 	    url: '/admin',
-	    templateUrl: '/static/partials/adminLogin.html',
+	    templateUrl: '/static/partials/admin/adminLogin.html',
 	    caseInsensitiveMatch: true,
 	    controller: 'AdminLoginController'
 	  })
 
 	  .state('admin.main', {
 	    url: '/admin/main',
-	    templateUrl: '/static/partials/adminMain.html',
+	    templateUrl: '/static/partials/admin/adminMain.html',
 	    caseInsensitiveMatch: true,
 	    controller: 'AdminMainController'
 	  })
+
+	  .state('shifts', {
+	    url: '',
+	    templateUrl: '/static/partials/shifts/shiftsDashboard.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'ShiftsController'
+	  })
+
+	  .state('shifts.main', {
+	    url: '/shifts',
+	    templateUrl: '/static/partials/shifts/shiftsMain.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'ShiftsMainController'
+	  })
+
+	  .state('user', {
+	    url: '',
+	    templateUrl: '/static/partials/user/userDashboard.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'UserController'
+	  })
+
+	  .state('user.login', {
+	    url: '/employee/login',
+	    templateUrl: '/static/partials/user/userLogin.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'UserLoginController'
+	  })
+
+	  .state('user.register', {
+	    url: '/employee/register',
+	    templateUrl: '/static/partials/user/userRegister.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'UserRegisterController'
+	  })
+    
+	  .state('user.main', {
+      url: '/employee/user',
+	    templateUrl: '/static/partials/user/userMain.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'UserMainController'
+	  })
+
+	  .state('user.settings', {
+      url: '/employee/settings',
+	    templateUrl: '/static/partials/user/userSettings.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'UserSettingsController'
+	  })
+
 
 		//Business Section
 

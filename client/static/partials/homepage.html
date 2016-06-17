@@ -83,6 +83,7 @@
             <li style="cursor: pointer"><a data-nav-section="features"><span class="navtextcolor" style="color: white">What is HustleBee?</span></a></li>
             <li style="cursor: pointer"><a data-nav-section="design"><span class="navtextcolor" style="color: white">How it works</span></a></li>
             <li style="cursor: pointer"><a data-nav-section="signup"><span class="navtextcolor" style="color: white">Get started</span></a></li>
+            <li ng-click="login()" style="cursor: pointer"><a>Login</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -293,73 +294,10 @@
 										<div class="col-md-8 col-md-offset-2 fh5co-section-heading text-center">
 											<h2 class="fh5co-lead to-animate"><a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1088740787&mt=8"><img src="./static/images/available_on_app_store_blue.png" alt="Apple App Store"></a></h2>
 											<p class="fh5co-sub to-animate"><span style="color:white">Android support coming soon!</span></p>  
-											<p class="fh5co-sub to-animate"><span style="color:white">Don't have an iOS device? Register below to get shift notifications via email. Don't worry, we are too <span style="color: #ffdc00"><em>bee-sy</em></span> to spam you.</span></p>
+                      <input class="btn btn-primary" ng-click="login()" value="Register"/>
+                      <p class="fh5co-sub to-animate"><span style="color:white">Don't have an iOS device? Register online now from your PC!</span></p> 
 														
 
-<form name="workerRegistrationForm" class="to-animate" novalidate>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="col-md-6">
-				<div class="form-group" ng-class="{'has-error': workerRegistrationForm.firstName.$invalid}">
-					<input type="text" style="color: #ffdc00;" class="form-control" name="firstName" ng-model="newUser.firstName" placeholder="First Name" ng-pattern="/^[a-zA-Z]*$/" required>
-				</div>
-			</div>	
-			<div class="col-md-6">
-				<div class="form-group" ng-class="{'has-error': workerRegistrationForm.lastName.$invalid}">
-					<input type="text" style="color: #ffdc00;" class="form-control" name="lastName" ng-model="newUser.lastName" placeholder="Last Name" ng-pattern="/^[a-zA-Z]*$/" required>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12">
-			<div class="col-md-6">
-				<div class="form-group" ng-class="{'has-error': workerRegistrationForm.email.$invalid}">
-					<input type="email" style="color: #ffdc00;" class="form-control" name="email" ng-model="newUser.email" placeholder="Email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="form-group" ng-class="{'has-error': workerRegistrationForm.phone.$invalid}">
-					<input type="text" style="color: #ffdc00;" class="form-control" name="phone" ng-model="newUser.phone" placeholder="Phone Number" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12">
-			<div class="col-md-6">
-				<div class="form-group" ng-class="{'has-error': workerRegistrationForm.occupation.$invalid}">
-					<select class="form-control" style="color: #ffdc00;" name="occupation" ng-model="occupation" ng-options="occupationChoice as occupationChoice.label for occupationChoice in workerOccupation" required>
-						<option value="">Select Occupation</option>
-					</select>
-				</div>
-			</div>	
-			<div class="col-md-6">
-				<div class="form-group" ng-class="{'has-error': workerRegistrationForm.stateLicense.$invalid}">
-					<select class="form-control" style="color: #ffdc00;" name="stateLicense" ng-model="stateLicense" ng-options="state as state.label for state in workerStateLicense" required>
-						<option value="">Select State of Licensure</option>
-					</select>
-				</div>
-			</div>	
-		</div>
-
-		<div class="col-md-12">	
-			<div class="col-md-6">
-				<div class="form-group" ng-class="{'has-error': workerRegistrationForm.licenseNumber.$invalid}">
-					<input type="text" style="color: #ffdc00;" class="form-control" name="licenseNumber" ng-model="newUser.licenseNumber" placeholder="License No." required>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="form-group" ng-class="{'has-error': workerRegistrationForm.licenseExpirationDate.$invalid}">
-					<input type="text" style="color: #ffdc00;" name="licenseExpirationDate" class="form-control" placeholder="Expiration Date - MM/DD/YYYY" ng-model="newUser.licenseExpirationDate" required ng-pattern="/^((\d{4})-(\d{2})-(\d{2})|(\d{2})\/(\d{2})\/(\d{4}))$/">
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12 text-center" style="margin-bottom: 10px">
-			<span ng-bind="success" style="color: #ffdc00; font-size: 100%;"></span>
-			<span ng-bind="error" style="color: red;"></span>
-		</div>
-		<div class="col-md-12 text-center">
-			<button type="button" class="btn btn-primary" ng-click="registerUser(newUser, occupation, stateLicense)">Register</button>
-		</div>
-	</div>
-</form>
 	<div class="row to-animate">
 		<div class="col-md-12 col-sm-12">
 			<p class="fh5co-social-icons">

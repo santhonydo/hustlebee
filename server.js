@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var flash = require('connect-flash');
 var app = express();
 var async = require('async');
+var multer = require('multer');
+var upload = multer({dest: 'uploads/'});
 
 //configure passport
 var passport = require('passport');
@@ -14,8 +16,8 @@ app.use(expresSession({secret: 'justworkit'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true, limit: '10mb'}));
+app.use(bodyParser.json({limit: '10mb'}));
 
 app.use(cookieParser('hustlebeeapp'));
 app.use(flash());
@@ -31,6 +33,10 @@ var initPassport = require('./server/controllers/init.js');
 initPassport(passport);
 
 app.use(express.static(path.join(__dirname, './client')));
+
+app.post('/uploadPicture', upload.array('photos, 12'), function(req,res,next){
+  console.log('hi', req.files);
+})
 
 app.listen(8888, function(){
   console.log('Listening on port 8888');
