@@ -54,10 +54,53 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $locati
     return deferred.promise;
   };
 
+  factory.loginUser = function(data, callback){
+    var deferred = $q.defer();
+
+    $http.post('/loginUser', data).success(function(data){
+      if (data.username) {
+        user = true;
+        userInfo = data;
+        deferred.resolve();
+        callback(data);
+      } else {
+        user = false;
+        deferred.reject();
+        callback(data)
+      }
+    }).error(function(error){
+      user = false;
+      deferred.reject();
+    });
+
+    return deferred.promise;
+  };
+
   factory.register = function(data, callback){
     var deferred = $q.defer();
 
     $http.post('/register', data).success(function(data){
+      if (data.username){
+        user = true;
+        userInfo = data;
+        deferred.resolve();
+        callback(data)
+      } else {
+        user = false;
+        deferred.reject();
+        callback(data)
+      }
+    }).error(function(error){
+      deferred.reject();
+    });
+
+    return deferred.promise;
+  };
+
+  factory.registerUser = function(data, callback){
+    var deferred = $q.defer();
+
+    $http.post('/registerUser', data).success(function(data){
       if (data.username){
         user = true;
         userInfo = data;
@@ -163,6 +206,13 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $locati
       callback(data);
     })
   }
+  
+  factory.EmployeeUpdateUser = function(data, callback){
+    $http.post('/employeeUpdateUser', data).success(function(data){
+      callback(data);
+    })
+  }
+
 
   factory.adminUpdateUser = function(data, callback){
     $http.post('/adminUpdateUser', data).success(function(data){
@@ -224,6 +274,39 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $locati
     $http.get('/checkPictureUpdates').success(function(output){
       callback(output);
     })
+  }
+
+  factory.getAllShifts = function(callback){
+    $http.get('/getAllShifts').success(function(output){
+      callback(output);
+    })
+  }
+
+  factory.getAvailableShifts = function(data, callback){
+    $http.post('/getAvailableShifts', {userId : data}).success(function(output){
+      callback(output);
+    })
+  }
+
+  factory.updateShift = function(data, callback){
+    $http.post('/updateShift', data).success(function(output){
+      callback(output);
+    })
+  }
+
+  factory.uploadPicture = function(data, callback){
+		var uploadUrl = "/multer";
+		$http.post(uploadUrl,data, {
+			transformRequest: angular.identity,
+			headers: {'Content-Type': undefined}
+		})
+		.success(function(){
+      callback('success');
+		})
+		.error(function(){
+      callback('failed');
+		});
+    
   }
 
   return factory;

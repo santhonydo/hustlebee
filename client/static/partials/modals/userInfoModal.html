@@ -1,0 +1,51 @@
+<div class="modal-header">
+  <button type="button" ng-click="close()" class="close">&times;</button>
+  <h3 class="modal-title col-lg-4">{{info.employer == true ? "Employer" : "Employee"}} {{info.companyName}}</h3>
+  <button ng-click="changeInfo(info)">Change user information</button>
+  <button ng-click="deleteUser(info)" class="dangerButton">Delete User</button>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-lg-12" id="adminModal">
+        <div class="col-lg-6">
+          <img ng-click="openPicture()" src={{info.url}} width="200px" height="200px">
+          <p ng-if="info.addresses.length == 0">User has not added any addresses yet</p>
+          <div ng-if="info.addresses.length > 0">
+            <h4>Addresses</h4>
+            <div ng-repeat="address in info.addresses">
+              {{address.city}}
+              {{address.street}}
+              {{address.zipcode}}
+            </div>
+          </div>
+        </div>
+        <div class='col-lg-6'>
+          <h4>Basic Information</h4>
+          <p><span class="bold">Registration Date:</span> {{info.created_at | date: 'dd/MM/yyyy'}}</p>
+          <p><span class="bold">Occupation:</span> {{info.occupation}}</p>
+          <p><span class="bold">Email Address:</span> {{info.email}}</p>
+          <p><span class="bold">Name:</span> {{info.firstName}} {{info.lastName}}</p>
+          <p><span class="bold">Phone Number:</span> {{info.phoneNumber}}</p>
+          <p><span class="bold">Username:</span> {{info.username}}</p>
+          <p><span class="bold">Zipcode:</span> {{info.zipcode}}</p>
+          <div>
+            <p><span class="bold">License Number:</span> {{info.licenseNumber}}</p>
+            <p><span class="bold">License location:</span> {{info.stateOfLicensure}}</p>
+            <p><span class="bold">License expiration:</span> {{info.licenseExpirationDate}}</p>
+          </div>
+          <p><span class="bold">STATUS:</span> {{info.status}}</p>
+        </div>
+      </div>
+      <!--<div class="col-md-6">
+        <h4>Shifts</h4>
+        <div ng-if="info.shifts.length == 0">
+        <h3>No shifts have been posted yet</h3>
+        </div>
+        <div ng-if="info.shifts.length  >=1 ">
+        </div>
+        </div>-->
+    </div>
+  </div>
+</div>

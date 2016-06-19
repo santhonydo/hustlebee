@@ -12,7 +12,7 @@ hustleBeeAppModule.controller('AdminController', function($scope, $rootScope, $u
     var modalInstance = $uibModal.open({
       animation: true,
       size: 'sm',
-      templateUrl: '/static/partials/login_modal.html',
+      templateUrl: '/static/partials/modals/login_modal.html',
       controller: 'AuthController'
     });
   };
@@ -21,7 +21,7 @@ hustleBeeAppModule.controller('AdminController', function($scope, $rootScope, $u
     var modalInstance = $uibModal.open({
       animation: true,
       size: 'md',
-      templateUrl: '/static/partials/register_modal.html',
+      templateUrl: '/static/partials/modals/register_modal.html',
       controller: 'AuthController'
     });
   };
@@ -113,6 +113,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
       if($scope.date.start != null && $scope.date.end != null){
         var date1, date2;
         date1 = Date.parse($scope.date.start);
+        $scope.date.end.setDate($scope.date.end.getDate() + 1);
         date2 = Date.parse($scope.date.end);
         for(x in theArray2){
           var date3 = Date.parse(theArray2[x].date)
@@ -176,7 +177,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
     var modalInstance = $uibModal.open({
       animation: true,
       size: 'lg',
-      templateUrl: '/static/partials/userInfoModal.html',
+      templateUrl: '/static/partials/modals/userInfoModal.html',
       controller: 'InfoModalController',
       resolve: {
         info: function(){

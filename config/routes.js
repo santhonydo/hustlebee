@@ -5,10 +5,20 @@ var users = require('./../server/controllers/users.js');
 var sendgrid = require('sendgrid')('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');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var AWS = require('aws-sdk');
 
 var async = require('async');
 var crypto = require('crypto');
 var bCrypt = require('bcrypt-nodejs');
+var multer  = require('multer');
+var storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, './uploads/')
+	},
+	filename: function (req, file, cb) {
+		cb(null, file.originalname+ '-' + Date.now()+'.jpg')
+	}
+});
 
 module.exports = function(app, passport){
 
@@ -37,6 +47,22 @@ module.exports = function(app, passport){
 		}) (req, res, next);
 	});
 
+	app.post('/loginUser', function(req, res, next){
+		passport.authenticate('loginUser', function(err, user, info){
+			if(err){
+				console.log('error logging in: ' + err);
+				return res.status(500).json({err: err});
+			}
+			if (user === false){
+				console.log('false user');
+				res.json(req.flash('message'))
+			} else {
+				res.status(200).send(user);
+			}
+		}) (req, res, next);
+	});
+
+
 	app.post('/register', function(req, res, next) {
 		passport.authenticate('register', function(err, user) {
 			if (err) {
@@ -52,6 +78,22 @@ module.exports = function(app, passport){
 		})(req, res, next); 
 	});
 
+	app.post('/registerUser', function(req, res, next) {
+		passport.authenticate('registerUser', function(err, user) {
+			if (err) {
+				console.log('here is the error: ' + err);
+				return next(err); 
+			}
+			if (user === false) {
+				res.json(req.flash('message'));
+			} else {
+				console.log(user);
+				res.status(200).send(user); 
+			}
+		})(req, res, next); 
+	});
+
+
 	app.post('/forgot', function(req, res, next){
 		async.waterfall([
 			function(done){
@@ -62,21 +104,21 @@ module.exports = function(app, passport){
 			},
 			function(token, done){
 				User.findOne({ email: req.body.email }, function(err, user) {
-        			if (!user) {
-         				req.flash('error', 'No account with that email address exists.');
-          				return res.json({msg: 'No account with that email address exists.'});
-        			}
+					if (!user) {
+						req.flash('error', 'No account with that email address exists.');
+						return res.json({msg: 'No account with that email address exists.'});
+					}
 
-        			user.resetPasswordToken = token;
-        			user.resetPasswordExpires = Date.now() + 3600000;
+					user.resetPasswordToken = token;
+					user.resetPasswordExpires = Date.now() + 3600000;
 
-        			user.save(function(err) {
-         				done(err, token, user);
-        			});
-      			});
-    		},
-    		function(token, user, done){
-    			sendgrid.send({
+					user.save(function(err) {
+						done(err, token, user);
+					});
+				});
+			},
+			function(token, user, done){
+				sendgrid.send({
 					to : user.email,
 					from: 'support@hustlebee.com',
 					subject: 'Hustlebee Password Reset',
@@ -86,7 +128,7 @@ module.exports = function(app, passport){
 					res.json({msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.'})
 					done(err, 'done');
 				});
-    		}
+			}
 		], function(err){
 			if(err) return next(err);
 		})
@@ -163,30 +205,56 @@ module.exports = function(app, passport){
 		users.update(req, res);
 	})
 
+	app.post('/EmployeeUpdateUser', function(req, res){
+		users.employeeUpdate(req, res);
+	})
+
 	app.post('/adminUpdateUser', function(req, res){
 		users.adminUpdate(req, res);
 	})
 
-  	app.get('/getInfo', function(req, res){
-   		users.getInfo(req, res);
-  	})
+	app.get('/getInfo', function(req, res){
+		users.getInfo(req, res);
+	})
 
-    app.post('/getPictures', function(req, res){
-      users.getPictures(req, res);
-    })
+	app.post('/getPictures', function(req, res){
+		users.getPictures(req, res);
+	})
 
-  	app.post('/adminLogin', function(req, res){
-    	users.adminLogin(req, res);
-  	})
+	app.post('/adminLogin', function(req, res){
+		users.adminLogin(req, res);
+	})
 
-    app.post('/adminDelete', function(req,res){
-      users.adminDelete(req, res);
-    })
+	app.post('/adminDelete', function(req,res){
+		users.adminDelete(req, res);
+	})
 
-    app.get('/checkPictureUpdates', function(req, res){
-      users.checkPictureUpdates(req, res);
-    })
+	app.get('/checkPictureUpdates', function(req, res){
+		users.checkPictureUpdates(req, res);
+	})
+
+	app.get('/getAllShifts', function(req, res){
+		shifts.getAllShifts(req, res);
+	})
+
+	app.post('/getAvailableShifts', function(req, res){
+		shifts.getAvailableShifts(req, res);
+	})
+
+	app.post('/updateShift', function(req, res){
+		shifts.updateShift(req, res);
+	})
+
+	var upload = multer({ storage: storage });
+
+  app.post('/multer', upload.single('file'), function(req, res, next){
+    users.uploadPicture(req, res);
+  });
+
+
+
+
 	var createHash = function(password){
-        return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-    }
+		return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+	}
 }

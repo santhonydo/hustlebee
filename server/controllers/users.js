@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var bCrypt = require('bcrypt-nodejs');
 var sendgrid = require('sendgrid')('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');
+var AWS = require('aws-sdk');
+var fs = require('fs');
 
 module.exports = (function(){
 	return {
@@ -33,24 +35,65 @@ module.exports = (function(){
 			})
 		},
 
-    checkPictureUpdates: function(req, res){
-      var AWS = require('aws-sdk');
-      AWS.config.loadFromPath('./config/config.json');
-      var s3 = new AWS.S3();
-      var params = {Bucket: 'hustlebee'};
-      s3.listObjectsV2(params, function(err, data){
-        res.json(data);
-      })
-    },
+		checkPictureUpdates: function(req, res){
+			AWS.config.loadFromPath('./config/config.json');
+			var s3 = new AWS.S3();
+			var params = {Bucket: 'hustlebee'};
+			s3.listObjectsV2(params, function(err, data){
+				res.json(data);
+			})
+		},
 
 		getPictures: function(req, res){
-			var AWS = require('aws-sdk');
 			AWS.config.loadFromPath('./config/config.json');
 			var s3 = new AWS.S3();
 			var params = {Bucket: 'hustlebee', Key: "photoID/" + req.body._id};
 			s3.getSignedUrl('getObject', params, function (err, url) {
-        res.json(url)
+				res.json(url)
 			});
+		},
+
+		uploadPicture: function(req, res){
+			AWS.config.loadFromPath('./config/config.json');
+			var file = req.file;
+			fs.readFile(file.path, function (err, data) {
+				if (err) throw err;
+				var s3bucket = new AWS.S3({params: {Bucket: 'hustlebee'}});
+				s3bucket.createBucket(function () {
+					var params = {
+						Key: 'photoID/'+ req.body.userId,
+						Body: data
+					};
+					s3bucket.upload(params, function (err, data) {
+						fs.unlink(file.path, function (err) {
+							if (err) {
+								console.error(err);
+							}
+							console.log('Temp File Delete');
+						});
+
+						console.log("PRINT FILE:", file);
+						if (err) {
+							console.log('ERROR MSG: ', err);
+							res.status(500).send(err);
+						} else {
+							console.log('Successfully uploaded data');
+							res.status(200).end();
+						}
+					});
+				});
+			});
+			// var bucket = new AWS.S3({params: {Bucket: 'hustlebee'}});
+			// bucket.config.loadFromPath('./config/config.json');
+			// var params = {Key: 'TEST/' + req.body.userId, contentType: req.file.mimetype, Body: req.file};
+			// bucket.upload(params, function(err,data){
+			//   if(err){
+			//     console.log(err);
+			//   }
+			//   else{
+			//     res.json(true);
+			//   }
+			// })
 		},
 
 		getUser: function(req, res){
@@ -75,6 +118,20 @@ module.exports = (function(){
 				}
 			})
 		},
+
+		employeeUpdate: function(req, res){
+			var userInfo = req.body;
+			User.update({_id: userInfo._id}, {$set: {phoneNumber: userInfo.phoneNumber}}, function(err){
+				if(err){
+					console.log('Error updating user info');
+				} else {
+					console.log('Successfuly updated user info');
+					var success = {msg: 'Saved successfully!'};
+					res.json(success)
+				}
+			})
+		},
+
 
 		adminUpdate: function(req, res){
 			var userInfo = req.body;

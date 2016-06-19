@@ -17,8 +17,8 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
   $scope.changeInfo = function(data){
     var modalInstance = $uibModal.open({
       animation: true,
-      size: 'sm',
-      templateUrl: '/static/partials/infoChangeModal.html',
+      size: 'lg',
+      templateUrl: '/static/partials/modals/infoChangeModal.html',
       controller: 'InfoChangeModalController',
       resolve: {
         changeInfo: function(){
@@ -32,7 +32,7 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
     var modalInstance = $uibModal.open({
       animation: true,
       size: 'sm',
-      templateUrl: '/static/partials/deleteUserModal.html',
+      templateUrl: '/static/partials/modals/deleteUserModal.html',
       controller: 'deleteModalController',
       resolve: {
         userDeleteInfo: function(){
