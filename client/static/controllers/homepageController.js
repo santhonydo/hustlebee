@@ -5,6 +5,9 @@ hustleBeeAppModule.controller('HomepageController', function($scope, $location, 
     $anchorScroll();
   }
 
+  $scope.register = function() {
+  	$location.path('employee/register')
+  }
 
   $scope.login = function(){
     $location.path('employee/login')

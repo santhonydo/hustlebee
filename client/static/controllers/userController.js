@@ -3,7 +3,7 @@ hustleBeeAppModule.controller('UserController', function($scope, $rootScope, $ui
 		$rootScope.loggedIn = false;	
 		hustleBeeAppFactory.logout(function(success){
 			if(success){
-				$state.go('user.login');
+				$state.go('userLogin');
 			}
 		})
 	}
@@ -17,7 +17,7 @@ hustleBeeAppModule.controller('UserSettingsController', function($scope, $http, 
 		$rootScope.loggedIn = true;
 	}
 	else{
-		$state.go('user.login')
+		$state.go('userLogin')
 	}
   $scope.success = false;
 
@@ -26,16 +26,16 @@ hustleBeeAppModule.controller('UserSettingsController', function($scope, $http, 
 		$scope.unverified = false;
 		$scope.verified = true;
 	} else {
-		$scope.employerStatus = "Unverified Business";
+		$scope.employerStatus = "Unverified License";
 		$scope.unverified = true;
-		$scope.Verified = false;
+		$scope.verified = false;
 	}
 
 	if(auth === true){
 		$rootScope.loggedIn = true;
 	}
 	else{
-		$state.go('user.login')
+		$state.go('userLogin')
 	}
 
 	$scope.uploadFile = function(){
@@ -98,7 +98,7 @@ hustleBeeAppModule.controller('UserMainController', function($scope, $rootScope,
 		$rootScope.loggedIn = true;
 	}
 	else{
-		$state.go('user.login')
+		$state.go('userLogin')
 	}
 
 	var getShifts = function(){
@@ -188,6 +188,7 @@ hustleBeeAppModule.controller('UserLoginController', function($scope, $rootScope
 });
 
 hustleBeeAppModule.controller('UserRegisterController', function($scope, $rootScope, $uibModal, $location, $state, $stateParams, hustleBeeAppFactory){
+
 
 	$scope.workerOccupation = [{value: "Outpatient Pharmacist", label: "Outpatient Pharmacist"}, {value: "Inpatient Pharmacist", label: "Inpatient Pharmacist"}, {value: "Intern Pharmacist", label: "Intern Pharmacist"}, {value: "Pharmacy Technician", label: "Pharmacy Technician"}]
 

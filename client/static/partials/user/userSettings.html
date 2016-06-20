@@ -13,11 +13,25 @@
 
         <!-- <input type="file" class="form-control"> -->
       </div>
+    <div class="personal-info">
+      <div ng-show="unverified === true">
+        <div class="row text-center">
+          <div class="col-md-6">
+            <input class="inputfile text-center" type="file" id="file" name="file" file-model="myFile"/>
+          </div>
+          <div class="col-md-offset-4 col-md-2">
+            <button ng-click="uploadFile()">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
     <!-- edit form column -->
-    <div class="col-md-9 personal-info">
-      <div ng-show="unverified != false" class="alert alert-info alert-dismissable">
+
+
+    <div class="col-md-9">
+          <div ng-show="unverified != false" class="alert alert-info alert-dismissable">
         <a class="panel-close close" data-dismiss="alert">×</a> 
         <i class="fa fa-coffee"></i>
         Once you have been verified, you will be unable to upload a new license photo.
@@ -27,13 +41,6 @@
         <i class="fa fa-coffee"></i>
         Photo sucessfully uploaded!
       </div>
-
-      <div ng-show="unverified === true">
-        <input type="file" file-model="myFile"/><br><br>
-        <button ng-click="uploadFile()">Upload</button>
-      </div>
-    </div>
-    <div class="col-md-9">
         <h3>Personal info</h3>
       <div class="col-md-6">
         <h4>Email Address: </h4><p>{{user.email}}</p>

@@ -96,14 +96,14 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 	    controller: 'UserController'
 	  })
 
-	  .state('user.login', {
+	  .state('userLogin', {
 	    url: '/employee/login',
 	    templateUrl: '/static/partials/user/userLogin.html',
 	    caseInsensitiveMatch: true,
 	    controller: 'UserLoginController'
 	  })
 
-	  .state('user.register', {
+	  .state('userRegister', {
 	    url: '/employee/register',
 	    templateUrl: '/static/partials/user/userRegister.html',
 	    caseInsensitiveMatch: true,

@@ -1,4 +1,6 @@
-<div class="jumbotron2" style="background: url(./static/images/medteam.jpg) no-repeat center center;-webkit-background-size: cover;
+<div class="jumbotron2" style="background: url(./static/images/medteam.jpg) 
+                        no-repeat center center;
+                        -webkit-background-size: cover;
                         -moz-background-size: cover;
                         -o-background-size: cover;
                         background-size: cover;">
@@ -32,7 +34,7 @@
           <div class="col-md-12">
             <div class="col-md-6">
               <div class="form-group" ng-class="{'has-error': jobPostingForm.occupation.$invalid}">
-                <select class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" style="color: #ffdc00;" name="occupation" ng-model="occupation" ng-options="occupationChoice as occupationChoice.label for occupationChoice in workerOccupation" required="">
+                <select class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="occupation" ng-model="occupation" ng-options="occupationChoice as occupationChoice.label for occupationChoice in workerOccupation" required="">
                   <option value="" class="" selected="selected">Select Occupation</option>
                   <option label="Outpatient Pharmacist" value="object:5">Outpatient Pharmacist</option>
                   <option label="Inpatient Pharmacist" value="object:6">Inpatient Pharmacist</option><option label="Intern Pharmacist" value="object:7">Intern Pharmacist</option>
@@ -42,7 +44,7 @@
             </div>	
             <div class="col-md-6">
               <div class="form-group" ng-class="{'has-error': jobPostingForm.stateLicense.$invalid}">
-                <select class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" style="color: #ffdc00;" name="stateLicense" ng-model="stateLicense" ng-options="state as state.label for state in workerStateLicense" required="">
+                <select class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="stateLicense" ng-model="stateLicense" ng-options="state as state.label for state in workerStateLicense" required="">
                   <option value="" class="" selected="selected">Select State of Licensure</option>
                   <option label="Alabama" value="object:8">Alabama</option>
                   <option label="Alaska" value="object:9">Alaska</option>
@@ -125,24 +127,24 @@
           <div class="col-md-12">	
             <div class="col-md-6">
               <div class="form-group has-error" ng-class="{'has-error': jobPostingForm.licenseNumber.$invalid}">
-                <input type="text" style="color: #ffdc00;" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="licenseNumber" ng-model="newUser.licenseNumber" placeholder="License No." required="">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="licenseNumber" ng-model="newUser.licenseNumber" placeholder="License No." required="">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group has-error" ng-class="{'has-error': jobPostingForm.licenseExpirationDate.$invalid}">
-                <input type="text" style="color: #ffdc00;" name="licenseExpirationDate" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Expiration Date - MM/DD/YYYY" ng-model="newUser.licenseExpirationDate" required="" ng-pattern="/^((\d{4})-(\d{2})-(\d{2})|(\d{2})\/(\d{2})\/(\d{4}))$/">
+                <input type="text" name="licenseExpirationDate" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Expiration Date - MM/DD/YYYY" ng-model="newUser.licenseExpirationDate" required="" ng-pattern="/^((\d{4})-(\d{2})-(\d{2})|(\d{2})\/(\d{2})\/(\d{4}))$/">
               </div>
             </div>
           </div>
           <div class="col-md-12">	
             <div class="col-md-6">
               <div class="form-group has-error" ng-class="{'has-error': jobPostingForm.zipcode.$invalid}">
-                <input type="text" style="color: #ffdc00;" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="zipcode" ng-model="newUser.zipcode" placeholder="Zipcode" required="">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="zipcode" ng-model="newUser.zipcode" placeholder="Zipcode" required="">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group has-error" ng-class="{'has-error': jobPostingForm.phoneNumber.$invalid}">
-                <input type="text" style="color: #ffdc00;" name="phoneNumber" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Phone Number" ng-model="newUser.phoneNumber" required="">
+                <input type="text" name="phoneNumber" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Phone Number" ng-model="newUser.phoneNumber" required="">
               </div>
             </div>
           </div>
@@ -155,7 +157,6 @@
     </div>	
   </div>
 </div>
-
 
 
 
