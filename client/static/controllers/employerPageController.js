@@ -6,14 +6,16 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 
 	$scope.error = false
 
-	if (auth === true) {
+	if (auth === true && user.employer === true) {
 		$rootScope.loggedIn = true;
 	}
+  else{
+    $state.go('login');
+  }
 
 	$scope.loadShifts = function() {
 		hustleBeeAppFactory.getShifts(user, function(success){
 			var allShifts = success;
-			
 			$scope.shiftTable = false;
 			$scope.searchBar = false;
 			$scope.message = true

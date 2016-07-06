@@ -59,7 +59,6 @@ hustleBeeAppModule.controller('UserSettingsController', function($scope, $http, 
     else{
       $scope.user.address = 'Please add an Address';
     }
-    console.log($scope.user);
 	}
 
 	getUserInfo();
@@ -94,7 +93,8 @@ hustleBeeAppModule.controller('UserSettingsController', function($scope, $http, 
 hustleBeeAppModule.controller('UserMainController', function($scope, $rootScope, $uibModal, $location, $state, $stateParams, hustleBeeAppFactory){
 	var user = hustleBeeAppFactory.getUserData();
 	var auth = hustleBeeAppFactory.getUserStatus();
-	if (auth === true) {
+	if (auth === true && user.employer === false) {
+  $scope.status = user.status;
 		$rootScope.loggedIn = true;
 	}
 	else{
@@ -103,6 +103,8 @@ hustleBeeAppModule.controller('UserMainController', function($scope, $rootScope,
 
 	var getShifts = function(){
 		hustleBeeAppFactory.getAvailableShifts(user._id, function(output){
+      console.log(output);
+      console.log(user);
 			$scope.shifts = output.unaccepted;
 			$scope.accepted = output.accepted;
 			for(var x in $scope.shifts){
@@ -146,9 +148,14 @@ hustleBeeAppModule.controller('UserMainController', function($scope, $rootScope,
 		})
 	}
 
-	$scope.acceptShift = function(shiftId){
+	$scope.acceptShift = function(shift){
 		var data = {
-			shiftId:  shiftId,
+			shiftId:  shift.shiftId,
+      employerEmail: shift.employerEmail,
+      employeeEmail: user.email,
+      employeeName: user.firstName + ' ' + user.lastName,
+      employerFirstName: shift.employerFirstName,
+      shiftDate: shift.date,
 			userId: user._id
 		};
 		hustleBeeAppFactory.updateShift(data, function(data){

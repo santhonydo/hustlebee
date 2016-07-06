@@ -24,7 +24,7 @@
             <td><span ng-bind='shift.address'></span></td>
             <td><span ng-bind='shift.employer'></span></td>
             <td><span ng-bind='shift.wage'></span></td>
-            <td><span ng-click="acceptShift(shift.shiftId)"><i class='icon-check' style="font-size: 120%; color: red; cursor: pointer"></i></span></td>
+            <td><span ng-if="status === 1" ng-click="acceptShift(shift)"><i class='icon-check' style="font-size: 120%; color: red; cursor: pointer"></i></span></td>
           </tr>
         </tbody>
       </table>
