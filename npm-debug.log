@@ -1,170 +1,1678 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
-2 info using npm@2.13.5
-3 info using node@v0.12.7
-4 verbose readDependencies loading dependencies from /Users/santhonydo/Documents/Projects/hustlebee/package.json
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'aws-sdk',
+1 verbose cli   '--save' ]
+2 info using npm@2.14.2
+3 info using node@v4.0.0
+4 verbose install initial load of /Users/eric/Desktop/Github/hustlebee/package.json
 5 warn package.json hustlebee@1.0.0 No repository field.
 6 warn package.json hustlebee@1.0.0 No README data
 7 warn package.json hustlebee@1.0.0 No license field.
-8 verbose install where, deps [ '/Users/santhonydo/Documents/Projects/hustlebee',
-8 verbose install   [ 'angular-google-maps',
-8 verbose install     'angular-ui-router',
-8 verbose install     'angulartics',
-8 verbose install     'angulartics-google-analytics',
-8 verbose install     'async',
-8 verbose install     'bcrypt-nodejs',
-8 verbose install     'body-parser',
-8 verbose install     'connect-flash',
-8 verbose install     'connect-mongo',
-8 verbose install     'cookie-parser',
-8 verbose install     'cors',
-8 verbose install     'express',
-8 verbose install     'express-session',
-8 verbose install     'express-stormpath',
-8 verbose install     'moment',
-8 verbose install     'mongoose',
-8 verbose install     'passport',
-8 verbose install     'passport-local',
-8 verbose install     'sendgrid',
-8 verbose install     'stormpath-sdk-angularjs',
-8 verbose install     'multer' ] ]
-9 verbose install where, peers [ '/Users/santhonydo/Documents/Projects/hustlebee', [] ]
-10 verbose installManyTop reading for lifecycle /Users/santhonydo/Documents/Projects/hustlebee/package.json
-11 info preinstall hustlebee@1.0.0
-12 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/angular-google-maps/package.json
-13 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/angular-ui-router/package.json
-14 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/angulartics/package.json
-15 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/angulartics-google-analytics/package.json
-16 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/async/package.json
-17 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/aws-sdk/package.json
-18 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/bcrypt-nodejs/package.json
-19 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/body-parser/package.json
-20 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/connect-flash/package.json
-21 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/connect-mongo/package.json
-22 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/cookie-parser/package.json
-23 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/cors/package.json
-24 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/express/package.json
-25 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/express-session/package.json
-26 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/express-stormpath/package.json
-27 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/moment/package.json
-28 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/mongoose/package.json
-29 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/multer/package.json
-30 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/passport/package.json
-31 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/passport-local/package.json
-32 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/sendgrid/package.json
-33 verbose installManyTop reading scoped package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/stormpath-sdk-angularjs/package.json
-34 info package.json angulartics@0.20.3 No license field.
-35 info package.json connect-flash@0.1.1 No license field.
-36 info package.json passport-local@1.0.0 No license field.
-37 info package.json bcrypt-nodejs@0.0.3 No license field.
-38 verbose readDependencies loading dependencies from /Users/santhonydo/Documents/Projects/hustlebee/package.json
-39 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/angular-google-maps/package.json
-40 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/angular-ui-router/package.json
-41 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/angulartics/package.json
-42 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/angulartics-google-analytics/package.json
-43 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/async/package.json
-44 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/aws-sdk/package.json
-45 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/bcrypt-nodejs/package.json
-46 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/body-parser/package.json
-47 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/connect-flash/package.json
-48 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/connect-mongo/package.json
-49 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/cookie-parser/package.json
-50 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/cors/package.json
-51 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/express/package.json
-52 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/express-session/package.json
-53 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/express-stormpath/package.json
-54 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/moment/package.json
-55 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/mongoose/package.json
-56 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/multer/package.json
-57 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/passport/package.json
-58 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/passport-local/package.json
-59 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/sendgrid/package.json
-60 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/stormpath-sdk-angularjs/package.json
-61 verbose targetResolver reading package data from /Users/santhonydo/Documents/Projects/hustlebee/node_modules/.bin/uuid/package.json
-62 verbose already installed skipping moment@^2.11.1 /Users/santhonydo/Documents/Projects/hustlebee
-63 verbose already installed skipping mongoose@^4.3.4 /Users/santhonydo/Documents/Projects/hustlebee
-64 verbose already installed skipping passport@^0.3.2 /Users/santhonydo/Documents/Projects/hustlebee
-65 verbose already installed skipping passport-local@^1.0.0 /Users/santhonydo/Documents/Projects/hustlebee
-66 verbose already installed skipping sendgrid@^2.0.0 /Users/santhonydo/Documents/Projects/hustlebee
-67 verbose already installed skipping stormpath-sdk-angularjs@^0.9.0 /Users/santhonydo/Documents/Projects/hustlebee
-68 verbose already installed skipping multer@^1.1.0 /Users/santhonydo/Documents/Projects/hustlebee
-69 verbose already installed skipping angular-google-maps@^2.3.2 /Users/santhonydo/Documents/Projects/hustlebee
-70 verbose already installed skipping angular-ui-router@^0.2.15 /Users/santhonydo/Documents/Projects/hustlebee
-71 verbose already installed skipping angulartics@^0.20.0 /Users/santhonydo/Documents/Projects/hustlebee
-72 verbose already installed skipping angulartics-google-analytics@^0.1.3 /Users/santhonydo/Documents/Projects/hustlebee
-73 verbose already installed skipping async@^1.5.2 /Users/santhonydo/Documents/Projects/hustlebee
-74 verbose already installed skipping bcrypt-nodejs@0.0.3 /Users/santhonydo/Documents/Projects/hustlebee
-75 verbose already installed skipping body-parser@^1.14.2 /Users/santhonydo/Documents/Projects/hustlebee
-76 verbose already installed skipping connect-flash@^0.1.1 /Users/santhonydo/Documents/Projects/hustlebee
-77 verbose already installed skipping connect-mongo@^1.1.0 /Users/santhonydo/Documents/Projects/hustlebee
-78 verbose already installed skipping cookie-parser@^1.4.1 /Users/santhonydo/Documents/Projects/hustlebee
-79 verbose already installed skipping cors@^2.7.1 /Users/santhonydo/Documents/Projects/hustlebee
-80 verbose already installed skipping express@^4.13.3 /Users/santhonydo/Documents/Projects/hustlebee
-81 verbose already installed skipping express-session@^1.13.0 /Users/santhonydo/Documents/Projects/hustlebee
-82 verbose already installed skipping express-stormpath@^2.3.6 /Users/santhonydo/Documents/Projects/hustlebee
-83 silly install resolved []
-84 info build /Users/santhonydo/Documents/Projects/hustlebee
-85 info linkStuff hustlebee@1.0.0
-86 silly linkStuff hustlebee@1.0.0 has /Users/santhonydo/Documents/Projects as its parent node_modules
-87 verbose linkBins hustlebee@1.0.0
-88 verbose linkMans hustlebee@1.0.0
-89 verbose rebuildBundles hustlebee@1.0.0
-90 verbose rebuildBundles [ '.DS_Store',
-90 verbose rebuildBundles   '.bin',
-90 verbose rebuildBundles   'angular-google-maps',
-90 verbose rebuildBundles   'angular-ui-router',
-90 verbose rebuildBundles   'angulartics',
-90 verbose rebuildBundles   'angulartics-google-analytics',
-90 verbose rebuildBundles   'async',
-90 verbose rebuildBundles   'aws-sdk',
-90 verbose rebuildBundles   'bcrypt-nodejs',
-90 verbose rebuildBundles   'body-parser',
-90 verbose rebuildBundles   'connect-flash',
-90 verbose rebuildBundles   'connect-mongo',
-90 verbose rebuildBundles   'cookie-parser',
-90 verbose rebuildBundles   'cors',
-90 verbose rebuildBundles   'express',
-90 verbose rebuildBundles   'express-session',
-90 verbose rebuildBundles   'express-stormpath',
-90 verbose rebuildBundles   'moment',
-90 verbose rebuildBundles   'mongoose',
-90 verbose rebuildBundles   'multer',
-90 verbose rebuildBundles   'passport',
-90 verbose rebuildBundles   'passport-local',
-90 verbose rebuildBundles   'sendgrid',
-90 verbose rebuildBundles   'stormpath-sdk-angularjs' ]
-91 verbose rebuild bundle /Users/santhonydo/Documents/Projects/hustlebee/node_modules/aws-sdk
-92 info build /Users/santhonydo/Documents/Projects/hustlebee/node_modules/aws-sdk
-93 info preinstall aws-sdk@2.3.10
-94 info linkStuff aws-sdk@2.3.10
-95 silly linkStuff aws-sdk@2.3.10 has /Users/santhonydo/Documents/Projects/hustlebee/node_modules as its parent node_modules
-96 verbose linkBins aws-sdk@2.3.10
-97 verbose linkMans aws-sdk@2.3.10
-98 verbose rebuildBundles aws-sdk@2.3.10
-99 verbose rebuildBundles [ 'jmespath', 'sax', 'xml2js', 'xmlbuilder' ]
-100 info install aws-sdk@2.3.10
-101 info postinstall aws-sdk@2.3.10
-102 info install hustlebee@1.0.0
-103 info postinstall hustlebee@1.0.0
-104 info prepublish hustlebee@1.0.0
-105 verbose validateInstall loading /Users/santhonydo/Documents/Projects/hustlebee/package.json for validation
-106 verbose stack Error: The package angulartics@0.20.3 does not satisfy its siblings' peerDependencies requirements!
-106 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:125:32
-106 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:268:7
-106 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
-106 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
-106 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
-106 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
-106 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
-106 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
-106 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
-106 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
-107 verbose cwd /Users/santhonydo/Documents/Projects/hustlebee
-108 error Darwin 16.0.0
-109 error argv "node" "/usr/local/bin/npm" "install"
-110 error node v0.12.7
-111 error npm  v2.13.5
-112 error code EPEERINVALID
-113 error peerinvalid The package angulartics@0.20.3 does not satisfy its siblings' peerDependencies requirements!
-113 error peerinvalid Peer angulartics-google-analytics@0.1.4 wants angulartics@~1.0.0
-114 verbose exit [ 1, true ]
+8 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/angular-google-maps/package.json
+9 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/angular-ui-router/package.json
+10 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/angulartics/package.json
+11 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/angulartics-google-analytics/package.json
+12 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/async/package.json
+13 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/package.json
+14 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/bcrypt-nodejs/package.json
+15 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/body-parser/package.json
+16 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/connect-flash/package.json
+17 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/connect-mongo/package.json
+18 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/cookie-parser/package.json
+19 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/cors/package.json
+20 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/express/package.json
+21 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/express-session/package.json
+22 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/express-stormpath/package.json
+23 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/moment/package.json
+24 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/mongoose/package.json
+25 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/multer/package.json
+26 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/passport/package.json
+27 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/passport-local/package.json
+28 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/sendgrid/package.json
+29 verbose installManyTop reading scoped package data from /Users/eric/Desktop/Github/hustlebee/node_modules/stormpath-sdk-angularjs/package.json
+30 info package.json angulartics@0.20.3 No license field.
+31 info package.json connect-flash@0.1.1 No license field.
+32 info package.json connect-mongo@1.2.1 No README data
+33 info package.json passport-local@1.0.0 No license field.
+34 info package.json bcrypt-nodejs@0.0.3 No license field.
+35 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/package.json
+36 verbose install aws-sdk is installed as 2.4.4
+37 silly cache add args [ 'aws-sdk', null ]
+38 verbose cache add spec aws-sdk
+39 silly cache add parsed spec Result {
+39 silly cache add   raw: 'aws-sdk',
+39 silly cache add   scope: null,
+39 silly cache add   name: 'aws-sdk',
+39 silly cache add   rawSpec: '',
+39 silly cache add   spec: '*',
+39 silly cache add   type: 'range' }
+40 silly addNamed aws-sdk@*
+41 verbose addNamed "*" is a valid semver range for aws-sdk
+42 silly addNameRange { name: 'aws-sdk', range: '*', hasData: false }
+43 silly mapToRegistry name aws-sdk
+44 silly mapToRegistry using default registry
+45 silly mapToRegistry registry https://registry.npmjs.org/
+46 silly mapToRegistry uri https://registry.npmjs.org/aws-sdk
+47 verbose addNameRange registry:https://registry.npmjs.org/aws-sdk not in flight; fetching
+48 verbose get https://registry.npmjs.org/aws-sdk not expired, no request
+49 silly addNameRange number 2 { name: 'aws-sdk', range: '*', hasData: true }
+50 silly addNameRange versions [ 'aws-sdk',
+50 silly addNameRange   [ '0.9.0-pre.1',
+50 silly addNameRange     '0.9.1-pre.2',
+50 silly addNameRange     '0.9.2-pre.3',
+50 silly addNameRange     '0.9.3-pre.4',
+50 silly addNameRange     '0.9.4-pre.5',
+50 silly addNameRange     '0.9.5-pre.6',
+50 silly addNameRange     '0.9.6-pre.7',
+50 silly addNameRange     '0.9.7-pre.8',
+50 silly addNameRange     '0.9.8-pre.9',
+50 silly addNameRange     '0.9.9-pre.10',
+50 silly addNameRange     '1.0.0',
+50 silly addNameRange     '1.1.0',
+50 silly addNameRange     '1.2.0',
+50 silly addNameRange     '1.3.0',
+50 silly addNameRange     '1.3.1',
+50 silly addNameRange     '1.3.2',
+50 silly addNameRange     '1.4.0',
+50 silly addNameRange     '1.4.1',
+50 silly addNameRange     '1.5.0',
+50 silly addNameRange     '1.5.1',
+50 silly addNameRange     '1.5.2',
+50 silly addNameRange     '1.6.0',
+50 silly addNameRange     '1.7.0',
+50 silly addNameRange     '1.7.1',
+50 silly addNameRange     '1.8.0',
+50 silly addNameRange     '1.8.1',
+50 silly addNameRange     '1.9.0',
+50 silly addNameRange     '1.10.0',
+50 silly addNameRange     '2.0.0-rc1',
+50 silly addNameRange     '1.12.0',
+50 silly addNameRange     '1.13.0',
+50 silly addNameRange     '1.14.0',
+50 silly addNameRange     '2.0.0-rc2',
+50 silly addNameRange     '1.15.0',
+50 silly addNameRange     '2.0.0-rc3',
+50 silly addNameRange     '1.16.0',
+50 silly addNameRange     '2.0.0-rc4',
+50 silly addNameRange     '1.17.0',
+50 silly addNameRange     '2.0.0-rc5',
+50 silly addNameRange     '1.17.1',
+50 silly addNameRange     '2.0.0-rc6',
+50 silly addNameRange     '1.17.2',
+50 silly addNameRange     '2.0.0-rc7',
+50 silly addNameRange     '1.17.3',
+50 silly addNameRange     '2.0.0-rc8',
+50 silly addNameRange     '1.18.0',
+50 silly addNameRange     '2.0.0-rc9',
+50 silly addNameRange     '2.0.0-rc10',
+50 silly addNameRange     '2.0.0-rc11',
+50 silly addNameRange     '2.0.0-rc12',
+50 silly addNameRange     '2.0.0-rc13',
+50 silly addNameRange     '2.0.0-rc.14',
+50 silly addNameRange     '2.0.0-rc.15',
+50 silly addNameRange     '2.0.0-rc.16',
+50 silly addNameRange     '2.0.0-rc.17',
+50 silly addNameRange     '2.0.0-rc.18',
+50 silly addNameRange     '2.0.0-rc.19',
+50 silly addNameRange     '2.0.0-rc.20',
+50 silly addNameRange     '2.0.1',
+50 silly addNameRange     '2.0.2',
+50 silly addNameRange     '2.0.3',
+50 silly addNameRange     '2.0.4',
+50 silly addNameRange     '2.0.5',
+50 silly addNameRange     '2.0.6',
+50 silly addNameRange     '2.0.7',
+50 silly addNameRange     '2.0.8',
+50 silly addNameRange     '2.0.9',
+50 silly addNameRange     '2.0.10',
+50 silly addNameRange     '2.0.11',
+50 silly addNameRange     '2.0.12',
+50 silly addNameRange     '2.0.13',
+50 silly addNameRange     '2.0.14',
+50 silly addNameRange     '2.0.15',
+50 silly addNameRange     '2.0.16',
+50 silly addNameRange     '2.0.17',
+50 silly addNameRange     '2.0.18',
+50 silly addNameRange     '2.0.19',
+50 silly addNameRange     '2.0.21',
+50 silly addNameRange     '2.0.22',
+50 silly addNameRange     '2.0.23',
+50 silly addNameRange     '2.0.24',
+50 silly addNameRange     '2.0.25',
+50 silly addNameRange     '2.0.26',
+50 silly addNameRange     '2.0.27',
+50 silly addNameRange     '2.0.28',
+50 silly addNameRange     '2.0.29',
+50 silly addNameRange     '2.0.30',
+50 silly addNameRange     '2.0.31',
+50 silly addNameRange     '2.1.0',
+50 silly addNameRange     '2.1.1',
+50 silly addNameRange     '2.1.2',
+50 silly addNameRange     '2.1.3',
+50 silly addNameRange     '2.1.4',
+50 silly addNameRange     '2.1.5',
+50 silly addNameRange     '2.1.6',
+50 silly addNameRange     '2.1.7',
+50 silly addNameRange     '2.1.8',
+50 silly addNameRange     '2.1.9',
+50 silly addNameRange     '2.1.10',
+50 silly addNameRange     '2.1.11',
+50 silly addNameRange     '2.1.12',
+50 silly addNameRange     '2.1.13',
+50 silly addNameRange     '2.1.14',
+50 silly addNameRange     '2.1.15',
+50 silly addNameRange     '2.1.16',
+50 silly addNameRange     '2.1.17',
+50 silly addNameRange     '2.1.18',
+50 silly addNameRange     '2.1.19',
+50 silly addNameRange     '2.1.20',
+50 silly addNameRange     '2.1.21',
+50 silly addNameRange     '2.1.22',
+50 silly addNameRange     '2.1.23',
+50 silly addNameRange     '2.1.24',
+50 silly addNameRange     '2.1.25',
+50 silly addNameRange     '2.1.26',
+50 silly addNameRange     '2.1.27',
+50 silly addNameRange     '2.1.28',
+50 silly addNameRange     '2.1.29',
+50 silly addNameRange     '2.1.30',
+50 silly addNameRange     '2.1.31',
+50 silly addNameRange     '2.1.32',
+50 silly addNameRange     '2.1.33',
+50 silly addNameRange     '2.1.34',
+50 silly addNameRange     '2.1.35',
+50 silly addNameRange     '2.1.36',
+50 silly addNameRange     '2.1.37',
+50 silly addNameRange     '2.1.38',
+50 silly addNameRange     '2.1.39',
+50 silly addNameRange     '2.1.40',
+50 silly addNameRange     '2.1.41',
+50 silly addNameRange     '2.1.42',
+50 silly addNameRange     '2.1.43',
+50 silly addNameRange     '2.1.44',
+50 silly addNameRange     '2.1.45',
+50 silly addNameRange     '2.1.46',
+50 silly addNameRange     '2.1.47',
+50 silly addNameRange     '2.1.48',
+50 silly addNameRange     '2.1.49',
+50 silly addNameRange     '2.1.50',
+50 silly addNameRange     '2.2.0',
+50 silly addNameRange     '2.2.1',
+50 silly addNameRange     '2.2.2',
+50 silly addNameRange     '2.2.3',
+50 silly addNameRange     '2.2.4',
+50 silly addNameRange     '2.2.5',
+50 silly addNameRange     '2.2.6',
+50 silly addNameRange     '2.2.7',
+50 silly addNameRange     '2.2.8',
+50 silly addNameRange     '2.2.9',
+50 silly addNameRange     '2.2.10',
+50 silly addNameRange     '2.2.11',
+50 silly addNameRange     '2.2.12',
+50 silly addNameRange     '2.2.13',
+50 silly addNameRange     '2.2.14',
+50 silly addNameRange     '2.2.15',
+50 silly addNameRange     '2.2.16',
+50 silly addNameRange     '2.2.17',
+50 silly addNameRange     '2.2.18',
+50 silly addNameRange     '2.2.19',
+50 silly addNameRange     '2.2.20',
+50 silly addNameRange     '2.2.21',
+50 silly addNameRange     '2.2.22',
+50 silly addNameRange     '2.2.23',
+50 silly addNameRange     '2.2.24',
+50 silly addNameRange     '2.2.25',
+50 silly addNameRange     '2.2.26',
+50 silly addNameRange     '2.2.27',
+50 silly addNameRange     '2.2.28',
+50 silly addNameRange     '2.2.29',
+50 silly addNameRange     '2.2.30',
+50 silly addNameRange     '2.2.31',
+50 silly addNameRange     '2.2.32',
+50 silly addNameRange     '2.2.33',
+50 silly addNameRange     '2.2.34',
+50 silly addNameRange     '2.2.35',
+50 silly addNameRange     '2.2.36',
+50 silly addNameRange     '2.2.37',
+50 silly addNameRange     '2.2.38',
+50 silly addNameRange     '2.2.39',
+50 silly addNameRange     '2.2.40',
+50 silly addNameRange     '2.2.41',
+50 silly addNameRange     '2.2.42',
+50 silly addNameRange     '2.2.43',
+50 silly addNameRange     '2.2.44',
+50 silly addNameRange     '2.2.45',
+50 silly addNameRange     '2.2.46',
+50 silly addNameRange     '2.2.47',
+50 silly addNameRange     '2.2.48',
+50 silly addNameRange     '2.3.0',
+50 silly addNameRange     '2.3.1',
+50 silly addNameRange     '2.3.2',
+50 silly addNameRange     '2.3.3',
+50 silly addNameRange     '2.3.4',
+50 silly addNameRange     '2.3.5',
+50 silly addNameRange     '2.3.6',
+50 silly addNameRange     '2.3.7',
+50 silly addNameRange     '2.3.8',
+50 silly addNameRange     '2.3.9',
+50 silly addNameRange     '2.3.10',
+50 silly addNameRange     '2.3.11',
+50 silly addNameRange     '2.3.12',
+50 silly addNameRange     '2.3.13',
+50 silly addNameRange     '2.3.14',
+50 silly addNameRange     '2.3.15',
+50 silly addNameRange     '2.3.16',
+50 silly addNameRange     '2.3.17',
+50 silly addNameRange     '2.3.18',
+50 silly addNameRange     '2.3.19',
+50 silly addNameRange     '2.4.0',
+50 silly addNameRange     '2.4.1',
+50 silly addNameRange     '2.4.2',
+50 silly addNameRange     '2.4.3',
+50 silly addNameRange     '2.4.4' ] ]
+51 silly addNamed aws-sdk@2.4.4
+52 verbose addNamed "2.4.4" is a plain semver version for aws-sdk
+53 silly cache afterAdd aws-sdk@2.4.4
+54 verbose afterAdd /Users/eric/.npm/aws-sdk/2.4.4/package/package.json not in flight; writing
+55 verbose afterAdd /Users/eric/.npm/aws-sdk/2.4.4/package/package.json written
+56 silly install resolved [ { name: 'aws-sdk',
+56 silly install resolved     description: 'AWS SDK for JavaScript',
+56 silly install resolved     version: '2.4.4',
+56 silly install resolved     author: { name: 'Amazon Web Services', url: 'http://aws.amazon.com/' },
+56 silly install resolved     homepage: 'https://github.com/aws/aws-sdk-js',
+56 silly install resolved     contributors: [ [Object], [Object] ],
+56 silly install resolved     devDependencies:
+56 silly install resolved      { 'repl.history': '*',
+56 silly install resolved        semver: '*',
+56 silly install resolved        'coffee-script': '1.6.3',
+56 silly install resolved        eslint: '1.x',
+56 silly install resolved        cucumber: '0.5.x',
+56 silly install resolved        coffeeify: '*',
+56 silly install resolved        browserify: '^8.1.3',
+56 silly install resolved        'uglify-js': '2.x',
+56 silly install resolved        mocha: '*',
+56 silly install resolved        chai: '*',
+56 silly install resolved        istanbul: '*',
+56 silly install resolved        coveralls: '2.x',
+56 silly install resolved        'insert-module-globals': '^7.0.0' },
+56 silly install resolved     dependencies:
+56 silly install resolved      { sax: '1.1.5',
+56 silly install resolved        xml2js: '0.4.15',
+56 silly install resolved        xmlbuilder: '2.6.2',
+56 silly install resolved        jmespath: '0.15.0' },
+56 silly install resolved     main: 'lib/aws.js',
+56 silly install resolved     browser: 'lib/browser.js',
+56 silly install resolved     browserify: { transform: './dist-tools/transform.js' },
+56 silly install resolved     directories: { lib: 'lib' },
+56 silly install resolved     engines: { node: '>= 0.8.0' },
+56 silly install resolved     repository: { type: 'git', url: 'git://github.com/aws/aws-sdk-js.git' },
+56 silly install resolved     bugs: { url: 'http://github.com/aws/aws-sdk-js/issues' },
+56 silly install resolved     license: 'Apache-2.0',
+56 silly install resolved     keywords:
+56 silly install resolved      [ 'api',
+56 silly install resolved        'amazon',
+56 silly install resolved        'aws',
+56 silly install resolved        'ec2',
+56 silly install resolved        'simpledb',
+56 silly install resolved        's3',
+56 silly install resolved        'sqs',
+56 silly install resolved        'ses',
+56 silly install resolved        'sns',
+56 silly install resolved        'route53',
+56 silly install resolved        'rds',
+56 silly install resolved        'elasticache',
+56 silly install resolved        'cloudfront',
+56 silly install resolved        'fps',
+56 silly install resolved        'cloudformation',
+56 silly install resolved        'cloudwatch',
+56 silly install resolved        'dynamodb',
+56 silly install resolved        'iam',
+56 silly install resolved        'swf',
+56 silly install resolved        'autoscaling',
+56 silly install resolved        'cloudsearch',
+56 silly install resolved        'elb',
+56 silly install resolved        'loadbalancing',
+56 silly install resolved        'emr',
+56 silly install resolved        'mapreduce',
+56 silly install resolved        'importexport',
+56 silly install resolved        'storagegateway',
+56 silly install resolved        'workflow',
+56 silly install resolved        'ebs',
+56 silly install resolved        'vpc',
+56 silly install resolved        'beanstalk',
+56 silly install resolved        'glacier',
+56 silly install resolved        'kinesis',
+56 silly install resolved        'cloudtrail',
+56 silly install resolved        'waf' ],
+56 silly install resolved     scripts:
+56 silly install resolved      { test: 'npm -s run-script lint && npm -s run-script unit && npm -s run-script buildertest && npm -s run-script browsertest && ([ -f configuration ] && npm -s run-script integration || true)',
+56 silly install resolved        unit: 'istanbul `[ $COVERAGE ] && echo \'cover _mocha\' || echo \'test mocha\'` -- test test/json test/model test/protocol test/query test/services test/signers test/xml test/s3 test/cloudfront',
+56 silly install resolved        coverage: 'istanbul cover ./node_modules/mocha/bin/_mocha -- test test/json test/model test/protocol test/query test/services test/signers test/xml',
+56 silly install resolved        browsertest: 'rake browser:test',
+56 silly install resolved        buildertest: 'mocha --compilers coffee:coffee-script -s 1000 -t 10000 dist-tools/test',
+56 silly install resolved        integration: 'cucumber.js',
+56 silly install resolved        lint: 'eslint lib dist-tools/*.js',
+56 silly install resolved        console: './scripts/console' },
+56 silly install resolved     gitHead: '4da4aaf1f2ca9c94c0a4fabeb1c54c5f87f82b2e',
+56 silly install resolved     _id: 'aws-sdk@2.4.4',
+56 silly install resolved     _shasum: 'eae43ec1a2631cfc327d338b67d6f3e659c03ac6',
+56 silly install resolved     _from: 'aws-sdk@*',
+56 silly install resolved     _resolved: 'https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.4.4.tgz',
+56 silly install resolved     _npmVersion: '2.14.9',
+56 silly install resolved     _nodeVersion: '0.12.9',
+56 silly install resolved     _npmUser: { name: 'aws', email: 'aws-sdk-js@amazon.com' },
+56 silly install resolved     maintainers: [ [Object] ],
+56 silly install resolved     dist:
+56 silly install resolved      { shasum: 'eae43ec1a2631cfc327d338b67d6f3e659c03ac6',
+56 silly install resolved        tarball: 'https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.4.4.tgz' },
+56 silly install resolved     _npmOperationalInternal:
+56 silly install resolved      { host: 'packages-16-east.internal.npmjs.com',
+56 silly install resolved        tmp: 'tmp/aws-sdk-2.4.4.tgz_1467327001822_0.4635543404147029' },
+56 silly install resolved     readme: 'ERROR: No README data found!' } ]
+57 info install aws-sdk@2.4.4 into /Users/eric/Desktop/Github/hustlebee
+58 info installOne aws-sdk@2.4.4
+59 verbose installOne of aws-sdk to /Users/eric/Desktop/Github/hustlebee not in flight; installing
+60 verbose lock using /Users/eric/.npm/_locks/aws-sdk-511b98115c5f3773.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+61 silly install write writing aws-sdk 2.4.4 to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+62 verbose unbuild node_modules/aws-sdk
+63 info preuninstall aws-sdk@2.4.4
+64 info uninstall aws-sdk@2.4.4
+65 verbose unbuild rmStuff aws-sdk@2.4.4 from /Users/eric/Desktop/Github/hustlebee/node_modules
+66 info postuninstall aws-sdk@2.4.4
+67 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk is being purged from base /Users/eric/Desktop/Github/hustlebee
+68 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+69 silly vacuum-fs purging /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+70 silly vacuum-fs quitting because other entries in /Users/eric/Desktop/Github/hustlebee/node_modules
+71 verbose tar unpack /Users/eric/.npm/aws-sdk/2.4.4/package.tgz
+72 verbose tar unpacking to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+73 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk is being purged
+74 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+75 silly gunzTarPerm modes [ '755', '644' ]
+76 silly gunzTarPerm extractEntry package.json
+77 silly gunzTarPerm extractEntry .npmignore
+78 silly gunzTarPerm extractEntry README.md
+79 silly gunzTarPerm extractEntry index.js
+80 silly gunzTarPerm extractEntry apis/firehose-2015-08-04.min.json
+81 silly gunzTarPerm extractEntry apis/acm-2015-12-08.min.json
+82 silly gunzTarPerm extractEntry apis/apigateway-2015-07-09.min.json
+83 silly gunzTarPerm extractEntry apis/apigateway-2015-07-09.paginators.json
+84 silly gunzTarPerm extractEntry apis/application-autoscaling-2016-02-06.min.json
+85 silly gunzTarPerm extractEntry apis/application-autoscaling-2016-02-06.paginators.json
+86 silly gunzTarPerm extractEntry apis/autoscaling-2011-01-01.min.json
+87 silly gunzTarPerm extractEntry apis/autoscaling-2011-01-01.paginators.json
+88 silly gunzTarPerm extractEntry apis/cloudformation-2010-05-15.min.json
+89 silly gunzTarPerm extractEntry apis/cloudformation-2010-05-15.paginators.json
+90 silly gunzTarPerm extractEntry apis/cloudformation-2010-05-15.waiters2.json
+91 silly gunzTarPerm extractEntry apis/cloudfront-2016-01-28.min.json
+92 silly gunzTarPerm extractEntry apis/cloudfront-2016-01-28.paginators.json
+93 silly gunzTarPerm extractEntry apis/cloudfront-2016-01-28.waiters2.json
+94 silly gunzTarPerm extractEntry apis/cloudhsm-2014-05-30.min.json
+95 silly gunzTarPerm extractEntry apis/cloudsearch-2011-02-01.min.json
+96 silly gunzTarPerm extractEntry apis/cloudsearch-2011-02-01.paginators.json
+97 silly gunzTarPerm extractEntry apis/cloudsearch-2013-01-01.min.json
+98 silly gunzTarPerm extractEntry apis/cloudsearch-2013-01-01.paginators.json
+99 silly gunzTarPerm extractEntry apis/cloudsearchdomain-2013-01-01.min.json
+100 silly gunzTarPerm extractEntry apis/cloudtrail-2013-11-01.min.json
+101 silly gunzTarPerm extractEntry apis/cloudtrail-2013-11-01.paginators.json
+102 silly gunzTarPerm extractEntry apis/codecommit-2015-04-13.min.json
+103 silly gunzTarPerm extractEntry apis/codecommit-2015-04-13.paginators.json
+104 silly gunzTarPerm extractEntry apis/codedeploy-2014-10-06.min.json
+105 silly gunzTarPerm extractEntry apis/codedeploy-2014-10-06.paginators.json
+106 silly gunzTarPerm extractEntry apis/codepipeline-2015-07-09.examples.json
+107 silly gunzTarPerm extractEntry apis/codepipeline-2015-07-09.min.json
+108 silly gunzTarPerm extractEntry apis/cognito-identity-2014-06-30.min.json
+109 silly gunzTarPerm extractEntry apis/cognito-idp-2016-04-18.min.json
+110 silly gunzTarPerm extractEntry apis/cognito-sync-2014-06-30.min.json
+111 silly gunzTarPerm extractEntry apis/config-2014-11-12.min.json
+112 silly gunzTarPerm extractEntry apis/config-2014-11-12.paginators.json
+113 silly gunzTarPerm extractEntry apis/datapipeline-2012-10-29.min.json
+114 silly gunzTarPerm extractEntry apis/datapipeline-2012-10-29.paginators.json
+115 silly gunzTarPerm extractEntry apis/devicefarm-2015-06-23.min.json
+116 silly gunzTarPerm extractEntry apis/devicefarm-2015-06-23.paginators.json
+117 silly gunzTarPerm extractEntry apis/directconnect-2012-10-25.min.json
+118 silly gunzTarPerm extractEntry apis/directconnect-2012-10-25.paginators.json
+119 silly gunzTarPerm extractEntry apis/discovery-2015-11-01.min.json
+120 silly gunzTarPerm extractEntry apis/dms-2016-01-01.min.json
+121 silly gunzTarPerm extractEntry apis/ds-2015-04-16.min.json
+122 silly gunzTarPerm extractEntry apis/dynamodb-2011-12-05.min.json
+123 silly gunzTarPerm extractEntry apis/dynamodb-2011-12-05.paginators.json
+124 silly gunzTarPerm extractEntry apis/dynamodb-2011-12-05.waiters2.json
+125 silly gunzTarPerm extractEntry apis/dynamodb-2012-08-10.min.json
+126 silly gunzTarPerm extractEntry apis/dynamodb-2012-08-10.paginators.json
+127 silly gunzTarPerm extractEntry apis/dynamodb-2012-08-10.waiters2.json
+128 silly gunzTarPerm extractEntry apis/ec2-2016-04-01.min.json
+129 silly gunzTarPerm extractEntry apis/ec2-2016-04-01.paginators.json
+130 silly gunzTarPerm extractEntry apis/ec2-2016-04-01.waiters2.json
+131 silly gunzTarPerm extractEntry apis/ecr-2015-09-21.min.json
+132 silly gunzTarPerm extractEntry apis/ecs-2014-11-13.min.json
+133 silly gunzTarPerm extractEntry apis/ecs-2014-11-13.paginators.json
+134 silly gunzTarPerm extractEntry apis/ecs-2014-11-13.waiters2.json
+135 silly gunzTarPerm extractEntry apis/elasticache-2014-09-30.waiters2.json
+136 silly gunzTarPerm extractEntry apis/elasticache-2015-02-02.min.json
+137 silly gunzTarPerm extractEntry apis/elasticache-2015-02-02.paginators.json
+138 silly gunzTarPerm extractEntry apis/elasticache-2015-02-02.waiters2.json
+139 silly gunzTarPerm extractEntry apis/elasticbeanstalk-2010-12-01.examples.json
+140 silly gunzTarPerm extractEntry apis/elasticbeanstalk-2010-12-01.min.json
+141 silly gunzTarPerm extractEntry apis/elasticbeanstalk-2010-12-01.paginators.json
+142 silly gunzTarPerm extractEntry apis/elasticfilesystem-2015-02-01.min.json
+143 silly gunzTarPerm extractEntry apis/elasticloadbalancing-2012-06-01.min.json
+144 silly gunzTarPerm extractEntry apis/elasticloadbalancing-2012-06-01.paginators.json
+145 silly gunzTarPerm extractEntry apis/elasticloadbalancing-2012-06-01.waiters2.json
+146 silly gunzTarPerm extractEntry apis/elasticmapreduce-2009-03-31.min.json
+147 silly gunzTarPerm extractEntry apis/elasticmapreduce-2009-03-31.paginators.json
+148 silly gunzTarPerm extractEntry apis/elasticmapreduce-2009-03-31.waiters2.json
+149 silly gunzTarPerm extractEntry apis/elastictranscoder-2012-09-25.min.json
+150 silly gunzTarPerm extractEntry apis/elastictranscoder-2012-09-25.paginators.json
+151 silly gunzTarPerm extractEntry apis/elastictranscoder-2012-09-25.waiters2.json
+152 silly gunzTarPerm extractEntry apis/email-2010-12-01.min.json
+153 silly gunzTarPerm extractEntry apis/email-2010-12-01.paginators.json
+154 silly gunzTarPerm extractEntry apis/email-2010-12-01.waiters2.json
+155 silly gunzTarPerm extractEntry apis/es-2015-01-01.min.json
+156 silly gunzTarPerm extractEntry apis/events-2015-10-07.min.json
+157 silly gunzTarPerm extractEntry apis/acm-2015-12-08.paginators.json
+158 silly gunzTarPerm extractEntry apis/gamelift-2015-10-01.min.json
+159 silly gunzTarPerm extractEntry apis/glacier-2012-06-01.min.json
+160 silly gunzTarPerm extractEntry apis/glacier-2012-06-01.paginators.json
+161 silly gunzTarPerm extractEntry apis/glacier-2012-06-01.waiters2.json
+162 silly gunzTarPerm extractEntry apis/iam-2010-05-08.min.json
+163 silly gunzTarPerm extractEntry apis/iam-2010-05-08.paginators.json
+164 silly gunzTarPerm extractEntry apis/iam-2010-05-08.waiters2.json
+165 silly gunzTarPerm extractEntry apis/importexport-2010-06-01.min.json
+166 silly gunzTarPerm extractEntry apis/importexport-2010-06-01.paginators.json
+167 silly gunzTarPerm extractEntry apis/inspector-2016-02-16.min.json
+168 silly gunzTarPerm extractEntry apis/iot-2015-05-28.min.json
+169 silly gunzTarPerm extractEntry apis/iot-data-2015-05-28.min.json
+170 silly gunzTarPerm extractEntry apis/kinesis-2013-12-02.min.json
+171 silly gunzTarPerm extractEntry apis/kinesis-2013-12-02.paginators.json
+172 silly gunzTarPerm extractEntry apis/kinesis-2013-12-02.waiters2.json
+173 silly gunzTarPerm extractEntry apis/kms-2014-11-01.min.json
+174 silly gunzTarPerm extractEntry apis/kms-2014-11-01.paginators.json
+175 silly gunzTarPerm extractEntry apis/lambda-2014-11-11.min.json
+176 silly gunzTarPerm extractEntry apis/lambda-2014-11-11.paginators.json
+177 silly gunzTarPerm extractEntry apis/lambda-2015-03-31.min.json
+178 silly gunzTarPerm extractEntry apis/lambda-2015-03-31.paginators.json
+179 silly gunzTarPerm extractEntry apis/logs-2014-03-28.min.json
+180 silly gunzTarPerm extractEntry apis/logs-2014-03-28.paginators.json
+181 silly gunzTarPerm extractEntry apis/machinelearning-2014-12-12.min.json
+182 silly gunzTarPerm extractEntry apis/machinelearning-2014-12-12.paginators.json
+183 silly gunzTarPerm extractEntry apis/machinelearning-2014-12-12.waiters2.json
+184 silly gunzTarPerm extractEntry apis/marketplacecommerceanalytics-2015-07-01.min.json
+185 silly gunzTarPerm extractEntry apis/metadata.json
+186 silly gunzTarPerm extractEntry apis/meteringmarketplace-2016-01-14.min.json
+187 silly gunzTarPerm extractEntry apis/mobileanalytics-2014-06-05.min.json
+188 silly gunzTarPerm extractEntry apis/monitoring-2010-08-01.min.json
+189 silly gunzTarPerm extractEntry apis/monitoring-2010-08-01.paginators.json
+190 silly gunzTarPerm extractEntry apis/monitoring-2010-08-01.waiters2.json
+191 silly gunzTarPerm extractEntry apis/opsworks-2013-02-18.min.json
+192 silly gunzTarPerm extractEntry apis/opsworks-2013-02-18.paginators.json
+193 silly gunzTarPerm extractEntry apis/opsworks-2013-02-18.waiters2.json
+194 silly gunzTarPerm extractEntry apis/rds-2013-01-10.min.json
+195 silly gunzTarPerm extractEntry apis/rds-2013-01-10.paginators.json
+196 silly gunzTarPerm extractEntry apis/rds-2013-02-12.min.json
+197 silly gunzTarPerm extractEntry apis/rds-2013-02-12.paginators.json
+198 silly gunzTarPerm extractEntry apis/rds-2013-09-09.min.json
+199 silly gunzTarPerm extractEntry apis/rds-2013-09-09.paginators.json
+200 silly gunzTarPerm extractEntry apis/rds-2013-09-09.waiters2.json
+201 silly gunzTarPerm extractEntry apis/rds-2014-10-31.min.json
+202 silly gunzTarPerm extractEntry apis/rds-2014-10-31.paginators.json
+203 silly gunzTarPerm extractEntry apis/rds-2014-10-31.waiters2.json
+204 silly gunzTarPerm extractEntry apis/redshift-2012-12-01.min.json
+205 silly gunzTarPerm extractEntry apis/redshift-2012-12-01.paginators.json
+206 silly gunzTarPerm extractEntry apis/redshift-2012-12-01.waiters2.json
+207 silly gunzTarPerm extractEntry apis/route53-2013-04-01.min.json
+208 silly gunzTarPerm extractEntry apis/route53-2013-04-01.paginators.json
+209 silly gunzTarPerm extractEntry apis/route53-2013-04-01.waiters2.json
+210 silly gunzTarPerm extractEntry apis/route53domains-2014-05-15.min.json
+211 silly gunzTarPerm extractEntry apis/route53domains-2014-05-15.paginators.json
+212 silly gunzTarPerm extractEntry apis/s3-2006-03-01.min.json
+213 silly gunzTarPerm extractEntry apis/s3-2006-03-01.paginators.json
+214 silly gunzTarPerm extractEntry apis/s3-2006-03-01.waiters2.json
+215 silly gunzTarPerm extractEntry apis/sdb-2009-04-15.min.json
+216 silly gunzTarPerm extractEntry apis/sdb-2009-04-15.paginators.json
+217 silly gunzTarPerm extractEntry apis/sns-2010-03-31.min.json
+218 silly gunzTarPerm extractEntry apis/sns-2010-03-31.paginators.json
+219 silly gunzTarPerm extractEntry apis/sqs-2012-11-05.examples.json
+220 silly gunzTarPerm extractEntry apis/sqs-2012-11-05.min.json
+221 silly gunzTarPerm extractEntry apis/sqs-2012-11-05.paginators.json
+222 silly gunzTarPerm extractEntry apis/ssm-2014-11-06.min.json
+223 silly gunzTarPerm extractEntry apis/ssm-2014-11-06.paginators.json
+224 silly gunzTarPerm extractEntry apis/storagegateway-2013-06-30.min.json
+225 silly gunzTarPerm extractEntry apis/storagegateway-2013-06-30.paginators.json
+226 silly gunzTarPerm extractEntry apis/streams.dynamodb-2012-08-10.min.json
+227 silly gunzTarPerm extractEntry apis/sts-2011-06-15.min.json
+228 silly gunzTarPerm extractEntry apis/support-2013-04-15.min.json
+229 silly gunzTarPerm extractEntry apis/support-2013-04-15.paginators.json
+230 silly gunzTarPerm extractEntry apis/swf-2012-01-25.min.json
+231 silly gunzTarPerm extractEntry apis/swf-2012-01-25.paginators.json
+232 silly gunzTarPerm extractEntry apis/waf-2015-08-24.min.json
+233 silly gunzTarPerm extractEntry apis/workspaces-2015-04-08.min.json
+234 silly gunzTarPerm extractEntry apis/workspaces-2015-04-08.paginators.json
+235 silly gunzTarPerm extractEntry NOTICE.txt
+236 silly gunzTarPerm extractEntry .jshintrc
+237 silly gunzTarPerm extractEntry UPGRADING.md
+238 silly gunzTarPerm extractEntry .tesselinclude
+239 silly gunzTarPerm extractEntry bower.json
+240 silly gunzTarPerm extractEntry dist/aws-sdk.js
+241 silly gunzTarPerm extractEntry dist/aws-sdk.min.js
+242 silly gunzTarPerm extractEntry dist/BUNDLE_LICENSE.txt
+243 silly gunzTarPerm extractEntry dist-tools/browser-builder.js
+244 silly gunzTarPerm extractEntry dist-tools/service-collector.js
+245 silly gunzTarPerm extractEntry dist-tools/transform.js
+246 silly gunzTarPerm extractEntry CONTRIBUTING.md
+247 silly gunzTarPerm extractEntry lib/api_loader.js
+248 silly gunzTarPerm extractEntry lib/http.js
+249 silly gunzTarPerm extractEntry lib/metadata_service.js
+250 silly gunzTarPerm extractEntry lib/param_validator.js
+251 silly gunzTarPerm extractEntry lib/event_listeners.js
+252 silly gunzTarPerm extractEntry lib/region_config.js
+253 silly gunzTarPerm extractEntry lib/request.js
+254 silly gunzTarPerm extractEntry lib/resource_waiter.js
+255 silly gunzTarPerm extractEntry lib/response.js
+256 silly gunzTarPerm extractEntry lib/sequential_executor.js
+257 silly gunzTarPerm extractEntry lib/credentials.js
+258 silly gunzTarPerm extractEntry lib/service.js
+259 silly gunzTarPerm extractEntry lib/core.js
+260 silly gunzTarPerm extractEntry lib/services.js
+261 silly gunzTarPerm extractEntry lib/config.js
+262 silly gunzTarPerm extractEntry lib/state_machine.js
+263 silly gunzTarPerm extractEntry lib/browser.js
+264 silly gunzTarPerm extractEntry lib/util.js
+265 silly gunzTarPerm extractEntry lib/aws.js
+266 silly gunzTarPerm extractEntry lib/region_config.json
+267 silly gunzTarPerm extractEntry lib/credentials/cognito_identity_credentials.js
+268 silly gunzTarPerm extractEntry lib/credentials/credential_provider_chain.js
+269 silly gunzTarPerm extractEntry lib/credentials/ec2_metadata_credentials.js
+270 silly gunzTarPerm extractEntry lib/credentials/environment_credentials.js
+271 silly gunzTarPerm extractEntry lib/credentials/file_system_credentials.js
+272 silly gunzTarPerm extractEntry lib/credentials/saml_credentials.js
+273 silly gunzTarPerm extractEntry lib/credentials/shared_ini_file_credentials.js
+274 silly gunzTarPerm extractEntry lib/credentials/temporary_credentials.js
+275 silly gunzTarPerm extractEntry lib/credentials/web_identity_credentials.js
+276 silly gunzTarPerm extractEntry lib/json/builder.js
+277 silly gunzTarPerm extractEntry lib/json/parser.js
+278 silly gunzTarPerm extractEntry lib/xml/browser_parser.js
+279 silly gunzTarPerm extractEntry lib/xml/builder.js
+280 silly gunzTarPerm extractEntry lib/xml/node_parser.js
+281 silly gunzTarPerm extractEntry lib/s3/managed_upload.js
+282 silly gunzTarPerm extractEntry lib/model/api.js
+283 silly gunzTarPerm extractEntry lib/model/collection.js
+284 silly gunzTarPerm extractEntry lib/model/operation.js
+285 silly gunzTarPerm extractEntry lib/model/paginator.js
+286 silly gunzTarPerm extractEntry lib/model/resource_waiter.js
+287 silly gunzTarPerm extractEntry lib/model/shape.js
+288 silly gunzTarPerm extractEntry lib/dynamodb/converter.js
+289 silly gunzTarPerm extractEntry lib/dynamodb/document_client.js
+290 silly gunzTarPerm extractEntry lib/dynamodb/set.js
+291 silly gunzTarPerm extractEntry lib/dynamodb/translator.js
+292 silly gunzTarPerm extractEntry lib/dynamodb/types.js
+293 silly gunzTarPerm extractEntry lib/services/apigateway.js
+294 silly gunzTarPerm extractEntry lib/services/cognitoidentity.js
+295 silly gunzTarPerm extractEntry lib/services/dynamodb.js
+296 silly gunzTarPerm extractEntry lib/services/ec2.js
+297 silly gunzTarPerm extractEntry lib/services/glacier.js
+298 silly gunzTarPerm extractEntry lib/services/cloudsearchdomain.js
+299 silly gunzTarPerm extractEntry lib/services/machinelearning.js
+300 silly gunzTarPerm extractEntry lib/services/route53.js
+301 silly gunzTarPerm extractEntry lib/services/s3.js
+302 silly gunzTarPerm extractEntry lib/services/sqs.js
+303 silly gunzTarPerm extractEntry lib/services/sts.js
+304 silly gunzTarPerm extractEntry lib/services/cloudfront.js
+305 silly gunzTarPerm extractEntry lib/services/swf.js
+306 silly gunzTarPerm extractEntry lib/services/iotdata.js
+307 silly gunzTarPerm extractEntry lib/cloudfront/signer.js
+308 silly gunzTarPerm extractEntry lib/signers/presign.js
+309 silly gunzTarPerm extractEntry lib/signers/request_signer.js
+310 silly gunzTarPerm extractEntry lib/signers/s3.js
+311 silly gunzTarPerm extractEntry lib/signers/v2.js
+312 silly gunzTarPerm extractEntry lib/signers/v3.js
+313 silly gunzTarPerm extractEntry lib/signers/v3https.js
+314 silly gunzTarPerm extractEntry lib/signers/v4.js
+315 silly gunzTarPerm extractEntry lib/query/query_param_serializer.js
+316 silly gunzTarPerm extractEntry lib/http/node.js
+317 silly gunzTarPerm extractEntry lib/http/xhr.js
+318 silly gunzTarPerm extractEntry lib/protocol/json.js
+319 silly gunzTarPerm extractEntry lib/protocol/query.js
+320 silly gunzTarPerm extractEntry lib/protocol/rest.js
+321 silly gunzTarPerm extractEntry lib/protocol/rest_json.js
+322 silly gunzTarPerm extractEntry lib/protocol/rest_xml.js
+323 silly gunzTarPerm extractEntry LICENSE.txt
+324 silly gunzTarPerm extractEntry scripts/console
+325 silly gunzTarPerm extractEntry scripts/lib/translator.js
+326 silly gunzTarPerm extractEntry scripts/translate-api
+327 silly gunzTarPerm extractEntry testem.json
+328 verbose write writing to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/package.json
+329 info preinstall aws-sdk@2.4.4
+330 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/package.json
+331 silly prepareForInstallMany adding sax@1.1.5 from aws-sdk dependencies
+332 silly prepareForInstallMany adding xml2js@0.4.15 from aws-sdk dependencies
+333 silly prepareForInstallMany adding xmlbuilder@2.6.2 from aws-sdk dependencies
+334 silly prepareForInstallMany adding jmespath@0.15.0 from aws-sdk dependencies
+335 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/package.json
+336 silly cache add args [ 'sax@1.1.5', null ]
+337 verbose cache add spec sax@1.1.5
+338 silly cache add args [ 'xml2js@0.4.15', null ]
+339 verbose cache add spec xml2js@0.4.15
+340 silly cache add parsed spec Result {
+340 silly cache add   raw: 'sax@1.1.5',
+340 silly cache add   scope: null,
+340 silly cache add   name: 'sax',
+340 silly cache add   rawSpec: '1.1.5',
+340 silly cache add   spec: '1.1.5',
+340 silly cache add   type: 'version' }
+341 silly addNamed sax@1.1.5
+342 verbose addNamed "1.1.5" is a plain semver version for sax
+343 silly mapToRegistry name sax
+344 silly mapToRegistry using default registry
+345 silly mapToRegistry registry https://registry.npmjs.org/
+346 silly mapToRegistry uri https://registry.npmjs.org/sax
+347 verbose addNameVersion registry:https://registry.npmjs.org/sax not in flight; fetching
+348 silly cache add parsed spec Result {
+348 silly cache add   raw: 'xml2js@0.4.15',
+348 silly cache add   scope: null,
+348 silly cache add   name: 'xml2js',
+348 silly cache add   rawSpec: '0.4.15',
+348 silly cache add   spec: '0.4.15',
+348 silly cache add   type: 'version' }
+349 silly addNamed xml2js@0.4.15
+350 verbose addNamed "0.4.15" is a plain semver version for xml2js
+351 silly mapToRegistry name xml2js
+352 silly mapToRegistry using default registry
+353 silly mapToRegistry registry https://registry.npmjs.org/
+354 silly mapToRegistry uri https://registry.npmjs.org/xml2js
+355 verbose addNameVersion registry:https://registry.npmjs.org/xml2js not in flight; fetching
+356 silly cache add args [ 'xmlbuilder@2.6.2', null ]
+357 verbose cache add spec xmlbuilder@2.6.2
+358 silly cache add parsed spec Result {
+358 silly cache add   raw: 'xmlbuilder@2.6.2',
+358 silly cache add   scope: null,
+358 silly cache add   name: 'xmlbuilder',
+358 silly cache add   rawSpec: '2.6.2',
+358 silly cache add   spec: '2.6.2',
+358 silly cache add   type: 'version' }
+359 silly addNamed xmlbuilder@2.6.2
+360 verbose addNamed "2.6.2" is a plain semver version for xmlbuilder
+361 silly mapToRegistry name xmlbuilder
+362 silly mapToRegistry using default registry
+363 silly mapToRegistry registry https://registry.npmjs.org/
+364 silly mapToRegistry uri https://registry.npmjs.org/xmlbuilder
+365 verbose addNameVersion registry:https://registry.npmjs.org/xmlbuilder not in flight; fetching
+366 silly cache add args [ 'jmespath@0.15.0', null ]
+367 verbose cache add spec jmespath@0.15.0
+368 silly cache add parsed spec Result {
+368 silly cache add   raw: 'jmespath@0.15.0',
+368 silly cache add   scope: null,
+368 silly cache add   name: 'jmespath',
+368 silly cache add   rawSpec: '0.15.0',
+368 silly cache add   spec: '0.15.0',
+368 silly cache add   type: 'version' }
+369 silly addNamed jmespath@0.15.0
+370 verbose addNamed "0.15.0" is a plain semver version for jmespath
+371 silly mapToRegistry name jmespath
+372 silly mapToRegistry using default registry
+373 silly mapToRegistry registry https://registry.npmjs.org/
+374 silly mapToRegistry uri https://registry.npmjs.org/jmespath
+375 verbose addNameVersion registry:https://registry.npmjs.org/jmespath not in flight; fetching
+376 verbose get https://registry.npmjs.org/xml2js not expired, no request
+377 verbose get https://registry.npmjs.org/jmespath not expired, no request
+378 verbose get https://registry.npmjs.org/sax not expired, no request
+379 verbose get https://registry.npmjs.org/xmlbuilder not expired, no request
+380 silly cache afterAdd sax@1.1.5
+381 verbose afterAdd /Users/eric/.npm/sax/1.1.5/package/package.json not in flight; writing
+382 silly cache afterAdd jmespath@0.15.0
+383 verbose afterAdd /Users/eric/.npm/jmespath/0.15.0/package/package.json not in flight; writing
+384 silly cache afterAdd xml2js@0.4.15
+385 verbose afterAdd /Users/eric/.npm/xml2js/0.4.15/package/package.json not in flight; writing
+386 silly cache afterAdd xmlbuilder@2.6.2
+387 verbose afterAdd /Users/eric/.npm/xmlbuilder/2.6.2/package/package.json not in flight; writing
+388 verbose afterAdd /Users/eric/.npm/jmespath/0.15.0/package/package.json written
+389 verbose afterAdd /Users/eric/.npm/xml2js/0.4.15/package/package.json written
+390 verbose afterAdd /Users/eric/.npm/xmlbuilder/2.6.2/package/package.json written
+391 verbose afterAdd /Users/eric/.npm/sax/1.1.5/package/package.json written
+392 silly install resolved [ { name: 'jmespath',
+392 silly install resolved     description: 'JMESPath implementation in javascript',
+392 silly install resolved     version: '0.15.0',
+392 silly install resolved     author:
+392 silly install resolved      { name: 'James Saryerwinnie',
+392 silly install resolved        email: 'js@jamesls.com',
+392 silly install resolved        url: 'http://jamesls.com/' },
+392 silly install resolved     homepage: 'https://github.com/jmespath/jmespath.js',
+392 silly install resolved     contributors: [],
+392 silly install resolved     devDependencies:
+392 silly install resolved      { grunt: '^0.4.5',
+392 silly install resolved        'grunt-contrib-jshint': '^0.11.0',
+392 silly install resolved        'grunt-contrib-uglify': '^0.11.1',
+392 silly install resolved        'grunt-eslint': '^17.3.1',
+392 silly install resolved        mocha: '^2.1.0' },
+392 silly install resolved     dependencies: {},
+392 silly install resolved     main: 'jmespath.js',
+392 silly install resolved     directories: { test: 'test' },
+392 silly install resolved     engines: { node: '>= 0.6.0' },
+392 silly install resolved     repository:
+392 silly install resolved      { type: 'git',
+392 silly install resolved        url: 'git://github.com/jmespath/jmespath.js.git' },
+392 silly install resolved     bugs: { url: 'http://github.com/jmespath/jmespath.js/issues' },
+392 silly install resolved     licenses: [ [Object] ],
+392 silly install resolved     keywords: [ 'jmespath', 'jsonpath', 'json', 'xpath' ],
+392 silly install resolved     scripts: { test: 'mocha test/' },
+392 silly install resolved     gitHead: '72a28807b164317f2c61f0e2372656c424bc4b6c',
+392 silly install resolved     _id: 'jmespath@0.15.0',
+392 silly install resolved     _shasum: 'a3f222a9aae9f966f5d27c796510e28091764217',
+392 silly install resolved     _from: 'jmespath@0.15.0',
+392 silly install resolved     _npmVersion: '3.8.3',
+392 silly install resolved     _nodeVersion: '5.8.0',
+392 silly install resolved     _npmUser: { name: 'jamesls', email: 'js@jamesls.com' },
+392 silly install resolved     dist:
+392 silly install resolved      { shasum: 'a3f222a9aae9f966f5d27c796510e28091764217',
+392 silly install resolved        tarball: 'https://registry.npmjs.org/jmespath/-/jmespath-0.15.0.tgz' },
+392 silly install resolved     maintainers: [ [Object] ],
+392 silly install resolved     _npmOperationalInternal:
+392 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
+392 silly install resolved        tmp: 'tmp/jmespath-0.15.0.tgz_1458924686313_0.6043944323901087' },
+392 silly install resolved     _resolved: 'https://registry.npmjs.org/jmespath/-/jmespath-0.15.0.tgz',
+392 silly install resolved     readme: 'ERROR: No README data found!' },
+392 silly install resolved   { name: 'xml2js',
+392 silly install resolved     description: 'Simple XML to JavaScript object converter.',
+392 silly install resolved     keywords: [ 'xml', 'json' ],
+392 silly install resolved     homepage: 'https://github.com/Leonidas-from-XIV/node-xml2js',
+392 silly install resolved     version: '0.4.15',
+392 silly install resolved     author:
+392 silly install resolved      { name: 'Marek Kubica',
+392 silly install resolved        email: 'marek@xivilization.net',
+392 silly install resolved        url: 'https://xivilization.net' },
+392 silly install resolved     contributors:
+392 silly install resolved      [ [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object] ],
+392 silly install resolved     main: './lib/xml2js',
+392 silly install resolved     files: [ 'lib' ],
+392 silly install resolved     directories: { lib: './lib' },
+392 silly install resolved     scripts:
+392 silly install resolved      { test: 'zap',
+392 silly install resolved        coverage: 'nyc npm test && nyc report',
+392 silly install resolved        coveralls: 'nyc npm test && nyc report --reporter=text-lcov | coveralls' },
+392 silly install resolved     repository:
+392 silly install resolved      { type: 'git',
+392 silly install resolved        url: 'git+https://github.com/Leonidas-from-XIV/node-xml2js.git' },
+392 silly install resolved     dependencies: { sax: '>=0.6.0', xmlbuilder: '>=2.4.6' },
+392 silly install resolved     devDependencies:
+392 silly install resolved      { 'coffee-script': '>=1.10.0',
+392 silly install resolved        coveralls: '^2.11.2',
+392 silly install resolved        diff: '>=1.0.8',
+392 silly install resolved        docco: '>=0.6.2',
+392 silly install resolved        nyc: '>=2.2.1',
+392 silly install resolved        zap: '>=0.2.9' },
+392 silly install resolved     license: 'MIT',
+392 silly install resolved     bugs: { url: 'https://github.com/Leonidas-from-XIV/node-xml2js/issues' },
+392 silly install resolved     _id: 'xml2js@0.4.15',
+392 silly install resolved     _shasum: '95cd03ff2dd144ec28bc6273bf2b2890c581ad0c',
+392 silly install resolved     _resolved: 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.15.tgz',
+392 silly install resolved     _from: 'xml2js@0.4.15',
+392 silly install resolved     _npmVersion: '2.13.3',
+392 silly install resolved     _nodeVersion: '3.3.0',
+392 silly install resolved     _npmUser: { name: 'leonidas', email: 'marek@xivilization.net' },
+392 silly install resolved     maintainers: [ [Object] ],
+392 silly install resolved     dist:
+392 silly install resolved      { shasum: '95cd03ff2dd144ec28bc6273bf2b2890c581ad0c',
+392 silly install resolved        tarball: 'https://registry.npmjs.org/xml2js/-/xml2js-0.4.15.tgz' },
+392 silly install resolved     readme: 'ERROR: No README data found!' },
+392 silly install resolved   { name: 'xmlbuilder',
+392 silly install resolved     version: '2.6.2',
+392 silly install resolved     keywords: [ 'xml', 'xmlbuilder' ],
+392 silly install resolved     homepage: 'http://github.com/oozcitak/xmlbuilder-js',
+392 silly install resolved     description: 'An XML builder for node.js',
+392 silly install resolved     author: { name: 'Ozgur Ozcitak', email: 'oozcitak@gmail.com' },
+392 silly install resolved     contributors: [],
+392 silly install resolved     license: 'MIT',
+392 silly install resolved     repository:
+392 silly install resolved      { type: 'git',
+392 silly install resolved        url: 'git://github.com/oozcitak/xmlbuilder-js.git' },
+392 silly install resolved     bugs: { url: 'http://github.com/oozcitak/xmlbuilder-js/issues' },
+392 silly install resolved     main: './lib/index',
+392 silly install resolved     engines: { node: '>=0.8.0' },
+392 silly install resolved     dependencies: { lodash: '~3.5.0' },
+392 silly install resolved     devDependencies: { 'coffee-script': '*', mocha: '*' },
+392 silly install resolved     scripts:
+392 silly install resolved      { prepublish: 'coffee -co lib src',
+392 silly install resolved        postpublish: 'rm -rf lib',
+392 silly install resolved        test: 'mocha --ui tdd --reporter dot --compilers coffee:coffee-script/register --require test/common/common' },
+392 silly install resolved     _id: 'xmlbuilder@2.6.2',
+392 silly install resolved     dist:
+392 silly install resolved      { shasum: 'f916f6d10d45dc171b1be2e6e673fb6e0cc35d0a',
+392 silly install resolved        tarball: 'https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.6.2.tgz' },
+392 silly install resolved     _from: 'xmlbuilder@2.6.2',
+392 silly install resolved     _npmVersion: '1.4.6',
+392 silly install resolved     _npmUser: { name: 'oozcitak', email: 'oozcitak@gmail.com' },
+392 silly install resolved     maintainers: [ [Object] ],
+392 silly install resolved     directories: {},
+392 silly install resolved     _shasum: 'f916f6d10d45dc171b1be2e6e673fb6e0cc35d0a',
+392 silly install resolved     _resolved: 'https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.6.2.tgz',
+392 silly install resolved     readme: 'ERROR: No README data found!' },
+392 silly install resolved   { name: 'sax',
+392 silly install resolved     description: 'An evented streaming XML parser in JavaScript',
+392 silly install resolved     author:
+392 silly install resolved      { name: 'Isaac Z. Schlueter',
+392 silly install resolved        email: 'i@izs.me',
+392 silly install resolved        url: 'http://blog.izs.me/' },
+392 silly install resolved     version: '1.1.5',
+392 silly install resolved     main: 'lib/sax.js',
+392 silly install resolved     license: 'ISC',
+392 silly install resolved     scripts:
+392 silly install resolved      { test: 'tap test/*.js --cov',
+392 silly install resolved        posttest: 'standard -F test/*.js lib/*.js' },
+392 silly install resolved     repository: { type: 'git', url: 'git://github.com/isaacs/sax-js.git' },
+392 silly install resolved     files: [ 'lib/sax.js', 'LICENSE', 'LICENSE-W3C.html', 'README.md' ],
+392 silly install resolved     devDependencies: { standard: '^5.3.1', tap: '^5.2.0' },
+392 silly install resolved     contributors:
+392 silly install resolved      [ [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object],
+392 silly install resolved        [Object] ],
+392 silly install resolved     gitHead: '2e69674891189fead76299ba0b5e611a59cb1035',
+392 silly install resolved     bugs: { url: 'https://github.com/isaacs/sax-js/issues' },
+392 silly install resolved     homepage: 'https://github.com/isaacs/sax-js#readme',
+392 silly install resolved     _id: 'sax@1.1.5',
+392 silly install resolved     _shasum: '1da50a8d00cdecd59405659f5ff85349fe773743',
+392 silly install resolved     _from: 'sax@1.1.5',
+392 silly install resolved     _npmVersion: '2.14.15',
+392 silly install resolved     _nodeVersion: '4.0.0',
+392 silly install resolved     _npmUser: { name: 'isaacs', email: 'i@izs.me' },
+392 silly install resolved     dist:
+392 silly install resolved      { shasum: '1da50a8d00cdecd59405659f5ff85349fe773743',
+392 silly install resolved        tarball: 'https://registry.npmjs.org/sax/-/sax-1.1.5.tgz' },
+392 silly install resolved     maintainers: [ [Object] ],
+392 silly install resolved     directories: {},
+392 silly install resolved     _resolved: 'https://registry.npmjs.org/sax/-/sax-1.1.5.tgz',
+392 silly install resolved     readme: 'ERROR: No README data found!' } ]
+393 info install jmespath@0.15.0 into /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+394 info install xml2js@0.4.15 into /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+395 info install xmlbuilder@2.6.2 into /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+396 info install sax@1.1.5 into /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+397 info installOne jmespath@0.15.0
+398 verbose installOne of jmespath to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk not in flight; installing
+399 info installOne xml2js@0.4.15
+400 verbose installOne of xml2js to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk not in flight; installing
+401 info installOne xmlbuilder@2.6.2
+402 verbose installOne of xmlbuilder to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk not in flight; installing
+403 info installOne sax@1.1.5
+404 verbose installOne of sax to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk not in flight; installing
+405 verbose lock using /Users/eric/.npm/_locks/jmespath-7ac308088f6108a7.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath
+406 verbose lock using /Users/eric/.npm/_locks/xml2js-2b3edaa48193f424.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js
+407 verbose lock using /Users/eric/.npm/_locks/xmlbuilder-7a284cf9171f0ed3.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+408 silly install write writing jmespath 0.15.0 to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath
+409 verbose lock using /Users/eric/.npm/_locks/sax-874b66cac545ff17.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax
+410 silly install write writing xml2js 0.4.15 to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js
+411 silly install write writing xmlbuilder 2.6.2 to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+412 silly install write writing sax 1.1.5 to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax
+413 verbose unbuild node_modules/aws-sdk/node_modules/jmespath
+414 verbose unbuild node_modules/aws-sdk/node_modules/xml2js
+415 verbose unbuild node_modules/aws-sdk/node_modules/xmlbuilder
+416 verbose unbuild node_modules/aws-sdk/node_modules/sax
+417 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath is being purged from base /Users/eric/Desktop/Github/hustlebee
+418 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath
+419 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js is being purged from base /Users/eric/Desktop/Github/hustlebee
+420 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js
+421 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder is being purged from base /Users/eric/Desktop/Github/hustlebee
+422 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+423 verbose tar unpack /Users/eric/.npm/jmespath/0.15.0/package.tgz
+424 verbose tar unpacking to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath
+425 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath is being purged
+426 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath
+427 verbose tar unpack /Users/eric/.npm/xml2js/0.4.15/package.tgz
+428 verbose tar unpacking to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js
+429 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js is being purged
+430 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js
+431 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax is being purged from base /Users/eric/Desktop/Github/hustlebee
+432 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax
+433 verbose tar unpack /Users/eric/.npm/xmlbuilder/2.6.2/package.tgz
+434 verbose tar unpacking to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+435 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder is being purged
+436 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+437 silly gunzTarPerm modes [ '755', '644' ]
+438 silly gunzTarPerm modes [ '755', '644' ]
+439 verbose tar unpack /Users/eric/.npm/sax/1.1.5/package.tgz
+440 verbose tar unpacking to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax
+441 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax is being purged
+442 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax
+443 silly gunzTarPerm modes [ '755', '644' ]
+444 silly gunzTarPerm modes [ '755', '644' ]
+445 silly gunzTarPerm extractEntry package.json
+446 silly gunzTarPerm extractEntry package.json
+447 silly gunzTarPerm extractEntry package.json
+448 silly gunzTarPerm extractEntry package.json
+449 silly gunzTarPerm extractEntry .npmignore
+450 silly gunzTarPerm extractEntry README.md
+451 silly gunzTarPerm extractEntry README.md
+452 silly gunzTarPerm extractEntry LICENSE
+453 silly gunzTarPerm extractEntry lib/bom.js
+454 silly gunzTarPerm extractEntry lib/processors.js
+455 silly gunzTarPerm extractEntry lib/xml2js.js
+456 silly gunzTarPerm extractEntry .npmignore
+457 silly gunzTarPerm extractEntry README.md
+458 silly gunzTarPerm extractEntry README.md
+459 silly gunzTarPerm extractEntry LICENSE
+460 silly gunzTarPerm extractEntry LICENSE
+461 silly gunzTarPerm extractEntry lib/XMLAttribute.js
+462 silly gunzTarPerm extractEntry LICENSE
+463 silly gunzTarPerm extractEntry Gruntfile.js
+464 silly gunzTarPerm extractEntry LICENSE-W3C.html
+465 silly gunzTarPerm extractEntry lib/sax.js
+466 silly gunzTarPerm extractEntry lib/XMLDTDElement.js
+467 silly gunzTarPerm extractEntry lib/XMLDTDEntity.js
+468 silly gunzTarPerm extractEntry jmespath.js
+469 silly gunzTarPerm extractEntry jp.js
+470 silly gunzTarPerm extractEntry l.js
+471 silly gunzTarPerm extractEntry perf.js
+472 silly gunzTarPerm extractEntry lib/XMLDTDNotation.js
+473 silly gunzTarPerm extractEntry lib/XMLDTDAttList.js
+474 silly gunzTarPerm extractEntry lib/XMLDocType.js
+475 silly gunzTarPerm extractEntry lib/XMLElement.js
+476 silly gunzTarPerm extractEntry lib/XMLNode.js
+477 silly gunzTarPerm extractEntry lib/XMLProcessingInstruction.js
+478 silly gunzTarPerm extractEntry lib/XMLRaw.js
+479 silly gunzTarPerm extractEntry lib/XMLComment.js
+480 silly gunzTarPerm extractEntry lib/XMLStringifier.js
+481 silly gunzTarPerm extractEntry lib/XMLCData.js
+482 silly gunzTarPerm extractEntry lib/XMLText.js
+483 silly gunzTarPerm extractEntry lib/XMLBuilder.js
+484 silly gunzTarPerm extractEntry lib/index.js
+485 silly gunzTarPerm extractEntry lib/XMLDeclaration.js
+486 silly gunzTarPerm extractEntry g.sh
+487 silly gunzTarPerm extractEntry index.html
+488 silly gunzTarPerm extractEntry james.html
+489 silly gunzTarPerm extractEntry .eslintrc
+490 silly gunzTarPerm extractEntry .travis.yml
+491 silly gunzTarPerm extractEntry BASELINE
+492 silly gunzTarPerm extractEntry reservedWords.json
+493 verbose write writing to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js/package.json
+494 info preinstall xml2js@0.4.15
+495 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js/package.json
+496 silly gunzTarPerm extractEntry artifacts/jmespath.min.js
+497 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js/package.json
+498 silly install resolved []
+499 verbose about to build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js
+500 info build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js
+501 info linkStuff xml2js@0.4.15
+502 silly linkStuff xml2js@0.4.15 has /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules as its parent node_modules
+503 silly gunzTarPerm extractEntry bower.json
+504 silly gunzTarPerm extractEntry test/compliance.js
+505 verbose linkBins xml2js@0.4.15
+506 verbose linkMans xml2js@0.4.15
+507 verbose rebuildBundles xml2js@0.4.15
+508 info install xml2js@0.4.15
+509 info postinstall xml2js@0.4.15
+510 verbose write writing to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax/package.json
+511 verbose unlock done using /Users/eric/.npm/_locks/xml2js-2b3edaa48193f424.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xml2js
+512 silly gunzTarPerm extractEntry test/jmespath.js
+513 silly gunzTarPerm extractEntry test/compliance/indices.json
+514 info preinstall sax@1.1.5
+515 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax/package.json
+516 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax/package.json
+517 silly install resolved []
+518 verbose about to build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax
+519 info build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax
+520 silly gunzTarPerm extractEntry test/compliance/basic.json
+521 silly gunzTarPerm extractEntry test/compliance/current.json
+522 info linkStuff sax@1.1.5
+523 silly linkStuff sax@1.1.5 has /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules as its parent node_modules
+524 silly gunzTarPerm extractEntry test/compliance/escape.json
+525 silly gunzTarPerm extractEntry test/compliance/filters.json
+526 verbose linkBins sax@1.1.5
+527 verbose linkMans sax@1.1.5
+528 verbose rebuildBundles sax@1.1.5
+529 info install sax@1.1.5
+530 info postinstall sax@1.1.5
+531 verbose unlock done using /Users/eric/.npm/_locks/sax-874b66cac545ff17.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/sax
+532 silly gunzTarPerm extractEntry test/compliance/functions.json
+533 silly gunzTarPerm extractEntry test/compliance/identifiers.json
+534 silly gunzTarPerm extractEntry test/compliance/boolean.json
+535 silly gunzTarPerm extractEntry test/compliance/literal.json
+536 silly gunzTarPerm extractEntry test/compliance/multiselect.json
+537 silly gunzTarPerm extractEntry test/compliance/pipe.json
+538 silly gunzTarPerm extractEntry test/compliance/slice.json
+539 silly gunzTarPerm extractEntry test/compliance/syntax.json
+540 silly gunzTarPerm extractEntry test/compliance/unicode.json
+541 silly gunzTarPerm extractEntry test/compliance/wildcard.json
+542 verbose write writing to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/package.json
+543 info preinstall xmlbuilder@2.6.2
+544 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/package.json
+545 silly prepareForInstallMany adding lodash@~3.5.0 from xmlbuilder dependencies
+546 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/package.json
+547 silly cache add args [ 'lodash@~3.5.0', null ]
+548 verbose cache add spec lodash@~3.5.0
+549 silly cache add parsed spec Result {
+549 silly cache add   raw: 'lodash@~3.5.0',
+549 silly cache add   scope: null,
+549 silly cache add   name: 'lodash',
+549 silly cache add   rawSpec: '~3.5.0',
+549 silly cache add   spec: '>=3.5.0 <3.6.0',
+549 silly cache add   type: 'range' }
+550 silly addNamed lodash@>=3.5.0 <3.6.0
+551 verbose addNamed ">=3.5.0 <3.6.0" is a valid semver range for lodash
+552 silly addNameRange { name: 'lodash', range: '>=3.5.0 <3.6.0', hasData: false }
+553 silly mapToRegistry name lodash
+554 silly mapToRegistry using default registry
+555 silly mapToRegistry registry https://registry.npmjs.org/
+556 silly mapToRegistry uri https://registry.npmjs.org/lodash
+557 verbose addNameRange registry:https://registry.npmjs.org/lodash not in flight; fetching
+558 verbose get https://registry.npmjs.org/lodash not expired, no request
+559 silly addNameRange number 2 { name: 'lodash', range: '>=3.5.0 <3.6.0', hasData: true }
+560 silly addNameRange versions [ 'lodash',
+560 silly addNameRange   [ '0.1.0',
+560 silly addNameRange     '0.2.0',
+560 silly addNameRange     '0.2.1',
+560 silly addNameRange     '0.2.2',
+560 silly addNameRange     '0.3.0',
+560 silly addNameRange     '0.3.1',
+560 silly addNameRange     '0.3.2',
+560 silly addNameRange     '0.4.0',
+560 silly addNameRange     '0.4.1',
+560 silly addNameRange     '0.4.2',
+560 silly addNameRange     '0.5.0-rc.1',
+560 silly addNameRange     '0.5.0',
+560 silly addNameRange     '0.5.1',
+560 silly addNameRange     '0.5.2',
+560 silly addNameRange     '0.6.0',
+560 silly addNameRange     '0.6.1',
+560 silly addNameRange     '0.7.0',
+560 silly addNameRange     '0.8.0',
+560 silly addNameRange     '0.8.1',
+560 silly addNameRange     '0.8.2',
+560 silly addNameRange     '0.9.0',
+560 silly addNameRange     '0.9.1',
+560 silly addNameRange     '0.9.2',
+560 silly addNameRange     '0.10.0',
+560 silly addNameRange     '1.0.0-rc.1',
+560 silly addNameRange     '1.0.0-rc.2',
+560 silly addNameRange     '1.0.0-rc.3',
+560 silly addNameRange     '1.0.0',
+560 silly addNameRange     '1.0.1',
+560 silly addNameRange     '1.1.0',
+560 silly addNameRange     '1.1.1',
+560 silly addNameRange     '1.2.0',
+560 silly addNameRange     '1.2.1',
+560 silly addNameRange     '1.3.0',
+560 silly addNameRange     '1.3.1',
+560 silly addNameRange     '2.0.0',
+560 silly addNameRange     '2.1.0',
+560 silly addNameRange     '2.2.0',
+560 silly addNameRange     '2.2.1',
+560 silly addNameRange     '2.3.0',
+560 silly addNameRange     '2.4.0',
+560 silly addNameRange     '2.4.1',
+560 silly addNameRange     '3.0.0',
+560 silly addNameRange     '3.0.1',
+560 silly addNameRange     '3.1.0',
+560 silly addNameRange     '3.2.0',
+560 silly addNameRange     '3.3.0',
+560 silly addNameRange     '3.3.1',
+560 silly addNameRange     '3.4.0',
+560 silly addNameRange     '3.5.0',
+560 silly addNameRange     '3.6.0',
+560 silly addNameRange     '1.0.2',
+560 silly addNameRange     '3.7.0',
+560 silly addNameRange     '2.4.2',
+560 silly addNameRange     '3.8.0',
+560 silly addNameRange     '3.9.0',
+560 silly addNameRange     '3.9.1',
+560 silly addNameRange     '3.9.2',
+560 silly addNameRange     '3.9.3',
+560 silly addNameRange     '3.10.0',
+560 silly addNameRange     '3.10.1',
+560 silly addNameRange     '4.0.0',
+560 silly addNameRange     '4.0.1',
+560 silly addNameRange     '4.1.0',
+560 silly addNameRange     '4.2.0',
+560 silly addNameRange     '4.2.1',
+560 silly addNameRange     '4.3.0',
+560 silly addNameRange     '4.4.0',
+560 silly addNameRange     '4.5.0',
+560 silly addNameRange     '4.5.1',
+560 silly addNameRange     '4.6.0',
+560 silly addNameRange     '4.6.1',
+560 silly addNameRange     '4.7.0',
+560 silly addNameRange     '4.8.0',
+560 silly addNameRange     '4.8.1',
+560 silly addNameRange     '4.8.2',
+560 silly addNameRange     '4.9.0',
+560 silly addNameRange     '4.10.0',
+560 silly addNameRange     '4.11.0',
+560 silly addNameRange     '4.11.1',
+560 silly addNameRange     '4.11.2',
+560 silly addNameRange     '4.12.0',
+560 silly addNameRange     '4.13.0',
+560 silly addNameRange     '4.13.1' ] ]
+561 silly addNamed lodash@3.5.0
+562 verbose addNamed "3.5.0" is a plain semver version for lodash
+563 silly cache afterAdd lodash@3.5.0
+564 verbose afterAdd /Users/eric/.npm/lodash/3.5.0/package/package.json not in flight; writing
+565 verbose afterAdd /Users/eric/.npm/lodash/3.5.0/package/package.json written
+566 silly install resolved [ { name: 'lodash',
+566 silly install resolved     version: '3.5.0',
+566 silly install resolved     description: 'The modern build of lodash modular utilities.',
+566 silly install resolved     homepage: 'https://lodash.com/',
+566 silly install resolved     icon: 'https://lodash.com/icon.svg',
+566 silly install resolved     license: 'MIT',
+566 silly install resolved     main: 'index.js',
+566 silly install resolved     keywords: [ 'modules', 'stdlib', 'util' ],
+566 silly install resolved     author:
+566 silly install resolved      { name: 'John-David Dalton',
+566 silly install resolved        email: 'john.david.dalton@gmail.com',
+566 silly install resolved        url: 'http://allyoucanleet.com/' },
+566 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+566 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/lodash/lodash.git' },
+566 silly install resolved     scripts: { test: 'echo "See https://travis-ci.org/lodash/lodash-cli for testing details."' },
+566 silly install resolved     bugs: { url: 'https://github.com/lodash/lodash/issues' },
+566 silly install resolved     _id: 'lodash@3.5.0',
+566 silly install resolved     _shasum: '19bb3f4d51278f0b8c818ed145c74ecf9fe40e6d',
+566 silly install resolved     _from: 'lodash@>=3.5.0 <3.6.0',
+566 silly install resolved     _npmVersion: '2.7.0',
+566 silly install resolved     _nodeVersion: '0.12.0',
+566 silly install resolved     _npmUser: { name: 'jdalton', email: 'john.david.dalton@gmail.com' },
+566 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+566 silly install resolved     dist:
+566 silly install resolved      { shasum: '19bb3f4d51278f0b8c818ed145c74ecf9fe40e6d',
+566 silly install resolved        tarball: 'https://registry.npmjs.org/lodash/-/lodash-3.5.0.tgz' },
+566 silly install resolved     directories: {},
+566 silly install resolved     _resolved: 'https://registry.npmjs.org/lodash/-/lodash-3.5.0.tgz',
+566 silly install resolved     readme: 'ERROR: No README data found!' } ]
+567 info install lodash@3.5.0 into /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+568 info installOne lodash@3.5.0
+569 verbose installOne of lodash to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder not in flight; installing
+570 verbose lock using /Users/eric/.npm/_locks/lodash-7e2318169fa180a5.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+571 silly install write writing lodash 3.5.0 to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+572 verbose unbuild node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+573 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash is being purged from base /Users/eric/Desktop/Github/hustlebee
+574 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+575 verbose tar unpack /Users/eric/.npm/lodash/3.5.0/package.tgz
+576 verbose tar unpacking to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+577 silly gentlyRm /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash is being purged
+578 verbose gentlyRm don't care about contents; nuking /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+579 silly gunzTarPerm modes [ '755', '644' ]
+580 silly gunzTarPerm extractEntry package.json
+581 silly gunzTarPerm extractEntry README.md
+582 silly gunzTarPerm extractEntry date.js
+583 silly gunzTarPerm extractEntry function.js
+584 silly gunzTarPerm extractEntry index.js
+585 silly gunzTarPerm extractEntry collection.js
+586 silly gunzTarPerm extractEntry lang.js
+587 silly gunzTarPerm extractEntry math.js
+588 silly gunzTarPerm extractEntry number.js
+589 silly gunzTarPerm extractEntry object.js
+590 silly gunzTarPerm extractEntry chain.js
+591 silly gunzTarPerm extractEntry string.js
+592 silly gunzTarPerm extractEntry array.js
+593 silly gunzTarPerm extractEntry utility.js
+594 silly gunzTarPerm extractEntry support.js
+595 silly gunzTarPerm extractEntry date/now.js
+596 silly gunzTarPerm extractEntry math/add.js
+597 silly gunzTarPerm extractEntry math/max.js
+598 silly gunzTarPerm extractEntry math/min.js
+599 silly gunzTarPerm extractEntry math/sum.js
+600 silly gunzTarPerm extractEntry chain/chain.js
+601 verbose write writing to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath/package.json
+602 info preinstall jmespath@0.15.0
+603 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath/package.json
+604 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath/package.json
+605 silly install resolved []
+606 verbose about to build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath
+607 info build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath
+608 silly gunzTarPerm extractEntry chain/run.js
+609 info linkStuff jmespath@0.15.0
+610 silly linkStuff jmespath@0.15.0 has /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules as its parent node_modules
+611 verbose linkBins jmespath@0.15.0
+612 verbose linkMans jmespath@0.15.0
+613 verbose rebuildBundles jmespath@0.15.0
+614 info install jmespath@0.15.0
+615 info postinstall jmespath@0.15.0
+616 verbose unlock done using /Users/eric/.npm/_locks/jmespath-7ac308088f6108a7.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/jmespath
+617 silly gunzTarPerm extractEntry chain/tap.js
+618 silly gunzTarPerm extractEntry chain/thru.js
+619 silly gunzTarPerm extractEntry chain/toJSON.js
+620 silly gunzTarPerm extractEntry chain/reverse.js
+621 silly gunzTarPerm extractEntry chain/value.js
+622 silly gunzTarPerm extractEntry chain/valueOf.js
+623 silly gunzTarPerm extractEntry chain/wrapperChain.js
+624 silly gunzTarPerm extractEntry chain/wrapperCommit.js
+625 silly gunzTarPerm extractEntry chain/wrapperPlant.js
+626 silly gunzTarPerm extractEntry chain/plant.js
+627 silly gunzTarPerm extractEntry chain/wrapperReverse.js
+628 silly gunzTarPerm extractEntry chain/lodash.js
+629 silly gunzTarPerm extractEntry chain/wrapperToString.js
+630 silly gunzTarPerm extractEntry chain/commit.js
+631 silly gunzTarPerm extractEntry chain/wrapperValue.js
+632 silly gunzTarPerm extractEntry chain/toString.js
+633 silly gunzTarPerm extractEntry number/inRange.js
+634 silly gunzTarPerm extractEntry number/random.js
+635 silly gunzTarPerm extractEntry function/after.js
+636 silly gunzTarPerm extractEntry function/curry.js
+637 silly gunzTarPerm extractEntry function/curryRight.js
+638 silly gunzTarPerm extractEntry function/debounce.js
+639 silly gunzTarPerm extractEntry function/defer.js
+640 silly gunzTarPerm extractEntry function/compose.js
+641 silly gunzTarPerm extractEntry function/flow.js
+642 silly gunzTarPerm extractEntry function/flowRight.js
+643 silly gunzTarPerm extractEntry function/memoize.js
+644 silly gunzTarPerm extractEntry function/negate.js
+645 silly gunzTarPerm extractEntry function/once.js
+646 silly gunzTarPerm extractEntry function/bindKey.js
+647 silly gunzTarPerm extractEntry function/partial.js
+648 silly gunzTarPerm extractEntry function/bindAll.js
+649 silly gunzTarPerm extractEntry function/partialRight.js
+650 silly gunzTarPerm extractEntry function/bind.js
+651 silly gunzTarPerm extractEntry function/rearg.js
+652 silly gunzTarPerm extractEntry function/before.js
+653 silly gunzTarPerm extractEntry function/spread.js
+654 silly gunzTarPerm extractEntry function/backflow.js
+655 silly gunzTarPerm extractEntry function/throttle.js
+656 silly gunzTarPerm extractEntry function/ary.js
+657 silly gunzTarPerm extractEntry function/wrap.js
+658 silly gunzTarPerm extractEntry function/delay.js
+659 silly gunzTarPerm extractEntry object/assign.js
+660 silly gunzTarPerm extractEntry object/forOwnRight.js
+661 silly gunzTarPerm extractEntry object/functions.js
+662 silly gunzTarPerm extractEntry object/has.js
+663 silly gunzTarPerm extractEntry object/forOwn.js
+664 silly gunzTarPerm extractEntry object/keys.js
+665 silly gunzTarPerm extractEntry object/keysIn.js
+666 silly gunzTarPerm extractEntry object/mapValues.js
+667 silly gunzTarPerm extractEntry object/merge.js
+668 silly gunzTarPerm extractEntry object/methods.js
+669 silly gunzTarPerm extractEntry object/forInRight.js
+670 silly gunzTarPerm extractEntry object/omit.js
+671 silly gunzTarPerm extractEntry object/forIn.js
+672 silly gunzTarPerm extractEntry object/pairs.js
+673 silly gunzTarPerm extractEntry object/findLastKey.js
+674 silly gunzTarPerm extractEntry object/pick.js
+675 silly gunzTarPerm extractEntry object/findKey.js
+676 silly gunzTarPerm extractEntry object/result.js
+677 silly gunzTarPerm extractEntry object/extend.js
+678 silly gunzTarPerm extractEntry object/transform.js
+679 silly gunzTarPerm extractEntry object/defaults.js
+680 silly gunzTarPerm extractEntry object/values.js
+681 silly gunzTarPerm extractEntry object/create.js
+682 silly gunzTarPerm extractEntry object/valuesIn.js
+683 silly gunzTarPerm extractEntry object/invert.js
+684 silly gunzTarPerm extractEntry array/chunk.js
+685 silly gunzTarPerm extractEntry array/intersection.js
+686 silly gunzTarPerm extractEntry array/last.js
+687 silly gunzTarPerm extractEntry array/lastIndexOf.js
+688 silly gunzTarPerm extractEntry array/object.js
+689 silly gunzTarPerm extractEntry array/initial.js
+690 silly gunzTarPerm extractEntry array/pullAt.js
+691 silly gunzTarPerm extractEntry array/remove.js
+692 silly gunzTarPerm extractEntry array/rest.js
+693 silly gunzTarPerm extractEntry array/slice.js
+694 silly gunzTarPerm extractEntry array/sortedIndex.js
+695 silly gunzTarPerm extractEntry array/indexOf.js
+696 silly gunzTarPerm extractEntry array/sortedLastIndex.js
+697 silly gunzTarPerm extractEntry array/head.js
+698 silly gunzTarPerm extractEntry array/tail.js
+699 silly gunzTarPerm extractEntry array/flattenDeep.js
+700 silly gunzTarPerm extractEntry array/take.js
+701 silly gunzTarPerm extractEntry array/flatten.js
+702 silly gunzTarPerm extractEntry array/takeRight.js
+703 silly gunzTarPerm extractEntry array/first.js
+704 silly gunzTarPerm extractEntry array/takeRightWhile.js
+705 silly gunzTarPerm extractEntry array/findLastIndex.js
+706 silly gunzTarPerm extractEntry array/takeWhile.js
+707 silly gunzTarPerm extractEntry array/findIndex.js
+708 silly gunzTarPerm extractEntry array/union.js
+709 silly gunzTarPerm extractEntry array/fill.js
+710 silly gunzTarPerm extractEntry array/uniq.js
+711 silly gunzTarPerm extractEntry array/dropWhile.js
+712 silly gunzTarPerm extractEntry array/unique.js
+713 silly gunzTarPerm extractEntry array/dropRightWhile.js
+714 silly gunzTarPerm extractEntry array/unzip.js
+715 silly gunzTarPerm extractEntry array/dropRight.js
+716 silly gunzTarPerm extractEntry array/without.js
+717 silly gunzTarPerm extractEntry array/drop.js
+718 silly gunzTarPerm extractEntry array/xor.js
+719 silly gunzTarPerm extractEntry array/difference.js
+720 silly gunzTarPerm extractEntry array/zip.js
+721 silly gunzTarPerm extractEntry array/compact.js
+722 silly gunzTarPerm extractEntry array/zipObject.js
+723 silly gunzTarPerm extractEntry array/pull.js
+724 silly gunzTarPerm extractEntry collection/all.js
+725 silly gunzTarPerm extractEntry collection/forEachRight.js
+726 silly gunzTarPerm extractEntry collection/groupBy.js
+727 silly gunzTarPerm extractEntry collection/include.js
+728 silly gunzTarPerm extractEntry collection/includes.js
+729 silly gunzTarPerm extractEntry collection/forEach.js
+730 silly gunzTarPerm extractEntry collection/inject.js
+731 silly gunzTarPerm extractEntry collection/invoke.js
+732 silly gunzTarPerm extractEntry collection/map.js
+733 silly gunzTarPerm extractEntry collection/max.js
+734 silly gunzTarPerm extractEntry collection/min.js
+735 silly gunzTarPerm extractEntry collection/foldr.js
+736 silly gunzTarPerm extractEntry collection/partition.js
+737 silly gunzTarPerm extractEntry collection/foldl.js
+738 silly gunzTarPerm extractEntry collection/pluck.js
+739 silly gunzTarPerm extractEntry collection/findWhere.js
+740 silly gunzTarPerm extractEntry collection/reduce.js
+741 silly gunzTarPerm extractEntry collection/findLast.js
+742 silly gunzTarPerm extractEntry collection/reduceRight.js
+743 silly gunzTarPerm extractEntry collection/find.js
+744 silly gunzTarPerm extractEntry collection/reject.js
+745 silly gunzTarPerm extractEntry collection/filter.js
+746 silly gunzTarPerm extractEntry collection/sample.js
+747 silly gunzTarPerm extractEntry collection/every.js
+748 silly gunzTarPerm extractEntry collection/select.js
+749 silly gunzTarPerm extractEntry collection/eachRight.js
+750 silly gunzTarPerm extractEntry collection/shuffle.js
+751 silly gunzTarPerm extractEntry collection/each.js
+752 silly gunzTarPerm extractEntry collection/size.js
+753 silly gunzTarPerm extractEntry collection/detect.js
+754 silly gunzTarPerm extractEntry collection/some.js
+755 silly gunzTarPerm extractEntry collection/countBy.js
+756 silly gunzTarPerm extractEntry collection/sortBy.js
+757 silly gunzTarPerm extractEntry collection/contains.js
+758 silly gunzTarPerm extractEntry collection/sortByAll.js
+759 silly gunzTarPerm extractEntry collection/collect.js
+760 silly gunzTarPerm extractEntry collection/sortByOrder.js
+761 silly gunzTarPerm extractEntry collection/at.js
+762 silly gunzTarPerm extractEntry collection/sum.js
+763 silly gunzTarPerm extractEntry collection/any.js
+764 silly gunzTarPerm extractEntry collection/where.js
+765 silly gunzTarPerm extractEntry collection/indexBy.js
+766 silly gunzTarPerm extractEntry string/camelCase.js
+767 silly gunzTarPerm extractEntry string/padLeft.js
+768 silly gunzTarPerm extractEntry string/padRight.js
+769 silly gunzTarPerm extractEntry string/parseInt.js
+770 silly gunzTarPerm extractEntry string/pad.js
+771 silly gunzTarPerm extractEntry string/snakeCase.js
+772 silly gunzTarPerm extractEntry string/startCase.js
+773 silly gunzTarPerm extractEntry string/startsWith.js
+774 silly gunzTarPerm extractEntry string/template.js
+775 silly gunzTarPerm extractEntry string/templateSettings.js
+776 silly gunzTarPerm extractEntry string/kebabCase.js
+777 silly gunzTarPerm extractEntry string/trim.js
+778 silly gunzTarPerm extractEntry string/escapeRegExp.js
+779 silly gunzTarPerm extractEntry string/trimLeft.js
+780 silly gunzTarPerm extractEntry string/escape.js
+781 silly gunzTarPerm extractEntry string/trimRight.js
+782 silly gunzTarPerm extractEntry string/endsWith.js
+783 silly gunzTarPerm extractEntry string/trunc.js
+784 silly gunzTarPerm extractEntry string/deburr.js
+785 silly gunzTarPerm extractEntry string/unescape.js
+786 silly gunzTarPerm extractEntry string/capitalize.js
+787 silly gunzTarPerm extractEntry string/words.js
+788 silly gunzTarPerm extractEntry string/repeat.js
+789 silly gunzTarPerm extractEntry internal/LazyWrapper.js
+790 silly gunzTarPerm extractEntry internal/baseWrapperValue.js
+791 silly gunzTarPerm extractEntry internal/binaryIndex.js
+792 silly gunzTarPerm extractEntry internal/binaryIndexBy.js
+793 silly gunzTarPerm extractEntry internal/bindCallback.js
+794 silly gunzTarPerm extractEntry internal/baseValues.js
+795 silly gunzTarPerm extractEntry internal/cacheIndexOf.js
+796 silly gunzTarPerm extractEntry internal/cachePush.js
+797 silly gunzTarPerm extractEntry internal/charAtCallback.js
+798 silly gunzTarPerm extractEntry internal/charsLeftIndex.js
+799 silly gunzTarPerm extractEntry internal/charsRightIndex.js
+800 silly gunzTarPerm extractEntry internal/baseUniq.js
+801 silly gunzTarPerm extractEntry internal/compareAscending.js
+802 silly gunzTarPerm extractEntry internal/baseToString.js
+803 silly gunzTarPerm extractEntry internal/compareMultiple.js
+804 silly gunzTarPerm extractEntry internal/baseSortByOrder.js
+805 silly gunzTarPerm extractEntry internal/composeArgs.js
+806 silly gunzTarPerm extractEntry internal/baseSortBy.js
+807 silly gunzTarPerm extractEntry internal/composeArgsRight.js
+808 silly gunzTarPerm extractEntry internal/baseSome.js
+809 silly gunzTarPerm extractEntry internal/createAggregator.js
+810 silly gunzTarPerm extractEntry internal/baseSlice.js
+811 silly gunzTarPerm extractEntry internal/createAssigner.js
+812 silly gunzTarPerm extractEntry internal/baseSetData.js
+813 silly gunzTarPerm extractEntry internal/createBindWrapper.js
+814 silly gunzTarPerm extractEntry internal/baseReduce.js
+815 silly gunzTarPerm extractEntry internal/createCache.js
+816 silly gunzTarPerm extractEntry internal/baseRandom.js
+817 silly gunzTarPerm extractEntry internal/createComposer.js
+818 silly gunzTarPerm extractEntry internal/basePullAt.js
+819 silly gunzTarPerm extractEntry internal/createCompounder.js
+820 silly gunzTarPerm extractEntry internal/baseProperty.js
+821 silly gunzTarPerm extractEntry internal/createCtorWrapper.js
+822 silly gunzTarPerm extractEntry internal/baseMergeDeep.js
+823 silly gunzTarPerm extractEntry internal/createExtremum.js
+824 silly gunzTarPerm extractEntry internal/baseMerge.js
+825 silly gunzTarPerm extractEntry internal/createHybridWrapper.js
+826 silly gunzTarPerm extractEntry internal/baseMatchesProperty.js
+827 silly gunzTarPerm extractEntry internal/createPad.js
+828 silly gunzTarPerm extractEntry internal/baseMatches.js
+829 silly gunzTarPerm extractEntry internal/createPartialWrapper.js
+830 silly gunzTarPerm extractEntry internal/baseMap.js
+831 silly gunzTarPerm extractEntry internal/createWrapper.js
+832 silly gunzTarPerm extractEntry internal/baseLodash.js
+833 silly gunzTarPerm extractEntry internal/deburrLetter.js
+834 silly gunzTarPerm extractEntry internal/baseIsMatch.js
+835 silly gunzTarPerm extractEntry internal/equalArrays.js
+836 silly gunzTarPerm extractEntry internal/baseIsFunction.js
+837 silly gunzTarPerm extractEntry internal/equalByTag.js
+838 silly gunzTarPerm extractEntry internal/baseIsEqualDeep.js
+839 silly gunzTarPerm extractEntry internal/equalObjects.js
+840 silly gunzTarPerm extractEntry internal/baseIsEqual.js
+841 silly gunzTarPerm extractEntry internal/escapeHtmlChar.js
+842 silly gunzTarPerm extractEntry internal/baseInvoke.js
+843 silly gunzTarPerm extractEntry internal/escapeStringChar.js
+844 silly gunzTarPerm extractEntry internal/baseIndexOf.js
+845 silly gunzTarPerm extractEntry internal/extremumBy.js
+846 silly gunzTarPerm extractEntry internal/baseFunctions.js
+847 silly gunzTarPerm extractEntry internal/getData.js
+848 silly gunzTarPerm extractEntry internal/baseForRight.js
+849 silly gunzTarPerm extractEntry internal/getView.js
+850 silly gunzTarPerm extractEntry internal/baseForOwnRight.js
+851 silly gunzTarPerm extractEntry internal/indexOfNaN.js
+852 silly gunzTarPerm extractEntry internal/baseForOwn.js
+853 silly gunzTarPerm extractEntry internal/initCloneArray.js
+854 silly gunzTarPerm extractEntry internal/baseForIn.js
+855 silly gunzTarPerm extractEntry internal/initCloneByTag.js
+856 silly gunzTarPerm extractEntry internal/baseFor.js
+857 silly gunzTarPerm extractEntry internal/initCloneObject.js
+858 silly gunzTarPerm extractEntry internal/baseFlatten.js
+859 silly gunzTarPerm extractEntry internal/isBindable.js
+860 silly gunzTarPerm extractEntry internal/baseFind.js
+861 silly gunzTarPerm extractEntry internal/isIndex.js
+862 silly gunzTarPerm extractEntry internal/baseFilter.js
+863 silly gunzTarPerm extractEntry internal/isIterateeCall.js
+864 silly gunzTarPerm extractEntry internal/baseFill.js
+865 silly gunzTarPerm extractEntry internal/isLength.js
+866 silly gunzTarPerm extractEntry internal/baseEvery.js
+867 silly gunzTarPerm extractEntry internal/isObjectLike.js
+868 silly gunzTarPerm extractEntry internal/baseEachRight.js
+869 silly gunzTarPerm extractEntry internal/isSpace.js
+870 silly gunzTarPerm extractEntry internal/baseEach.js
+871 silly gunzTarPerm extractEntry internal/isStrictComparable.js
+872 silly gunzTarPerm extractEntry internal/baseDifference.js
+873 silly gunzTarPerm extractEntry internal/lazyClone.js
+874 silly gunzTarPerm extractEntry internal/baseDelay.js
+875 silly gunzTarPerm extractEntry internal/lazyReverse.js
+876 silly gunzTarPerm extractEntry internal/baseCreate.js
+877 silly gunzTarPerm extractEntry internal/lazyValue.js
+878 silly gunzTarPerm extractEntry internal/baseCopy.js
+879 silly gunzTarPerm extractEntry internal/mapDelete.js
+880 silly gunzTarPerm extractEntry internal/baseCompareAscending.js
+881 silly gunzTarPerm extractEntry internal/mapGet.js
+882 silly gunzTarPerm extractEntry internal/baseClone.js
+883 silly gunzTarPerm extractEntry internal/mapHas.js
+884 silly gunzTarPerm extractEntry internal/baseCallback.js
+885 silly gunzTarPerm extractEntry internal/mapSet.js
+886 silly gunzTarPerm extractEntry internal/baseBindAll.js
+887 silly gunzTarPerm extractEntry internal/mergeData.js
+888 silly gunzTarPerm extractEntry internal/baseAt.js
+889 silly gunzTarPerm extractEntry internal/metaMap.js
+890 silly gunzTarPerm extractEntry internal/baseAssign.js
+891 silly gunzTarPerm extractEntry internal/pickByArray.js
+892 silly gunzTarPerm extractEntry internal/assignOwnDefaults.js
+893 silly gunzTarPerm extractEntry internal/pickByCallback.js
+894 silly gunzTarPerm extractEntry internal/assignDefaults.js
+895 silly gunzTarPerm extractEntry internal/reEscape.js
+896 silly gunzTarPerm extractEntry internal/arraySome.js
+897 silly gunzTarPerm extractEntry internal/reEvaluate.js
+898 silly gunzTarPerm extractEntry internal/arrayReduceRight.js
+899 silly gunzTarPerm extractEntry internal/reInterpolate.js
+900 silly gunzTarPerm extractEntry internal/arrayReduce.js
+901 silly gunzTarPerm extractEntry internal/reorder.js
+902 silly gunzTarPerm extractEntry internal/arrayMin.js
+903 silly gunzTarPerm extractEntry internal/replaceHolders.js
+904 silly gunzTarPerm extractEntry internal/arrayMax.js
+905 silly gunzTarPerm extractEntry internal/setData.js
+906 silly gunzTarPerm extractEntry internal/arrayMap.js
+907 silly gunzTarPerm extractEntry internal/shimIsPlainObject.js
+908 silly gunzTarPerm extractEntry internal/arrayFilter.js
+909 silly gunzTarPerm extractEntry internal/shimKeys.js
+910 silly gunzTarPerm extractEntry internal/arrayEvery.js
+911 silly gunzTarPerm extractEntry internal/sortedUniq.js
+912 silly gunzTarPerm extractEntry internal/arrayEachRight.js
+913 silly gunzTarPerm extractEntry internal/toIterable.js
+914 silly gunzTarPerm extractEntry internal/arrayEach.js
+915 silly gunzTarPerm extractEntry internal/toObject.js
+916 silly gunzTarPerm extractEntry internal/arrayCopy.js
+917 silly gunzTarPerm extractEntry internal/trimmedLeftIndex.js
+918 silly gunzTarPerm extractEntry internal/SetCache.js
+919 silly gunzTarPerm extractEntry internal/trimmedRightIndex.js
+920 silly gunzTarPerm extractEntry internal/MapCache.js
+921 silly gunzTarPerm extractEntry internal/unescapeHtmlChar.js
+922 silly gunzTarPerm extractEntry internal/LodashWrapper.js
+923 silly gunzTarPerm extractEntry internal/wrapperClone.js
+924 silly gunzTarPerm extractEntry internal/bufferClone.js
+925 silly gunzTarPerm extractEntry LICENSE.txt
+926 silly gunzTarPerm extractEntry utility/attempt.js
+927 silly gunzTarPerm extractEntry utility/identity.js
+928 silly gunzTarPerm extractEntry utility/iteratee.js
+929 silly gunzTarPerm extractEntry utility/matches.js
+930 silly gunzTarPerm extractEntry utility/matchesProperty.js
+931 silly gunzTarPerm extractEntry utility/constant.js
+932 silly gunzTarPerm extractEntry utility/noop.js
+933 silly gunzTarPerm extractEntry utility/property.js
+934 silly gunzTarPerm extractEntry utility/propertyOf.js
+935 silly gunzTarPerm extractEntry utility/range.js
+936 silly gunzTarPerm extractEntry utility/times.js
+937 silly gunzTarPerm extractEntry utility/callback.js
+938 silly gunzTarPerm extractEntry utility/uniqueId.js
+939 silly gunzTarPerm extractEntry utility/mixin.js
+940 silly gunzTarPerm extractEntry lang/clone.js
+941 silly gunzTarPerm extractEntry lang/isError.js
+942 silly gunzTarPerm extractEntry lang/isFinite.js
+943 silly gunzTarPerm extractEntry lang/isFunction.js
+944 silly gunzTarPerm extractEntry lang/isEqual.js
+945 silly gunzTarPerm extractEntry lang/isNaN.js
+946 silly gunzTarPerm extractEntry lang/isNative.js
+947 silly gunzTarPerm extractEntry lang/isNull.js
+948 silly gunzTarPerm extractEntry lang/isNumber.js
+949 silly gunzTarPerm extractEntry lang/isObject.js
+950 silly gunzTarPerm extractEntry lang/isEmpty.js
+951 silly gunzTarPerm extractEntry lang/isPlainObject.js
+952 silly gunzTarPerm extractEntry lang/isElement.js
+953 silly gunzTarPerm extractEntry lang/isRegExp.js
+954 silly gunzTarPerm extractEntry lang/isDate.js
+955 silly gunzTarPerm extractEntry lang/isString.js
+956 silly gunzTarPerm extractEntry lang/isBoolean.js
+957 silly gunzTarPerm extractEntry lang/isTypedArray.js
+958 silly gunzTarPerm extractEntry lang/isArray.js
+959 silly gunzTarPerm extractEntry lang/isUndefined.js
+960 silly gunzTarPerm extractEntry lang/isArguments.js
+961 silly gunzTarPerm extractEntry lang/toArray.js
+962 silly gunzTarPerm extractEntry lang/cloneDeep.js
+963 silly gunzTarPerm extractEntry lang/toPlainObject.js
+964 silly gunzTarPerm extractEntry lang/isMatch.js
+965 verbose write writing to /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash/package.json
+966 info preinstall lodash@3.5.0
+967 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash/package.json
+968 verbose readDependencies loading dependencies from /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash/package.json
+969 silly install resolved []
+970 verbose about to build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+971 info build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+972 info linkStuff lodash@3.5.0
+973 silly linkStuff lodash@3.5.0 has /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules as its parent node_modules
+974 verbose linkBins lodash@3.5.0
+975 verbose linkMans lodash@3.5.0
+976 verbose rebuildBundles lodash@3.5.0
+977 info install lodash@3.5.0
+978 info postinstall lodash@3.5.0
+979 verbose unlock done using /Users/eric/.npm/_locks/lodash-7e2318169fa180a5.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder/node_modules/lodash
+980 verbose about to build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+981 info build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+982 info linkStuff xmlbuilder@2.6.2
+983 silly linkStuff xmlbuilder@2.6.2 has /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules as its parent node_modules
+984 verbose linkBins xmlbuilder@2.6.2
+985 verbose linkMans xmlbuilder@2.6.2
+986 verbose rebuildBundles xmlbuilder@2.6.2
+987 verbose rebuildBundles [ 'lodash' ]
+988 info install xmlbuilder@2.6.2
+989 info postinstall xmlbuilder@2.6.2
+990 verbose unlock done using /Users/eric/.npm/_locks/xmlbuilder-7a284cf9171f0ed3.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk/node_modules/xmlbuilder
+991 verbose about to build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+992 info build /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+993 info linkStuff aws-sdk@2.4.4
+994 silly linkStuff aws-sdk@2.4.4 has /Users/eric/Desktop/Github/hustlebee/node_modules as its parent node_modules
+995 verbose linkBins aws-sdk@2.4.4
+996 verbose linkMans aws-sdk@2.4.4
+997 verbose rebuildBundles aws-sdk@2.4.4
+998 verbose rebuildBundles [ 'jmespath', 'sax', 'xml2js', 'xmlbuilder' ]
+999 info install aws-sdk@2.4.4
+1000 info postinstall aws-sdk@2.4.4
+1001 verbose unlock done using /Users/eric/.npm/_locks/aws-sdk-511b98115c5f3773.lock for /Users/eric/Desktop/Github/hustlebee/node_modules/aws-sdk
+1002 verbose validateInstall loading /Users/eric/Desktop/Github/hustlebee/package.json for validation
+1003 verbose stack Error: The package angulartics@0.20.3 does not satisfy its siblings' peerDependencies requirements!
+1003 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:125:32
+1003 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:268:7
+1003 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
+1003 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+1003 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+1003 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+1003 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+1003 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+1003 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+1003 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+1004 verbose cwd /Users/eric/Desktop/Github/hustlebee
+1005 error Darwin 15.4.0
+1006 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "aws-sdk" "--save"
+1007 error node v4.0.0
+1008 error npm  v2.14.2
+1009 error code EPEERINVALID
+1010 error peerinvalid The package angulartics@0.20.3 does not satisfy its siblings' peerDependencies requirements!
+1010 error peerinvalid Peer angulartics-google-analytics@0.1.4 wants angulartics@~1.0.0
+1011 verbose exit [ 1, true ]

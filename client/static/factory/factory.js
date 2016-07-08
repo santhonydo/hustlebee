@@ -215,8 +215,10 @@ hustleBeeAppModule.factory('hustleBeeAppFactory', function($q, $timeout, $locati
 
 
   factory.adminUpdateUser = function(data, callback){
-    $http.post('/adminUpdateUser', data).success(function(data){
-      callback(data);
+    console.log(data)
+    $http.post('/adminUpdateUser', data).success(function(output){
+      console.log(output)
+      callback(output);
     })
   }
 
