@@ -124,6 +124,14 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 	    controller: 'UserSettingsController'
 	  })
 
+	  .state('user.shifts', {
+      url: '/employee/shifts',
+	    templateUrl: '/static/partials/user/userShifts.html',
+	    caseInsensitiveMatch: true,
+	    controller: 'UserShiftController'
+	  })
+
+
 
 		//Business Section
 
