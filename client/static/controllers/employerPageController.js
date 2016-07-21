@@ -1,8 +1,8 @@
-
-hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootScope, $state, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootScope, $state, $stateParams, userFactory, informationFactory, hustleBeeAppFactory){
 	
-	var auth = hustleBeeAppFactory.getUserStatus();
-	var user = hustleBeeAppFactory.getUserData();
+  console.log('hi')
+	var auth = userFactory.getUserStatus();
+	var user = userFactory.getUserData();
 
 	$scope.error = false
 
@@ -14,7 +14,7 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
   }
 
 	$scope.loadShifts = function() {
-		hustleBeeAppFactory.getShifts(user, function(success){
+		informationFactory.post(user, '/getShifts', function(success){
 			var allShifts = success;
 			$scope.shiftTable = false;
 			$scope.searchBar = false;
@@ -63,7 +63,7 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 
 	$scope.deleteShift = function(shiftId){
 		var shiftId = {id: shiftId};
-		hustleBeeAppFactory.deleteShift(shiftId, function(success){
+		informationFactory.post(shiftId, '/deleteShift', function(success){
 			if (success.error == "cannot delete"){
 				$scope.error = true;
 				$scope.errorMessage = "Cannot delete shifts that are in progress. Please contact us if you have additional questions."
@@ -74,13 +74,12 @@ hustleBeeAppModule.controller('UserHomePageController', function($scope, $rootSc
 	}	
 })
 
-hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $stateParams, userFactory, authFactory, informationFactory, hustleBeeAppFactory){
 	
 	$scope.error = false;
 	$scope.alertMessage = false;
 	
-	var auth = hustleBeeAppFactory;
-	var userInfo = hustleBeeAppFactory.getUserData();
+	var userInfo = userFactory.getUserData();
 	if (userInfo.status == 1) {
 		$scope.unverified = false;
 	} else {
@@ -181,7 +180,7 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			$scope.errorMessage = "Invalid date."
 		} else {
 			$scope.error = false;
-			var userInfo = hustleBeeAppFactory.getUserData();
+			var userInfo = userFactory.getUserData();
 			var userId = userInfo._id;
 			var hourToMins = shiftHour.value * 60;
 			var shiftDuration = hourToMins + shiftMin.value;
@@ -220,7 +219,7 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			shiftData.shift = shift;
 			shiftData.userInfo = userInfo;
 
-			hustleBeeAppFactory.postShift(shiftData, function(data){
+			informationFactory.post(shiftData, '/postShift', function(data){
 				if(data){
 					$state.go('business.user');
 				} else {
@@ -231,12 +230,12 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 	}
 })
 
-hustleBeeAppModule.controller('SettingsController', function($scope, $state, $uibModal, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('SettingsController', function($scope, $state, $uibModal, $stateParams, informationFactory, userFactory, hustleBeeAppFactory){
 	
 	$scope.success = false;
 
-	var userInfo = hustleBeeAppFactory.getUserData();
-	var auth = hustleBeeAppFactory.getUserStatus();
+	var userInfo = userFactory.getUserData();
+	var auth = userFactory.getUserStatus();
 
 	if (auth === false) {
 		$state.go('login');
@@ -286,14 +285,15 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 	getUserInfo();
 
 	var getUpdatedUserData = function() {
-		hustleBeeAppFactory.getUpdatedUserData(userInfo._id, function(data){
-			userInfo = data;
+		informationFactory.post({id : userInfo._id}, '/getUser', function(output){
+      userFactory.setUser(true, output);
+      userInfo = userFactory.getUserData();
 			getUserInfo();
 		})
 	}
 
 	$scope.$on('updateUser', function(){
-		getUpdatedUserData();
+    getUpdatedUserData();
 	})
 
 	$scope.add = function() {
@@ -310,7 +310,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 			return
 		} else {
 			var addressId = {addressId: id};
-			hustleBeeAppFactory.deleteAddress(addressId, function(data){
+			informationFactory.post(addressId, '/deleteAddress', function(data){
 				if(data){
 					getUpdatedUserData();
 					alert('Address has been removed successfully.');
@@ -323,7 +323,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 		if(angular.isUndefined(user.phoneNumber)){
 			return
 		} else {
-			hustleBeeAppFactory.updateUser(user, function(data){
+			informationFactory.post(user, '/updateUser', function(data){
 				if(data){
 					getUpdatedUserData();
 					$scope.success = true;

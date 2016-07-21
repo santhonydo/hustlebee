@@ -83,17 +83,6 @@ module.exports = (function(){
           });
         });
       });
-      // var bucket = new AWS.S3({params: {Bucket: 'hustlebee'}});
-      // bucket.config.loadFromPath('./config/config.json');
-      // var params = {Key: 'TEST/' + req.body.userId, contentType: req.file.mimetype, Body: req.file};
-      // bucket.upload(params, function(err,data){
-      //   if(err){
-      //     console.log(err);
-      //   }
-      //   else{
-      //     res.json(true);
-      //   }
-      // })
     },
 
     getUser: function(req, res){
@@ -101,6 +90,7 @@ module.exports = (function(){
         if(err){
           console.log('Error finding user');
         } else {
+          console.log(user);
           res.json(user);
         }
       })

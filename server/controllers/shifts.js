@@ -162,7 +162,7 @@ module.exports = function () {
             bcc: ['anthony@hustlebee.com', 'tracy@hustlebee.com'], 
             from: 'support@hustlebee.com',
             subject: 'Shift accepted',
-						html: '<p>Hi ' + req.body.employerFirstName + ', </p><p>Your shift for ' + req.body.shiftDate + ', has been accepted.</p><p>Our customer representative will contact you shortly to confirm the shift before releasing employee contact information. If you have any urgent matters, please do not hesistate to email us at support@hustlebee.com.</p><p>Best regards,</p><p>The Hustlebee Team</p>.'
+            html: '<p>Hi ' + req.body.employerFirstName + ', </p><p>Your shift for ' + req.body.shiftDate + ', has been accepted.</p><p>Our customer representative will contact you shortly to confirm the shift before releasing employee contact information. If you have any urgent matters, please do not hesistate to email us at support@hustlebee.com.</p><p>Best regards,</p><p>The Hustlebee Team</p>.'
           }, function(err, json){
             if (err){
               return console.log(err);

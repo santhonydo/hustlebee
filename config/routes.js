@@ -32,10 +32,26 @@ module.exports = function(app, passport){
 	});
 
 	app.post('/login', function(req, res, next){
-		console.log('route login')
 		passport.authenticate('login', function(err, user, info){
 			if(err){
 				console.log('error logging in: ' + err);
+				return res.status(500).json({err: err});
+			}
+      console.log(user);
+			if (user === false){
+				console.log('false user');
+				res.json(req.flash('message'))
+			} else {
+				res.status(200).send(user);
+			}
+		}) (req, res, next);
+	});
+
+	app.post('/register', function(req, res, next){
+    console.log('hi 3')
+		passport.authenticate('register', function(err, user, info){
+			if(err){
+				console.log('error registering : ' + err);
 				return res.status(500).json({err: err});
 			}
 			if (user === false){
@@ -61,38 +77,6 @@ module.exports = function(app, passport){
 			}
 		}) (req, res, next);
 	});
-
-
-	app.post('/register', function(req, res, next) {
-		passport.authenticate('register', function(err, user) {
-			if (err) {
-				console.log('here is the error: ' + err);
-				return next(err); 
-			}
-			if (user === false) {
-				res.json(req.flash('message'));
-			} else {
-				console.log(user);
-				res.status(200).send(user); 
-			}
-		})(req, res, next); 
-	});
-
-	app.post('/registerUser', function(req, res, next) {
-		passport.authenticate('registerUser', function(err, user) {
-			if (err) {
-				console.log('here is the error: ' + err);
-				return next(err); 
-			}
-			if (user === false) {
-				res.json(req.flash('message'));
-			} else {
-				console.log(user);
-				res.status(200).send(user); 
-			}
-		})(req, res, next); 
-	});
-
 
 	app.post('/forgot', function(req, res, next){
 		async.waterfall([
@@ -222,7 +206,9 @@ module.exports = function(app, passport){
 	})
 
 	app.post('/adminLogin', function(req, res){
+    console.log('hi', req.body)
 		users.adminLogin(req, res);
+    console.log('bi', res.body)
 	})
 
 	app.post('/adminDelete', function(req,res){

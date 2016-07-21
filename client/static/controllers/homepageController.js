@@ -1,4 +1,4 @@
-hustleBeeAppModule.controller('HomepageController', function($scope, $location, $anchorScroll, $uibModal, $state, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('HomepageController', function($scope, $location, $anchorScroll, $uibModal, $state, $stateParams, userFactory, hustleBeeAppFactory){
 
   if($location.$$search.param == 'register'){
     $location.hash('fh5co-cta');
@@ -14,7 +14,7 @@ hustleBeeAppModule.controller('HomepageController', function($scope, $location, 
   }
 
 	$scope.businessPage = function() {
-		var auth = hustleBeeAppFactory.getUserStatus();
+		var auth = userFactory.getUserStatus();
 
 		if (auth === true){
 			$state.go('business.user');

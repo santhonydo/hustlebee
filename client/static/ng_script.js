@@ -1,8 +1,8 @@
 var hustleBeeAppModule = angular.module('hustleBeeApp', ['ngRoute', 'ui.router', 'ui.bootstrap', 'ngMessages', 'stormpath','stormpath.templates', 'angulartics', 'angulartics.google.analytics', 'uiGmapgoogle-maps']);
 
-hustleBeeAppModule.run(function ($state, $rootScope, hustleBeeAppFactory, $location) {
+hustleBeeAppModule.run(function ($state, $rootScope, userFactory, hustleBeeAppFactory, $location) {
 	$rootScope.$on('$stateChangeStart', function (event, to) {
-		var auth = hustleBeeAppFactory;
+		var auth = userFactory;
 		if((to.data && to.data.loggedInUser === true) && (auth.getUserStatus() === null || auth.getUserStatus() === false)){
 			$state.go('login');
 			event.preventDefault();
@@ -75,20 +75,6 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 	    controller: 'AdminMainController'
 	  })
 
-	  .state('shifts', {
-	    url: '',
-	    templateUrl: '/static/partials/shifts/shiftsDashboard.html',
-	    caseInsensitiveMatch: true,
-	    controller: 'ShiftsController'
-	  })
-
-	  .state('shifts.main', {
-	    url: '/shifts',
-	    templateUrl: '/static/partials/shifts/shiftsMain.html',
-	    caseInsensitiveMatch: true,
-	    controller: 'ShiftsMainController'
-	  })
-
 	  .state('user', {
 	    url: '',
 	    templateUrl: '/static/partials/user/userDashboard.html',
@@ -100,14 +86,14 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 	    url: '/employee/login',
 	    templateUrl: '/static/partials/user/userLogin.html',
 	    caseInsensitiveMatch: true,
-	    controller: 'UserLoginController'
+	    controller: 'AuthController'
 	  })
 
 	  .state('userRegister', {
 	    url: '/employee/register',
 	    templateUrl: '/static/partials/user/userRegister.html',
 	    caseInsensitiveMatch: true,
-	    controller: 'UserRegisterController'
+	    controller: 'AuthController'
 	  })
     
 	  .state('user.main', {
@@ -137,35 +123,42 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 
 		.state('business', {
 			url: '',
-			templateUrl: '/static/partials/dashboard.html',
+			templateUrl: '/static/partials/business/dashboard.html',
 			caseInsensitiveMatch: true,
 			controller: 'DashboardController'
 		})
 
 		.state('employerInfoPage', {
 			url: '/business',
-			templateUrl: '/static/partials/employerInfoPage.html',
+			templateUrl: '/static/partials/business/employerInfoPage.html',
 			caseInsensitiveMatch: true,
 			controller: 'EmployerInfoPageController'
 		})
 
 		.state('login', {
 			url: '/business/login',
-			templateUrl: '/static/partials/login.html',
+			templateUrl: '/static/partials/auth/login.html',
 			caseInsensitiveMatch: true,
 			controller: 'AuthController'
 		})
 
 		.state('register', {
 			url: '/business/register',
-			templateUrl: '/static/partials/register.html',
+			templateUrl: '/static/partials/auth/register.html',
+			caseInsensitiveMatch: true,
+			controller: 'AuthController'
+		})
+
+		.state('credit', {
+			url: '/business/register/credit',
+			templateUrl: '/static/partials/auth/credit.html',
 			caseInsensitiveMatch: true,
 			controller: 'AuthController'
 		})
 
 		.state('forgot', {
 			url: '/business/forgot',
-			templateUrl: '/static/partials/forgot.html',
+			templateUrl: '/static/partials/auth/forgot.html',
 			caseInsensitiveMatch: true,
 			controller: 'ForgotPasswordController'
 		})
@@ -178,14 +171,14 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 
 		.state('resetPassword', {
 			url: '/business/resetPassword',
-			templateUrl: '/static/partials/resetPassword.html',
+			templateUrl: '/static/partials/auth/resetPassword.html',
 			caseInsensitiveMatch: true,
 			controller: 'NewPasswordController'
 		})
 
 		.state('business.user', {
 			url: '/business/user',
-			templateUrl: '/static/partials/userBusinessHome.html',
+			templateUrl: '/static/partials/business/userBusinessHome.html',
 			caseInsensitiveMatch: true,
 			controller: 'UserHomePageController',
 			data: {
@@ -195,7 +188,7 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 
 		.state('business.postShift', {
 			url: '/business/postShift',
-			templateUrl: '/static/partials/postJob.html',
+			templateUrl: '/static/partials/business/postJob.html',
 			caseInsensitiveMatch: true,
 			controller: 'JobPostingController',
 			data: {
@@ -205,7 +198,7 @@ hustleBeeAppModule.config(function($stateProvider, $urlRouterProvider, uiGmapGoo
 
 		.state('business.settings', {
 			url: '/business/settings',
-			templateUrl: '/static/partials/settings.html',
+			templateUrl: '/static/partials/business/settings.html',
 			caseInsensitiveMatch: true,
 			controller: 'SettingsController',
 			data: {

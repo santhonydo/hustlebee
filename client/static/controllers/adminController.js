@@ -1,10 +1,8 @@
-hustleBeeAppModule.controller('AdminController', function($scope, $rootScope, $uibModal, $location, $state, $stateParams, hustleBeeAppFactory){
-
-  var auth = hustleBeeAppFactory;
+hustleBeeAppModule.controller('AdminController', function($scope, authFactory, userFactory, $rootScope, $uibModal, $location, $state, $stateParams, hustleBeeAppFactory){
 
   $rootScope.loggedIn = false;
 
-  if (auth.getUserStatus() === true) {
+  if (userFactory.getUserStatus() === true) {
     $rootScope.loggedIn = true;
   }
 
@@ -27,7 +25,7 @@ hustleBeeAppModule.controller('AdminController', function($scope, $rootScope, $u
   };
 
   $scope.logout = function(){		
-    hustleBeeAppFactory.logout(function(success){
+    authFactory.logout(function(success){
       if(success){
         $state.go('business.home');
       }
@@ -36,22 +34,24 @@ hustleBeeAppModule.controller('AdminController', function($scope, $rootScope, $u
 
 });
 
-hustleBeeAppModule.controller('AdminLoginController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
-  var auth = hustleBeeAppFactory;
+hustleBeeAppModule.controller('AdminLoginController', function($scope, $location, authFactory, userFactory, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
 
-  if (auth.getUserStatus() === true) {
+  if (userFactory.getUserStatus() === true) {
     $rootScope.loggedIn = true;
   } else {
     $rootScope.loggedIn = false;
   }
 
   $scope.adminLogin = function(data){
-    hustleBeeAppFactory.adminLogin(data);
+    authFactory.adminLogin(data, function(output){
+      userFactory.setStatus(output);
+      $location.path('/admin/main');
+    });
   };
 
 });
 
-hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal, $rootScope, $state, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('AdminMainController', function($scope,  authFactory, userFactory,  $uibModal, $rootScope, $state, $stateParams, informationFactory, hustleBeeAppFactory){
   //PAGE AND VARIABLE SETUP///////////////////////////////////////////////////////
   //filter set up
   $scope.filters = {
@@ -73,7 +73,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
     $scope.mainInfo = [];
     var theArray1 = [];
     var theArray2 = [];
-    hustleBeeAppFactory.useInfo(function(data){
+    informationFactory.get('/getInfo', function(data){
       if($scope.filters.employee == 'employeeFilter'){
         for(var x in data){
           if(data[x].employer == false){
@@ -141,14 +141,13 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
     return diff / (1000 * 60 * 60 * 24);
   }
   var newDate = new Date()
-  var auth = hustleBeeAppFactory;
   var getInfo = function(){
-    hustleBeeAppFactory.getInfo(function(data){
+    informationFactory.get('getInfo', function(data){
       if(data){
         $scope.mainInfo = data;
       }
     });
-    hustleBeeAppFactory.checkPictureUpdates(function(data){
+    informationFactory.get('checkPictureUpdates', function(data){
       for(x in data.Contents){
         for(y in $scope.mainInfo){
           if($scope.mainInfo[y]._id == data.Contents[x].Key.slice(8)){
@@ -165,7 +164,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
   };
   //reload page if the series of modals closes
   $scope.$on("updatelist", function(){
-    hustleBeeAppFactory.getInfo(function(data){
+    informationFactory.get('/getInfo', function(data){
       if(data){
         $scope.mainInfo = data;
       }
@@ -197,9 +196,9 @@ hustleBeeAppModule.controller('AdminMainController', function($scope, $uibModal,
   //PAGE AND VARIABLE SETUP ENDS//////////////////////////////////////////////////
 
   //authentication and retrieval of initial info
-  hustleBeeAppFactory.checkStatus();
+  userFactory.checkStatus();
   getInfo();
-  if (auth.getUserStatus() === true) {
+  if (userFactory.getUserStatus() === true) {
     $rootScope.loggedIn = true;
   } else {
     $rootScope.loggedIn = false;

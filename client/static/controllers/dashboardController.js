@@ -1,6 +1,6 @@
-hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope, $uibModal, $location, $state, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope, $uibModal, $location, $state, $stateParams, userFactory, authFactory, hustleBeeAppFactory){
 
-	var auth = hustleBeeAppFactory;
+	var auth = userFactory;
 
 	if (auth.getUserStatus() === true) {
 		$rootScope.loggedIn = true;
@@ -12,7 +12,7 @@ hustleBeeAppModule.controller('DashboardController', function($scope, $rootScope
 
 	$scope.logout = function(){	
 		$rootScope.loggedIn = false;	
-		hustleBeeAppFactory.logout(function(success){
+		authFactory.logout(function(success){
 			if(success){
 				$state.go('login');
 			}

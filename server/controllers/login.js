@@ -9,7 +9,6 @@ module.exports = function(passport){
 			passReqToCallback: true 
 		},
 		function(req, username, password, done){
-			console.log('in login controllers')
 			User.findOne({'username' : username}).populate('addresses').exec(
 				function(err, user){
 					if(err)
@@ -19,46 +18,12 @@ module.exports = function(passport){
 						return done(null, false, 
 							req.flash('message', 'User Not found.'));
 					}
-          if(user.employer !== true){
-            return done(null, false, req.flash('message', 'User Not Found'));
-          }
-
 					if(!isValidPassword(user, password)){
 						console.log('Invalid Password');
 						return done(null, false,
 							req.flash('message', 'Invalid Password'));
 					}
-
-					return done(null, user);
-				}
-			)
-		}
-	))
-	
-	passport.use('loginUser', new LocalStrategy({ 
-			passReqToCallback: true 
-		},
-		function(req, username, password, done){
-			console.log('in login controllers')
-			User.findOne({'username' : username}).populate('addresses').exec(
-				function(err, user){
-					if(err)
-						return done(err);
-					if(!user){
-						console.log('User Not Found with username ' + username);
-						return done(null, false, 
-							req.flash('message', 'User Not found.'));
-					}
-          if(user.employer !== false){
-            return done(null, false, req.flash('message', 'User Not Found'));
-          }
-
-					if(!isValidPassword(user, password)){
-						console.log('Invalid Password');
-						return done(null, false,
-							req.flash('message', 'Invalid Password'));
-					}
-
+          console.log('hiii', user);
 					return done(null, user);
 				}
 			)

@@ -1,0 +1,54 @@
+<div class="jumbotron2" style="background: url(./static/images/medteam.jpg) no-repeat center center;-webkit-background-size: cover;
+                        -moz-background-size: cover;
+                        -o-background-size: cover;
+                        background-size: cover;">
+  <div class="container">
+    <div class="row" style="margin-top: 40px; margin-bottom: 20px">
+      <div class="col-md-12 text-center">
+        <a href="/"><img src="./static/images/hustlebee_logo.png" alt="Hustlebee Logo"></a>
+      </div>
+    </div>
+    <div class="col-md-offset-2 col-md-8 well" style="background-color: rgba(245, 245, 245, 0.9);">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h3 class="fh5co-sub">Credit Card Information (Optional)</h3>
+        </div>
+      </div>
+      <form name="jobPostingForm">
+        <div class="row">
+          Add credit card to account!
+          <input type="checkbox">
+          <div class="col-md-12">
+              <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+            <div class="col-md-6">
+              <div class='form-group' ng-class="{'has-error' : jobPostingForm.creditNumber.$invalid}">
+                <input type="text" class="form-control" name="creditNumber" ng-model="creditCard.number" placeholder="Credit Card Number" required size="20" data-stripe="number">
+              </div>
+            </div>	
+            <div class="col-md-6">
+              <div class='form-group' ng-class="{'has-error' : jobPostingForm.zipcode.$invalid}">
+              <input type="text" class="form-control" name="zipcode" ng-model="creditCard.zip" placeholder="Zipcode" required size="5" data-stripe="zip">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-center">
+            <div class="col-md-6">
+              <div class='form-group' ng-class="{'has-error' : jobPostingForm.exp_month.$invalid}">
+              <input type="text" class="form-control" name="exp_month" ng-model="creditCard.exp_month" placeholder="Month example: 08" required size="2" data-stripe="exp_month">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class='form-group' ng-class="{'has-error' : jobPostingForm.exp_year.$invalid}">
+              <input type="text" class="form-control" name="exp_year" ng-model="creditCard.exp_year" placeholder="Year example: 18" required size="2" data-stripe="exp_year">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-default" ng-click="registerBusiness(creditCard)">Register</button>
+            <p>Already have an account? <a style="cursor: pointer; color: #FEC900;" ng-click="backToLogin()">Login here</a></p>
+          </div>
+        </div>
+      </form>
+    </div>	
+  </div>
+</div>

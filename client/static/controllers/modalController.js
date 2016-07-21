@@ -1,4 +1,4 @@
-hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope, $uibModal, $uibModalInstance, info, $location, $state, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope, $uibModal, $uibModalInstance, info, $location, $state, $stateParams, informationFactory, hustleBeeAppFactory){
 
   $scope.error = false;
   $scope.disabled = true;
@@ -6,7 +6,7 @@ hustleBeeAppModule.controller('InfoModalController', function($scope, $rootScope
   $scope.info.url = "blank";
 
 
-  hustleBeeAppFactory.getPictures(info._id, function(data){
+  informationFactory.post({_id : info._id}, 'getPictures', function(data){
     $scope.info.url =  data;
   });
 
@@ -55,7 +55,7 @@ hustleBeeAppModule.controller('deleteModalController', function($scope, $rootSco
   $scope.info = userDeleteInfo;
 
   $scope.adminDelete = function(data){
-    hustleBeeAppFactory.adminDelete(data, function(output){
+    informationFactory.post(data, '/adminDelete', function(output){
       if(output === true){
         $rootScope.$broadcast('updatelist');
         $uibModalStack.dismissAll();
@@ -69,7 +69,7 @@ hustleBeeAppModule.controller('deleteModalController', function($scope, $rootSco
 
 });
 
-hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $rootScope, $uibModal, $uibModalInstance, $uibModalStack, changeInfo, $location, $state, $stateParams, hustleBeeAppFactory){
+hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $rootScope, $uibModal, $uibModalInstance, $uibModalStack, changeInfo, $location, $state, $stateParams, informationFactory, hustleBeeAppFactory){
 
   $scope.error = false;
   $scope.disabled = true;
@@ -111,7 +111,7 @@ hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $roo
     if(data.phoneNumber === undefined){
       data.phoneNumber = changeInfo.phoneNumber;
     }
-    hustleBeeAppFactory.adminUpdateUser(data, function(output){
+    informationFactory.post(data, '/adminUpdateUser', function(output){
       $rootScope.$broadcast('updatelist');
       $uibModalStack.dismissAll();
     });
@@ -123,12 +123,12 @@ hustleBeeAppModule.controller('InfoChangeModalController', function($scope, $roo
 
 });
 
-hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $state, $uibModalInstance, hustleBeeAppFactory, uiGmapGoogleMapApi){
+hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $state, $uibModalInstance, userFactory, informationFactory, hustleBeeAppFactory, uiGmapGoogleMapApi){
 
   $scope.error = false;
   $scope.success = false;
 
-  var userInfo = hustleBeeAppFactory.getUserData();
+  var userInfo = userFactory.getUserData();
 
   $scope.states = [{value: "CA", label: "CA"}];
 
@@ -160,7 +160,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
           $scope.errorMessage = "";
           address.coordinate = data.coordinate;
 
-          hustleBeeAppFactory.addAddress(address, function(data){
+          informationFactory.post(address, '/addAddress', function(data){
             if(data){
               $scope.success = true;
               $scope.successMessage = "Address added successfully! Add another?";
