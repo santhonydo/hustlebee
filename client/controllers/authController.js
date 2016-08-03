@@ -1,5 +1,7 @@
 hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $location, $state, $stateParams, userFactory, authFactory, hustleBeeAppFactory){
 
+  $scope.credit = {};
+  $scope.credit.check = false;
   $scope.error = false;
   $scope.disabled = true;
 
@@ -58,28 +60,37 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
     {value: "Wyoming", label: "Wyoming"}
   ];
 
+  $scope.creditCheck = function(){
+    console.log('hi');
+    if($scope.credit.check === false){
+      $scope.credit.check === true;
+    }
+    else{
+      $scope.credit.check === false;
+    }
+  };
+
   function stripeResponseHandler(status, response){
-    console.log('hihi')
     if(response.error){
       console.log(response.error.message);
       $scope.error = true;
       $scope.errorMessage = response.error.message;
     }else{
       console.log(response.id)
-      //authFactory.register(newUser, function(data, results){
-      //  if(data.username){
-      //    userFactory.setUser(results, data)
-      //    $state.go('business.user');
-      //    $scope.error = false;
-      //    $scope.disabled = false;
-      //    $scope.newUser = {};
-      //  } else {
-      //    $scope.error = true;
-      //    $scope.errorMessage = data[0];
-      //    $scope.disabled = false;
-      //    $scope.newUser = {};
-      //  }
-      //})
+      authFactory.register(newUser, function(data, results){
+        if(data.username){
+          userFactory.setUser(results, data)
+          $state.go('business.user');
+          $scope.error = false;
+          $scope.disabled = false;
+          $scope.newUser = {};
+        } else {
+          $scope.error = true;
+          $scope.errorMessage = data[0];
+          $scope.disabled = false;
+          $scope.newUser = {};
+        }
+      })
     }
     $scope.$apply();
   }
@@ -92,7 +103,7 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
     userFactory.getTempInfo(function(output){
       newUser = output.newUser;
       stateLicense = output.license;
-      if(credit){
+      if($scope.credit.check === true){
         token = Stripe.card.createToken({
           number: credit.number,
           cvc: credit.cvc,

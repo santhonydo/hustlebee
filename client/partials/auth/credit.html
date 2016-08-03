@@ -17,7 +17,7 @@
       <form name="jobPostingForm">
         <div class="row">
           Add credit card to account!
-          <input type="checkbox">
+          <input type="checkbox" ng-checked="all" ng-model="credit.check">
           <div class="col-md-12">
               <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
             <div class="col-md-6">
@@ -44,7 +44,7 @@
             </div>
           </div>
           <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-default" ng-click="registerBusiness(creditCard)">Register</button>
+            <button type="button" class="btn btn-default" ng-click="registerBusiness(creditCard)">Register Card</button>
             <p>Already have an account? <a style="cursor: pointer; color: #FEC900;" ng-click="backToLogin()">Login here</a></p>
           </div>
         </div>
