@@ -10,7 +10,7 @@ hustleBeeAppModule.controller('AdminController', function($scope, authFactory, u
     var modalInstance = $uibModal.open({
       animation: true,
       size: 'sm',
-      templateUrl: '/static/partials/modals/login_modal.html',
+      templateUrl: '/partials/modals/login_modal.html',
       controller: 'AuthController'
     });
   };
@@ -19,7 +19,7 @@ hustleBeeAppModule.controller('AdminController', function($scope, authFactory, u
     var modalInstance = $uibModal.open({
       animation: true,
       size: 'md',
-      templateUrl: '/static/partials/modals/register_modal.html',
+      templateUrl: '/partials/modals/register_modal.html',
       controller: 'AuthController'
     });
   };

@@ -60,16 +60,6 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
     {value: "Wyoming", label: "Wyoming"}
   ];
 
-  $scope.creditCheck = function(){
-    console.log('hi');
-    if($scope.credit.check === false){
-      $scope.credit.check === true;
-    }
-    else{
-      $scope.credit.check === false;
-    }
-  };
-
   function stripeResponseHandler(status, response){
     if(response.error){
       console.log(response.error.message);
@@ -77,26 +67,14 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
       $scope.errorMessage = response.error.message;
     }else{
       console.log(response.id)
-      authFactory.register(newUser, function(data, results){
-        if(data.username){
-          userFactory.setUser(results, data)
-          $state.go('business.user');
-          $scope.error = false;
-          $scope.disabled = false;
-          $scope.newUser = {};
-        } else {
-          $scope.error = true;
-          $scope.errorMessage = data[0];
-          $scope.disabled = false;
-          $scope.newUser = {};
-        }
-      })
+      return response.id;
     }
     $scope.$apply();
   }
 
 
   $scope.registerBusiness = function(credit){
+    console.log($scope.credit);
     $scope.error = false;
     var newUser, stateLicense;
     var token;
@@ -104,13 +82,29 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
       newUser = output.newUser;
       stateLicense = output.license;
       if($scope.credit.check === true){
-        token = Stripe.card.createToken({
+        credit.token = Stripe.card.createToken({
           number: credit.number,
           cvc: credit.cvc,
           exp_month: credit.exp_month,
           exp_year: credit.exp_year,
           address_zip: credit.zip
         }, stripeResponseHandler);
+      }
+      else{
+        authFactory.register(newUser, function(data, results){
+          if(data.username){
+            userFactory.setUser(results, data)
+            $state.go('business.user');
+            $scope.error = false;
+            $scope.disabled = false;
+            $scope.newUser = {};
+          } else {
+            $scope.error = true;
+            $scope.errorMessage = data[0];
+            $scope.disabled = false;
+            $scope.newUser = {};
+          }
+        })
       }
     });
   }

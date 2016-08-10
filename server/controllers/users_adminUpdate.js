@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+
 module.exports = function(req,res){
   var userInfo = req.body;
   if(userInfo.zipcode === undefined){

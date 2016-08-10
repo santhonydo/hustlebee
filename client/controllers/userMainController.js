@@ -10,6 +10,7 @@ hustleBeeAppModule.controller('UserMainController', function($scope, $rootScope,
   }
 
   var getShifts = function(){
+    console.log(user);
     informationFactory.post({userId : user._id}, '/getAvailableShifts', function(output){
       $scope.shifts = output.unaccepted;
       $scope.accepted = output.accepted;

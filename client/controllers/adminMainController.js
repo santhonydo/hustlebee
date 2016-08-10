@@ -131,7 +131,7 @@ hustleBeeAppModule.controller('AdminMainController', function($scope,  authFacto
     var modalInstance = $uibModal.open({
       animation: true,
       size: 'lg',
-      templateUrl: '/static/partials/modals/userInfoModal.html',
+      templateUrl: '/partials/modals/userInfoModal.html',
       controller: 'InfoModalController',
       resolve: {
         info: function(){

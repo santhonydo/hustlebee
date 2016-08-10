@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var Shift = mongoose.model('Shift');
+
 module.exports = function(req, res){
   var shifts = [];
   Shift.find({employer: {$exists: true}}).populate('employer').exec(function(err, output){

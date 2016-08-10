@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var Shift = mongoose.model('Shift');
+
 module.exports = function(req,res){
   var shiftId = req.body.id;
   Shift.findOne({_id: shiftId}, function(err, shift){

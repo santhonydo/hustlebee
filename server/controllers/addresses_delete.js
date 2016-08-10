@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var Address = mongoose.model('Address');
+
 module.exports = function(req, res){
   Address.remove({_id: req.body.addressId}, function(err, data){
     if(err){

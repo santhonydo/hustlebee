@@ -1,3 +1,7 @@
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var sendgrid = require('sendgrid')('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');
+
 module.exprots = function(req,res){
   User.findOne({'email' : req.body.email}, function(err, user){
     if(err) {

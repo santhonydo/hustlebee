@@ -68,7 +68,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 		var modalInstance = $uibModal.open({
 			animation: true,
 			size: 'md',
-			templateUrl: '/static/partials/modals/address_modal.html',
+			templateUrl: '/partials/modals/address_modal.html',
 			controller: 'ModalController'
 		})
 	}

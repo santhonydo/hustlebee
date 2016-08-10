@@ -1,4 +1,4 @@
-hustleBeeAppModule.controller('UserController', function($scope, $rootScope, $uibModal, $location, $state, $stateParams, informationFactory, userFactory, authFactory, hustleBeeAppFactory){
+hustleBeeAppModule.controller('UserController', function($scope, $rootScope, $state, $stateParams, authFactory){
   $scope.logout = function(){	
     $rootScope.loggedIn = false;	
     authFactory.logout(function(success){

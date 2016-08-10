@@ -1,6 +1,13 @@
+var LocalStrategy = require('passport-local').Strategy;
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var bCrypt = require('bcrypt-nodejs');
+var sendgrid = require('sendgrid')('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');
+var stripe = require("stripe")("sk_test_Wf8ZUqakNp9NOqETeWuE5AFU");
+
 module.exports = function(req, username, password, done){
   findOrCreateUser = function(){
-    // find a user in Mongo with provided username
+    // find a user in Mongo with provided email
     User.findOne({ 'email' :  req.param('email') }, function(err, user) {
       // In case of any error, return using the done method
       if (err){

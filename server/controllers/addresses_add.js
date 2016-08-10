@@ -1,3 +1,7 @@
+var mongoose = require('mongoose');
+var Address = mongoose.model('Address');
+var User = mongoose.model('User');
+
 module.exports = function(req,res){
   var address = new Address(req.body);
 

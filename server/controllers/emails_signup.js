@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var Email = mongoose.model('Email');
+
 module.export = function(req,res){
   var email = new Email(req.body);
 

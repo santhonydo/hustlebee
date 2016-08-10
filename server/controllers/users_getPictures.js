@@ -1,3 +1,5 @@
+var AWS = require('aws-sdk');
+
 module.exports = function(req,res){
   AWS.config.loadFromPath('./config/config.json');
   var s3 = new AWS.S3();

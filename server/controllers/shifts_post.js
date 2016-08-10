@@ -1,3 +1,7 @@
+var mongoose = require('mongoose');
+var Shift = mongoose.model('Shift');
+var sendgrid = require('sendgrid')('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');
+
 module.export = function(req, res){
   var shiftData = req.body.shift;
   var shiftAddressDic = shiftData["shiftAddress"];

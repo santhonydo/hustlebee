@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var Shift = mongoose.model('Shift');
+
 module.exports = function(req,res){
   var shifts = {
     unaccepted: [],
