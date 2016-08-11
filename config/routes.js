@@ -162,6 +162,7 @@ module.exports = function(app, passport){
 	});
 
 	app.post('/postShift', function(req, res) {
+    console.log('bi')
 		shifts.postShift(req, res);
 	});
 
