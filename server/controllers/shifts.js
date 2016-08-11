@@ -7,7 +7,7 @@ var updateShiftFunction = require('./shifts_updateShift.js');
 
 module.exports = function () {
   return {
-    postShift: postFunction,
+    postShifts: postFunction,
     getAllShifts: getAllFunction,
     getAvailableShifts: getAvailableShiftsFunction,
     getShifts: getShiftsFunction,

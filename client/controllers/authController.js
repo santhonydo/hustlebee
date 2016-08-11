@@ -112,8 +112,10 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
   $scope.login = function(user, info){
     authFactory.login(user, function(data, results){
       if(data.username){
+        console.log('asdfasdfsdf')
         userFactory.setUser(results, data);
         if(info === 'business'){
+          console.log('asdfasldfj2222');
           $state.go('business.user');
         }
         else if(info === 'user'){

@@ -6,7 +6,6 @@ module.exports = function(req,res){
     if(err){
       console.log('Error finding user');
     } else {
-      console.log(user);
       res.json(user);
     }
   })

@@ -143,7 +143,9 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 			shiftData.shift = shift;
 			shiftData.userInfo = userInfo;
 
+      console.log('informationfactory.prepost');
 			informationFactory.post(shiftData, '/postShift', function(data){
+        console.log('informationfactory.post');
 				if(data){
 					$state.go('business.user');
 				} else {
