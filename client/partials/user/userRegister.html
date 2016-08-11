@@ -1,0 +1,163 @@
+<div class="jumbotron2" style="background: url(/images/medteam.jpg) 
+                        no-repeat center center;
+                        -webkit-background-size: cover;
+                        -moz-background-size: cover;
+                        -o-background-size: cover;
+                        background-size: cover;">
+  <div class="container">
+    <div class="row" style="margin-top: 40px; margin-bottom: 20px">
+      <div class="col-md-12 text-center">
+        <a href="/"><img src="/images/hustlebee_logo.png" alt="Hustlebee Logo"></a>
+      </div>
+    </div>
+    <div class="col-md-offset-2 col-md-8 well" style="background-color: rgba(245, 245, 245, 0.9);">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h3 class="fh5co-sub">Employee Registration</h3>
+        </div>
+      </div>
+      <form name="jobPostingForm">
+        <div class="row">
+          <div class="col-md-12">
+            <div ng-show="error" class="alert alert-danger">{{error}}</div>
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{'has-error': jobPostingForm.firstName.$invalid}">
+                <input type="text" class="form-control" name="firstName" ng-model="newUser.firstName" placeholder="First Name" ng-pattern="/^[a-zA-Z]*$/" required>
+              </div>
+            </div>	
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{'has-error': jobPostingForm.lastName.$invalid}">
+                <input type="text" class="form-control" name="lastName" ng-model="newUser.lastName" placeholder="Last Name" ng-pattern="/^[a-zA-Z]*$/" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{'has-error': jobPostingForm.occupation.$invalid}">
+                <select class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="occupation" ng-model="occupation" ng-options="occupationChoice as occupationChoice.label for occupationChoice in workerOccupation" required="">
+                  <option value="" class="" selected="selected">Select Occupation</option>
+                  <option label="Outpatient Pharmacist" value="object:5">Outpatient Pharmacist</option>
+                  <option label="Inpatient Pharmacist" value="object:6">Inpatient Pharmacist</option><option label="Intern Pharmacist" value="object:7">Intern Pharmacist</option>
+                  <option label="Pharmacy Technician" value="object:8">Pharmacy Technician</option>
+                </select>
+              </div>
+            </div>	
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{'has-error': jobPostingForm.stateLicense.$invalid}">
+                <select class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="stateLicense" ng-model="stateLicense" ng-options="state as state.label for state in workerStateLicense" required="">
+                  <option value="" class="" selected="selected">Select State of Licensure</option>
+                  <option label="Alabama" value="object:8">Alabama</option>
+                  <option label="Alaska" value="object:9">Alaska</option>
+                  <option label="Arizona" value="object:10">Arizona</option>
+                  <option label="Arkansas" value="object:11">Arkansas</option>
+                  <option label="California" value="object:12">California</option>
+                  <option label="Colorado" value="object:13">Colorado</option>
+                  <option label="Connecticut" value="object:14">Connecticut</option>
+                  <option label="Delaware" value="object:15">Delaware</option>
+                  <option label="Florida" value="object:16">Florida</option>
+                  <option label="Georgia" value="object:17">Georgia</option>
+                  <option label="Hawaii" value="object:18">Hawaii</option>
+                  <option label="Idaho" value="object:19">Idaho</option>
+                  <option label="Illinois" value="object:20">Illinois</option>
+                  <option label="Indiana" value="object:21">Indiana</option>
+                  <option label="Iowa" value="object:22">Iowa</option>
+                  <option label="Kansas" value="object:23">Kansas</option>
+                  <option label="Kentucky" value="object:24">Kentucky</option>
+                  <option label="Louisiana" value="object:25">Louisiana</option>
+                  <option label="Maine" value="object:26">Maine</option>
+                  <option label="Maryland" value="object:27">Maryland</option>
+                  <option label="Massachusetts" value="object:28">Massachusetts</option>
+                  <option label="Michigan" value="object:29">Michigan</option>
+                  <option label="Minnesota" value="object:30">Minnesota</option>
+                  <option label="Mississippi" value="object:31">Mississippi</option>
+                  <option label="Missouri" value="object:32">Missouri</option>
+                  <option label="Montana" value="object:33">Montana</option>
+                  <option label="Nebraska" value="object:34">Nebraska</option>
+                  <option label="Nevada" value="object:35">Nevada</option>
+                  <option label="New Hampshire" value="object:36">New Hampshire</option>
+                  <option label="New Jersey" value="object:37">New Jersey</option>
+                  <option label="New Mexico" value="object:38">New Mexico</option>
+                  <option label="New York" value="object:39">New York</option>
+                  <option label="North Carolina" value="object:40">North Carolina</option>
+                  <option label="North Dakota" value="object:41">North Dakota</option>
+                  <option label="Ohio" value="object:42">Ohio</option>
+                  <option label="Oklahoma" value="object:43">Oklahoma</option>
+                  <option label="Oregon" value="object:44">Oregon</option>
+                  <option label="Pennsylvania" value="object:45">Pennsylvania</option>
+                  <option label="Rhode Island" value="object:46">Rhode Island</option>
+                  <option label="South Carolina" value="object:47">South Carolina</option>
+                  <option label="South Dakota" value="object:48">South Dakota</option>
+                  <option label="Tennessee" value="object:49">Tennessee</option>
+                  <option label="Texas" value="object:50">Texas</option>
+                  <option label="Utah" value="object:51">Utah</option>
+                  <option label="Vermont" value="object:52">Vermont</option>
+                  <option label="Virginia" value="object:53">Virginia</option>
+                  <option label="Washington" value="object:54">Washington</option>
+                  <option label="West Virginia" value="object:55">West Virginia</option>
+                  <option label="Wisconsin" value="object:56">Wisconsin</option>
+                  <option label="Wyoming" value="object:57">Wyoming</option></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{'has-error': jobPostingForm.email.$invalid}">
+                <input type="email" class="form-control" name="email" ng-model="newUser.email" placeholder="Email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{'has-error': jobPostingForm.username.$invalid}">
+                <input type="text" class="form-control" name="username" ng-model="newUser.username" placeholder="Username" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">	
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{'has-error': jobPostingForm.password.$invalid}">
+                <input type="password" class="form-control" name="password" ng-model="newUser.password" placeholder="Password" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" ng-class="{'has-error': jobPostingForm.confirmPassword.$invalid}">
+                <input type="password" class="form-control" name="confirmPassword" ng-model="newUser.confirmPassword" placeholder="Confirm Password" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">	
+            <div class="col-md-6">
+              <div class="form-group has-error" ng-class="{'has-error': jobPostingForm.licenseNumber.$invalid}">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="licenseNumber" ng-model="newUser.licenseNumber" placeholder="License No." required="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group has-error" ng-class="{'has-error': jobPostingForm.licenseExpirationDate.$invalid}">
+                <input type="text" name="licenseExpirationDate" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Expiration Date - MM/DD/YYYY" ng-model="newUser.licenseExpirationDate" required="" ng-pattern="/^((\d{4})-(\d{2})-(\d{2})|(\d{2})\/(\d{2})\/(\d{4}))$/">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">	
+            <div class="col-md-6">
+              <div class="form-group has-error" ng-class="{'has-error': jobPostingForm.zipcode.$invalid}">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" name="zipcode" ng-model="newUser.zipcode" placeholder="Zipcode" required="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group has-error" ng-class="{'has-error': jobPostingForm.phoneNumber.$invalid}">
+                <input type="text" name="phoneNumber" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Phone Number" ng-model="newUser.phoneNumber" required="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-default" ng-click="registerUser(newUser, occupation, stateLicense)">Register</button>
+            <p>Already have an account? <a style="cursor: pointer; color: #FEC900;" ng-click="backToUserLogin()">Login here</a></p>
+          </div>
+        </div>
+      </form>
+    </div>	
+  </div>
+</div>
+
+
+
+

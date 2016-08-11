@@ -21,28 +21,35 @@
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
 
+  <!-- Stripe API -->
+  <script type="text/javascript" src="https://js.stripe.com/v2/">
+  </script>
+  <script type="text/javascript">
+    Stripe.setPublishableKey('pk_test_NM37Z1clnLTjG1pSRRpprqRH');
+  </script>
+
 	<!-- Google Webfonts -->
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="./static/css/animate.css">
+	<link rel="stylesheet" href="./css/animate.css">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="./static/css/icomoon.css">
+	<link rel="stylesheet" href="./css/icomoon.css">
 	<!-- Simple Line Icons-->
-	<link rel="stylesheet" href="./static/css/simple-line-icons.css">
+	<link rel="stylesheet" href="./css/simple-line-icons.css">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="./static/css/magnific-popup.css">
+	<link rel="stylesheet" href="./css/magnific-popup.css">
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="./static/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="./static/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="./css/owl.carousel.min.css">
+	<link rel="stylesheet" href="./css/owl.theme.default.min.css">
 
 	<!-- Theme Style -->
-	<link rel="stylesheet" href="./static/css/style.css">
+	<link rel="stylesheet" href="./css/style.css">
 
-	<link rel="stylesheet" href="./static/css/adminStyle.css">
+	<link rel="stylesheet" href="./css/adminStyle.css">
 
-	<link rel="stylesheet" href="./static/css/shiftStyle.css">
+	<link rel="stylesheet" href="./css/shiftStyle.css">
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -60,29 +67,51 @@
 </body>
 
 	<!-- jQuery -->
-	<script src="./static/js/jquery.min.js"></script> 
+	<script src="./js/jquery.min.js"></script> 
 	<!-- Bootstrap -->
-	<script src="./static/js/bootstrap.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
 	
 	<!-- Angular JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 	<!-- UI Bootstrap -->
-	<script type="text/javascript" src="./static/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+	<script type="text/javascript" src="./js/ui-bootstrap-tpls-0.14.3.min.js"></script>
 	<!-- UI-Router -->
-	<script src="./static/js/angular-ui-router.min.js"></script>
+	<script src="./js/angular-ui-router.min.js"></script>
 	<!-- Angular Script -->
-	<script src="./static/ng_script.js"></script>
-	<script src="./static/factory/factory.js"></script>
-	<script src="./static/controllers/homepageController.js"></script>
-	<script src="./static/controllers/dashboardController.js"></script>
-	<script src="./static/controllers/authController.js"></script>
-	<script src="./static/controllers/employerPageController.js"></script>
-	<script src="./static/controllers/modalController.js"></script>
-	<script src="./static/controllers/adminController.js"></script>
-	<script src="./static/controllers/employerInfoPageController.js"></script>
-	<script src="./static/controllers/shiftController.js"></script>
-	<script src="./static/controllers/userController.js"></script>
+
+	<!-- Routes -->
+	<script src="./app.js"></script>
+
+
+	<!-- Factories -->
+	<script src="./factory/factory.js"></script>
+	<script src="./factory/authFactory.js"></script>
+	<script src="./factory/userFactory.js"></script>
+	<script src="./factory/informationFactory.js"></script>
+
+	<!-- Controller -->
+	<script src="./controllers/adminController.js"></script>
+	<script src="./controllers/adminLoginController.js"></script>
+	<script src="./controllers/adminMainController.js"></script>
+	<script src="./controllers/authController.js"></script>
+	<script src="./controllers/dashboardController.js"></script>
+	<script src="./controllers/deleteModalController.js"></script>
+	<script src="./controllers/employerInfoPageController.js"></script>
+	<script src="./controllers/forgotPasswordController.js"></script>
+	<script src="./controllers/homepageController.js"></script>
+	<script src="./controllers/infoChangeModalController.js"></script>
+	<script src="./controllers/infoModalController.js"></script>
+	<script src="./controllers/jobPostingController.js"></script>
+	<script src="./controllers/modalController.js"></script>
+	<script src="./controllers/newPasswordController.js"></script>
+	<script src="./controllers/resetPasswordController.js"></script>
+	<script src="./controllers/settingsController.js"></script>
+	<script src="./controllers/userController.js"></script>
+	<script src="./controllers/userHomepageController.js"></script>
+	<script src="./controllers/userMainController.js"></script>
+	<script src="./controllers/userSettingsController.js"></script>
+	<script src="./controllers/userShiftController.js"></script>
 
   <!--Amazon AWS -->
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.4.0.min.js"></script>
@@ -92,35 +121,35 @@
 	<!-- Angular Messages -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.js"></script>
 	<!-- Angular Google Analytics -->
-	<script src="./static/js/angulartics-google-analytics.min.js"></script>
+	<script src="./js/angulartics-google-analytics.min.js"></script>
 	<!-- Angulartics -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angulartics/0.20.1/angulartics.min.js"></script>
 	<!-- Google Maps API -->
-	<script src="./static/js/lodash.js"></script>
-	<script src="./static/js/angular-simple-logger.js"></script>
-	<script src="./static/js/angular-google-maps.js"></script>
+	<script src="./js/lodash.js"></script>
+	<script src="./js/angular-simple-logger.js"></script>
+	<script src="./js/angular-google-maps.js"></script>
 	
 	<!-- Modernizr JS -->
-	<script src="./static/js/modernizr-2.6.2.min.js"></script>
+	<script src="./js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 	<!-- jQuery Easing -->
-	<script src="./static/js/jquery.easing.1.3.js"></script>
+	<script src="./js/jquery.easing.1.3.js"></script>
 	<!-- Waypoints -->
-	<script src="./static/js/jquery.waypoints.min.js"></script>
+	<script src="./js/jquery.waypoints.min.js"></script>
 	<!-- Magnific Popup -->
-	<script src="./static/js/jquery.magnific-popup.min.js"></script>
+	<script src="./js/jquery.magnific-popup.min.js"></script>
 	<!-- Owl Carousel -->
-	<script src="./static/js/owl.carousel.min.js"></script>
+	<script src="./js/owl.carousel.min.js"></script>
 	<!-- toCount -->
-	<script src="./static/js/jquery.countTo.js"></script>
-	<script src="./static/js/stormpath-sdk-angularjs.js"></script>
-	<script src="./static/js/stormpath-sdk-angularjs.tpls.js"></script>
-	<script src="./static/js/moment.min.js"></script>
-	<script src="./static/js/bootstrap-datetimepicker.min.js"></script>
-	<script src="./static/js/collapse.js"></script>
-	<script src="./static/js/transition.js"></script>
+	<script src="./js/jquery.countTo.js"></script>
+	<script src="./js/stormpath-sdk-angularjs.js"></script>
+	<script src="./js/stormpath-sdk-angularjs.tpls.js"></script>
+	<script src="./js/moment.min.js"></script>
+	<script src="./js/bootstrap-datetimepicker.min.js"></script>
+	<script src="./js/collapse.js"></script>
+	<script src="./js/transition.js"></script>
 	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 </html>

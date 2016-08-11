@@ -1,0 +1,80 @@
+<div style="height: 80px"></div>
+
+<div class="container">
+  <h3>Edit Profile</h3>
+  <hr>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-3">
+      <div class="text-center">
+        <img src="/images/profile_image_temp.png" style="height: 100px; width: 100px;" class="avatar img-circle" alt="avatar">
+        <h6>Hello, {{user.firstName}} {{user.lastName}}! </h6>
+        <h6>{{employerStatus}} <i class="icon-close" ng-show="unverified" style="color: red; font-size: 15px"></i><i class="icon-check" ng-show="verified" style="color: green; font-size: 15px"></i></h6>
+
+        <!-- <input type="file" class="form-control"> -->
+      </div>
+    <div class="personal-info">
+      <div ng-show="unverified === true">
+        <div class="row text-center">
+          <div class="col-md-6">
+            <input class="inputfile text-center" type="file" id="file" name="file" file-model="myFile"/>
+          </div>
+          <div class="col-md-offset-4 col-md-2">
+            <button ng-click="uploadFile()">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- edit form column -->
+
+
+    <div class="col-md-9">
+          <div ng-show="unverified != false" class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a> 
+        <i class="fa fa-coffee"></i>
+        Once you have been verified, you will be unable to upload a new license photo.
+      </div>
+      <div ng-show="success === true" class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a> 
+        <i class="fa fa-coffee"></i>
+        Photo sucessfully uploaded!
+      </div>
+        <h3>Personal info</h3>
+      <div class="col-md-6">
+        <h4>Email Address: </h4><p>{{user.email}}</p>
+        <h4>Name: </h4><p>{{user.firstName}} {{user.lastName}}</p>
+        <h4>Occupation: </h4><p>{{user.occupation}}</p>
+        <h4>Username: </h4><p>{{user.username}}</p>
+      </div>
+      <div class="col-md-6">
+        <h4>License Number: </h4><p>{{user.licenseNumber}}</p>
+        <h4>license Expiration Date: </h4><p>{{user.licenseExpirationDate}}</p>
+        <h4>Zip Code: </h4><p>{{user.zipcode}}</p>
+        <h4>State of License </h4><p>{{user.stateOfLicensure}}</p>
+      </div>
+    </div>
+    <form class="form-horizontal" role="form"> <div class="row" style="padding-bottom: 10px">
+        <label class="col-lg-3 control-label" >Phone Number:</label>
+        <div class="col-lg-8">
+          <input class="form-control" type="text" ng-model="user.phoneNumber">
+        </div>
+      </div>
+     <!-- <div class="row" style="padding-bottom: 10px">
+        <label class="col-lg-3 control-label" >Address</label>
+        <div class="col-lg-8">
+          <input class="form-control" type="text" ng-model="user.address">
+        </div>
+     </div> -->
+      <div style="margin-top: 20px" class="text-center">
+        <div class="col-md-8">
+          <input type="button" class="btn btn-primary" value="Save Changes" ng-click="updateUser(user)">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<hr>
+<div style="height: 100px"></div>
+

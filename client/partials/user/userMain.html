@@ -1,0 +1,36 @@
+<div style="margin-top: 100px;" class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12"> 
+      <h2 ng-if="shifts.length != 0">List of Available shifts</h2>
+      <table ng-if="shifts.length != 0" class="table">
+        <thead>
+          <td>Date</td>
+          <td>Position</td>
+          <td>Date</td>
+          <td>Start Time</td>
+          <td>Duration</td>
+          <td>Location</td>
+          <td>Employer</td>
+          <td>Wage</td>
+          <td>Accept Shift</td>
+        </thead>
+        <tbody>
+          <tr ng-repeat="shift in shifts | orderBy: 'created_at':false">
+            <td><span ng-bind='shift.date'></span></td>
+            <td><span ng-bind='shift.position'></span></td>
+            <td><span ng-bind='shift.date'></span></td>
+            <td>{{shift.startTime.hour}}:{{shift.startTime.minute}}</td>
+            <td>{{shift.hours}} hours and {{shift.minutes}} minutes</td>
+            <td><span ng-bind='shift.address'></span></td>
+            <td><span ng-bind='shift.employer'></span></td>
+            <td><span ng-bind='shift.wage'></span></td>
+            <td><span ng-if="status === 1" ng-click="acceptShift(shift)"><i class='icon-check' style="font-size: 120%; color: red; cursor: pointer"></i></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div ng-if="shifts.length == 0">
+        <a><h4>No available shifts at the moment, but click here to see more jobs!</h4></a> 
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div style="margin-top: 100px;" class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12"> 
+      <h2>List of accepted Shifts</h2>
+      <table ng-if="accepted.length != 0" class="table">
+        <thead>
+          <td>Date</td>
+          <td>Position</td>
+          <td>Date</td>
+          <td>Start Time</td>
+          <td>Duration</td>
+          <td>Location</td>
+          <td>Employer</td>
+          <td>Wage</td>
+        </thead>
+        <tbody>
+          <tr ng-repeat="shift in accepted | orderBy: 'created_at':false">
+            <td><span ng-bind='shift.date'></span></td>
+            <td><span ng-bind='shift.position'></span></td>
+            <td><span ng-bind='shift.date'></span></td>
+            <td>{{shift.startTime.hour}}:{{shift.startTime.minute}}</td>
+            <td>{{shift.hours}} hours and {{shift.minutes}} minutes</td>
+            <td><span ng-bind='shift.address'></span></td>
+            <td><span ng-bind='shift.employer'></span></td>
+            <td><span ng-bind='shift.wage'></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div ng-if="accepted.length == 0">
+        <h1>No shifts accepted yet</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
