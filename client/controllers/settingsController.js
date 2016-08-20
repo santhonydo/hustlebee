@@ -3,6 +3,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 	$scope.success = false;
 
 	var userInfo = userFactory.getUserData();
+  $scope.userInfo = userInfo;
 	var auth = userFactory.getUserStatus();
 
 	if (auth === false) {
@@ -69,6 +70,15 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 			animation: true,
 			size: 'md',
 			templateUrl: '/partials/modals/address_modal.html',
+			controller: 'ModalController'
+		})
+	}
+
+	$scope.addCreditCard = function() {
+		var modalInstance = $uibModal.open({
+			animation: true,
+			size: 'md',
+			templateUrl: '/partials/modals/credit_modal.html',
 			controller: 'ModalController'
 		})
 	}

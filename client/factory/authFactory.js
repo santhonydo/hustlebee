@@ -39,6 +39,8 @@ hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, $htt
 
 
   factory.register = function(data, callback){
+    data.username = data.email
+    console.log('in register factory')
     var deferred = $q.defer();
 
     $http.post('/register', data).success(function(data){

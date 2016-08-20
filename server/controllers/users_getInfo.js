@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var stripe = require("stripe")("sk_live_DW1I6W9YtmtT2mPNRAWHiwBJ");
 var User = mongoose.model('User');
 
 module.exports = function(req,res){
