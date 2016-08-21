@@ -70,6 +70,7 @@ module.exports = function(req, username, password, done){
                   console.log(json);
                 }); 
                 //add card to stripe api here
+                newUser.card = true;
                 return done(null, newUser);
               }
             });
@@ -113,8 +114,8 @@ module.exports = function(req, username, password, done){
                 if (err){
                   return console.log('error happened here', err);
                 }
-                console.log(json);
               }); 
+              newUser.card = false;
               return done(null, newUser);
             }
           });

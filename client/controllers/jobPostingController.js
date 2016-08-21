@@ -125,27 +125,25 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 
 			if (shift["position"] == "Outpatient Pharmacist") {
 				shift["description"] = pharmacistJobDescription;
-				shift["wage"] = "$65"
+				shift["wage"] = 65;
 			}
 
 			if (shift["position"] == "Inpatient Pharmacist") {
 				shift["description"] = pharmacistJobDescription;
-				shift["wage"] = "$70"
+				shift["wage"] = 70;
 			}
 
 			if (shift["position"] == "Pharmacy Technician") {
 				
 				shift["description"] = technicianJobDescription;
-				shift["wage"] = "$30"
+				shift["wage"] = 30;
 			}
 
 			var shiftData = {};
 			shiftData.shift = shift;
 			shiftData.userInfo = userInfo;
 
-      console.log('informationfactory.prepost');
 			informationFactory.post(shiftData, '/postShift', function(data){
-        console.log('informationfactory.post');
 				if(data){
 					$state.go('business.user');
 				} else {

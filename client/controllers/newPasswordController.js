@@ -1,6 +1,10 @@
-hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, $stateParams, userFactory, authFactory, hustleBeeAppFactory){
+hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, $stateParams, userFactory, authFactory, informationFactory, hustleBeeAppFactory){
 
-  var userData = userFactory.getUserData();
+  var userData;
+  informationFactory.post($stateParams.id, '/getUser', function(output){
+    userFatory.setUser(false, output);
+    userData = userFactory.getUserData();
+  })
   $scope.error = false;
   $scope.success = false;
   $scope.info = false;
@@ -16,7 +20,6 @@ hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, 
     } else {
       $scope.error = false;
       $scope.errorMessage = "";
-
       if (user.password != user.passwordAgain){
         $scope.error = true;
         $scope.errorMessage = "Passwords do not match. Try again!";
