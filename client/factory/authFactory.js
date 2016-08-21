@@ -21,7 +21,6 @@ hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, $htt
     var deferred = $q.defer();
 
     $http.post('/login', data).success(function(data){
-      console.log(data);
       if (data.username) {
         deferred.resolve();
         callback(data, true);
@@ -40,7 +39,6 @@ hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, $htt
 
   factory.register = function(data, callback){
     data.username = data.email
-    console.log('in register factory')
     var deferred = $q.defer();
 
     $http.post('/register', data).success(function(data){

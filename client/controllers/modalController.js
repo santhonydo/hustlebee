@@ -11,6 +11,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
   $scope.close = function() {
     $uibModalInstance.dismiss('cancel');
     $rootScope.$broadcast('updateUser');
+    $rootScope.$broadcast('updateCard');
   };
 
   function stripeResponseHandler(status, response){
@@ -21,17 +22,17 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
     }else{
       data.token = response.id;
       data.email = userInfo.email;
-      informationFactory.post(data, 'addCard', function(data, results){
-        if(data.username){
+      informationFactory.post(data, 'addCard', function(results){
+        if(results.msg === 'Saved successfully!'){
+          console.log('hihi');
           $state.go('business.settings');
           $scope.error = false;
-          $scope.disabled = false;
-          $scope.newUser = {};
+          $scope.success = true;
+          $scope.successMessage = results.msg;
         } else {
           $scope.error = true;
           $scope.errorMessage = data[0];
           $scope.disabled = false;
-          $scope.newUser = {};
         }
       })
     }

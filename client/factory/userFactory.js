@@ -1,5 +1,5 @@
 hustleBeeAppModule.factory('userFactory', function($q, $timeout, $location, $http){
-  var user = null;
+  var userStatus = null;
   var userInfo = null;
   var tempInfo = {};
   var factory = {};
@@ -16,12 +16,12 @@ hustleBeeAppModule.factory('userFactory', function($q, $timeout, $location, $htt
   }
 
   factory.setUser = function(data, data2){
-    user = data;
+    userStatus = data;
     userInfo = data2;
   }
 
   factory.getUserStatus = function() {
-    return user;
+    return userStatus;
   }
 
   factory.getUserData = function() {

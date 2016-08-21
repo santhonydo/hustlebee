@@ -62,13 +62,10 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
   ];
 
   function stripeResponseHandler(status, response){
-    console.log('bruh')
     if(response.error){
-      console.log(response.error.message);
       $scope.error = true;
       $scope.errorMessage = response.error.message;
     }else{
-      console.log(response.id);
       $scope.tempUserInfo.token = response.id;
       authFactory.register($scope.tempUserInfo, function(data, results){
         if(data.username){
@@ -90,7 +87,6 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
 
 
   $scope.registerBusiness = function(creditCard){
-    console.log(creditCard)
     $scope.error = false;
     var newUser, stateLicense;
     var token;
@@ -128,10 +124,8 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
   $scope.login = function(user, info){
     authFactory.login(user, function(data, results){
       if(data.username){
-        console.log('asdfasdfsdf')
         userFactory.setUser(results, data);
         if(info === 'business'){
-          console.log('asdfasldfj2222');
           $state.go('business.user');
         }
         else if(info === 'user'){

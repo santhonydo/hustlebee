@@ -3,7 +3,6 @@ hustleBeeAppModule.factory('informationFactory', function($q, $timeout, $locatio
   var factory = {};
 
   factory.post = function(data, url, callback){
-    console.log(url);
     $http.post(url, data).success(function(output){
       callback(output);
     })
