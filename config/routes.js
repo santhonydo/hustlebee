@@ -55,6 +55,7 @@ module.exports = function(app, passport){
 				return res.status(500).json({err: err});
 			}
 			if (user === false){
+        console.log(info, err)
 				console.log('false user');
 				res.json(req.flash('message'))
 			} else {
@@ -200,6 +201,10 @@ module.exports = function(app, passport){
 
 	app.get('/getInfo', function(req, res){
 		users.getInfo(req, res);
+	})
+
+	app.post('/addCard', function(req, res){
+		users.addCard(req, res);
 	})
 
 	app.post('/getPictures', function(req, res){

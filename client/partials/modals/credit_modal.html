@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <button type="button" ng-click="close()" class="close">&times;</button>
+  <h3 class="modal-title">Add Credit Card</h3>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+        <div ng-show="success" class="alert alert-success">{{successMessage}}</div>
+        <div class="row">
+          <div class="col-md-8 col-sm-8">
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="creditCard.number" placeholder="Credit Card Number">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <input type="text" class="form-control" ng-model="creditCard.zip" placeholder="Zipcode">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="creditCard.exp_month" placeholder="Month example: 08">
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-2">
+            <input type="text" placeholder="Year example: 17" class="form-control" name="state" ng-model="creditCard.exp_year" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">	
+  <button type="button" class="btn btn-default" ng-click="addCreditCard(creditCard)">Add</button>
+</div>

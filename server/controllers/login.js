@@ -1,4 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy;
+var stripe = require("stripe")("sk_live_DW1I6W9YtmtT2mPNRAWHiwBJ");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var bCrypt = require('bcrypt-nodejs');
@@ -23,7 +24,18 @@ module.exports = function(passport){
 						return done(null, false,
 							req.flash('message', 'Invalid Password'));
 					}
-          console.log('hiii', user);
+          if(user.card){
+            stripe.customers.retrieve(user.card, function(err, customer){
+              if( err ){
+                user.card = false
+              }
+              else{
+                user.card = true
+              }
+            })
+            return done(null, user);
+          }
+          user.card = false;
 					return done(null, user);
 				}
 			)

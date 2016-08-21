@@ -2,6 +2,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
 
   $scope.error = false;
   $scope.success = false;
+  $scope.creditCard = {};
 
   var userInfo = userFactory.getUserData();
 
@@ -11,6 +12,42 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
     $uibModalInstance.dismiss('cancel');
     $rootScope.$broadcast('updateUser');
   };
+
+  function stripeResponseHandler(status, response){
+    var data = {};
+    if(response.error){
+      $scope.error = true;
+      $scope.errorMessage = response.error.message;
+    }else{
+      data.token = response.id;
+      data.email = userInfo.email;
+      informationFactory.post(data, 'addCard', function(data, results){
+        if(data.username){
+          $state.go('business.settings');
+          $scope.error = false;
+          $scope.disabled = false;
+          $scope.newUser = {};
+        } else {
+          $scope.error = true;
+          $scope.errorMessage = data[0];
+          $scope.disabled = false;
+          $scope.newUser = {};
+        }
+      })
+    }
+    $scope.$apply();
+  }
+
+  $scope.addCreditCard = function(creditCard){
+    $scope.error = false;
+    Stripe.card.createToken({
+      number: creditCard.number,
+      cvc: creditCard.cvc,
+      exp_month: creditCard.exp_month,
+      exp_year: creditCard.exp_year,
+      address_zip: creditCard.zip
+    }, stripeResponseHandler);
+  }
 
   $scope.addAddress = function(address, state){
     if(angular.isUndefined(address)) {

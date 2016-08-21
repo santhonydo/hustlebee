@@ -4,6 +4,7 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
   $scope.credit.check = false;
   $scope.error = false;
   $scope.disabled = true;
+  $scope.tempUserInfo = {};
 
   $scope.workerOccupation = [{value: "Outpatient Pharmacist", label: "Outpatient Pharmacist"}, {value: "Inpatient Pharmacist", label: "Inpatient Pharmacist"}, {value: "Intern Pharmacist", label: "Intern Pharmacist"}, {value: "Pharmacy Technician", label: "Pharmacy Technician"}]
 
@@ -61,33 +62,48 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
   ];
 
   function stripeResponseHandler(status, response){
+    console.log('bruh')
     if(response.error){
       console.log(response.error.message);
       $scope.error = true;
       $scope.errorMessage = response.error.message;
     }else{
-      console.log(response.id)
-      return response.id;
+      console.log(response.id);
+      $scope.tempUserInfo.token = response.id;
+      authFactory.register($scope.tempUserInfo, function(data, results){
+        if(data.username){
+          userFactory.setUser(results, data)
+          $state.go('business.user');
+          $scope.error = false;
+          $scope.disabled = false;
+          $scope.newUser = {};
+        } else {
+          $scope.error = true;
+          $scope.errorMessage = data[0];
+          $scope.disabled = false;
+          $scope.newUser = {};
+        }
+      })
     }
     $scope.$apply();
   }
 
 
-  $scope.registerBusiness = function(credit){
-    console.log($scope.credit);
+  $scope.registerBusiness = function(creditCard){
+    console.log(creditCard)
     $scope.error = false;
     var newUser, stateLicense;
     var token;
     userFactory.getTempInfo(function(output){
       newUser = output.newUser;
-      stateLicense = output.license;
+      $scope.tempUserInfo = output.newUser;
       if($scope.credit.check === true){
-        credit.token = Stripe.card.createToken({
-          number: credit.number,
-          cvc: credit.cvc,
-          exp_month: credit.exp_month,
-          exp_year: credit.exp_year,
-          address_zip: credit.zip
+        Stripe.card.createToken({
+          number: creditCard.number,
+          cvc: creditCard.cvc,
+          exp_month: creditCard.exp_month,
+          exp_year: creditCard.exp_year,
+          address_zip: creditCard.zip
         }, stripeResponseHandler);
       }
       else{
