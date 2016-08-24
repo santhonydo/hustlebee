@@ -11,6 +11,7 @@ var adminUpdateFunction = require('./users_adminUpdate.js');
 var resetFunction = require('./users_reset.js');
 var hustlebeeSignupFunction = require('./users_hustlebeeSignup.js');
 var addCardFunction = require('./users_addCard.js');
+var getTokenFunction = require('./users_getToken.js');
 
 module.exports = (function(){
   return {
@@ -26,7 +27,8 @@ module.exports = (function(){
     adminUpdate: adminUpdateFunction, 
     reset: resetFunction, 
     hustlebeeSignup: hustlebeeSignupFunction,
-    addCard: addCardFunction
+    addCard: addCardFunction,
+    getToken: getTokenFunction
   }
 })()
 

@@ -2,6 +2,7 @@ hustleBeeAppModule.factory('userFactory', function($q, $timeout, $location, $htt
   var userStatus = null;
   var userInfo = null;
   var tempInfo = {};
+  var params;
   var factory = {};
   var adminStatus = false;
 
@@ -9,6 +10,14 @@ hustleBeeAppModule.factory('userFactory', function($q, $timeout, $location, $htt
     if(adminStatus == false){
       $location.path('/admin');
     }
+  }
+
+  factory.setParams = function(data){
+    params = data;
+  }
+
+  factory.getParams = function(){
+    return params;
   }
 
   factory.setStatus = function(data){

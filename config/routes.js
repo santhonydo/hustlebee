@@ -126,6 +126,7 @@ module.exports = function(app, passport){
 	app.post('/newPassword', function(req, res){
 		async.waterfall([
 			function(done){
+        console.log(req.body.token);
 				User.findOne({resetPasswordToken: req.body.token, resetPasswordExpires: {$gt: Date.now()} }, function(err, user){
 					if(!user){
 						console.log('no user found to reset');
@@ -234,6 +235,10 @@ module.exports = function(app, passport){
 
 	app.post('/updateShift', function(req, res){
 		shifts.updateShift(req, res);
+	})
+
+	app.post('/getToken', function(req, res){
+		users.getToken(req, res);
 	})
 
 	var upload = multer({ storage: storage });

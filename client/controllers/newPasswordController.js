@@ -1,9 +1,10 @@
 hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, $stateParams, userFactory, authFactory, informationFactory, hustleBeeAppFactory){
 
   var userData;
-  informationFactory.post($stateParams.id, '/getUser', function(output){
-    userFatory.setUser(false, output);
+  informationFactory.post({id: userFactory.getParams().id}, '/getToken', function(output){
+    userFactory.setUser(false, output);
     userData = userFactory.getUserData();
+    console.log('hi', userData);
   })
   $scope.error = false;
   $scope.success = false;
@@ -30,6 +31,7 @@ hustleBeeAppModule.controller('NewPasswordController', function($scope, $state, 
         var userReset = {};
         userReset.token = userData.resetPasswordToken;
         userReset.password = user.password;
+        console.log(userReset);
         authFactory.newPassword(userReset, function(success){
           if(success.message === 'Error reseting') {
             $state.go('business.forgot');
