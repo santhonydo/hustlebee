@@ -166,10 +166,10 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
   }
 
   $scope.registerUser = function(newUser, occupation, stateLicense) {
-    if(angular.isUndefined($scope.newUser) || angular.isUndefined($scope.occupation) || angular.isUndefined($scope.stateLicense)){
+    if(angular.isUndefined(newUser) || angular.isUndefined(occupation) || angular.isUndefined(stateLicense)){
       $scope.success = null;
       $scope.error = "Opps! Did you forget to enter all your information correctly?";
-    } else if(angular.isUndefined($scope.newUser.firstName) || angular.isUndefined($scope.occupation.value) || angular.isUndefined($scope.stateLicense.value) || angular.isUndefined($scope.newUser.lastName) || angular.isUndefined($scope.newUser.email) || angular.isUndefined($scope.newUser.username) || angular.isUndefined($scope.newUser.password) || angular.isUndefined($scope.newUser.confirmPassword) || angular.isUndefined($scope.newUser.zipcode) || angular.isUndefined($scope.newUser.phoneNumber) || angular.isUndefined($scope.newUser.licenseNumber) || angular.isUndefined($scope.newUser.licenseExpirationDate)) {
+    } else if(angular.isUndefined(newUser.firstName) || angular.isUndefined(occupation.value) || angular.isUndefined(stateLicense.value) || angular.isUndefined(newUser.lastName) || angular.isUndefined(newUser.email) || angular.isUndefined(newUser.password) || angular.isUndefined(newUser.confirmPassword) || angular.isUndefined(newUser.zipcode) || angular.isUndefined(newUser.phoneNumber) || angular.isUndefined(newUser.licenseNumber) || angular.isUndefined(newUser.licenseExpirationDate)) {
       $scope.success = null;
       $scope.error = "Opps! Did you forget to enter all your information correctly?";
     } else {

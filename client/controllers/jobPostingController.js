@@ -125,18 +125,18 @@ hustleBeeAppModule.controller('JobPostingController', function($scope, $state, $
 
 			if (shift["position"] == "Outpatient Pharmacist") {
 				shift["description"] = pharmacistJobDescription;
-				shift["wage"] = 65;
+				shift["wage"] = '$65';
 			}
 
 			if (shift["position"] == "Inpatient Pharmacist") {
 				shift["description"] = pharmacistJobDescription;
-				shift["wage"] = 70;
+				shift["wage"] = '$70';
 			}
 
 			if (shift["position"] == "Pharmacy Technician") {
 				
 				shift["description"] = technicianJobDescription;
-				shift["wage"] = 30;
+				shift["wage"] = '$30';
 			}
 
 			var shiftData = {};
