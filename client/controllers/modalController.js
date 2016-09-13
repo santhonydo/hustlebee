@@ -3,6 +3,8 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
   $scope.error = false;
   $scope.success = false;
   $scope.creditCard = {};
+  $scope.creditCard.exp_month = "00";
+  $scope.creditCard.exp_year= "00";
 
   var userInfo = userFactory.getUserData();
 
@@ -24,7 +26,6 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
       data.email = userInfo.email;
       informationFactory.post(data, 'addCard', function(results){
         if(results.msg === 'Saved successfully!'){
-          console.log('hihi');
           $state.go('business.settings');
           $scope.error = false;
           $scope.success = true;

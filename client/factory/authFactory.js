@@ -1,4 +1,4 @@
-hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, $http){
+hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, regChecker, $http){
   var factory = {};
 
   factory.isLoggedIn = function() {
