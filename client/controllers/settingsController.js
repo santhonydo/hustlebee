@@ -2,6 +2,7 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 	
 	$scope.success = false;
 
+  $cardStatus = 'false';
 	var userInfo = userFactory.getUserData();
   $scope.userInfo = userInfo;
 	var auth = userFactory.getUserStatus();
@@ -61,8 +62,10 @@ hustleBeeAppModule.controller('SettingsController', function($scope, $state, $ui
 		})
 	}
 
-	$scope.$on('updateUser', function(){
+
+	$scope.$on('updateCard', function(){
     getUpdatedUserData();
+    $scope.$digest;
 	})
 
 	$scope.add = function() {

@@ -7,15 +7,15 @@ hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, regC
     } else {
       return false;
     }
-  }
+  };
 
   factory.adminLogin = function(data, callback){
     $http.post('/adminLogin', data).success(function(output){
-      if(output == true){
-        callback(output)
+      if(output === true){
+        callback(output);
       }
-    })
-  }
+    });
+  };
 
   factory.login = function(data, callback){
     var deferred = $q.defer();

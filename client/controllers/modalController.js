@@ -11,6 +11,7 @@ hustleBeeAppModule.controller('ModalController', function($scope, $rootScope, $s
   $scope.states = [{value: "CA", label: "CA"}];
 
   $scope.close = function() {
+    console.log('bump');
     $uibModalInstance.dismiss('cancel');
     $rootScope.$broadcast('updateUser');
     $rootScope.$broadcast('updateCard');

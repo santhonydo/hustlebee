@@ -94,7 +94,6 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
     $scope.error = false;
     var newUser, stateLicense;
     var token;
-    console.log(creditCard);
     userFactory.getTempInfo(function(output){
       newUser = output.newUser;
       $scope.tempUserInfo = output.newUser;

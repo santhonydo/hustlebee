@@ -36,19 +36,17 @@
                 <option value='11'>11</option>
                 <option value='12'>12</option>
               </select>
-              <input type="text" class="form-control" ng-model="creditCard.exp_month" placeholder="Month example: 08">
             </div>
           </div>
-          <div class="col-md-2 col-sm-2">
-            <select class="form-control" name="exp_year" ng-model="creditCard.exp_year">
-              <option value="00" disabled selected>Select expiration month</option>
+          <div class="col-md-6 col-sm-6">
+            <select class="form-control" name="exp_year" ng-model="creditCard.exp_year" data-stripe="exp_year">
+              <option value="00" disabled selected>Select expiration year</option>
               <option value='16'>2016</option>
               <option value='17'>2017</option>
               <option value='18'>2018</option>
               <option value='19'>2019</option>
               <option value='20'>2020</option>
             </select>
-            <input type="text" placeholder="Year example: 17" class="form-control" name="state" ng-model="creditCard.exp_year" >
           </div>
         </div>
       </div>
