@@ -1,4 +1,4 @@
-hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, $http){
+hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, regChecker, $http){
   var factory = {};
 
   factory.isLoggedIn = function() {
@@ -7,15 +7,15 @@ hustleBeeAppModule.factory('authFactory', function($q, $timeout, $location, $htt
     } else {
       return false;
     }
-  }
+  };
 
   factory.adminLogin = function(data, callback){
     $http.post('/adminLogin', data).success(function(output){
-      if(output == true){
-        callback(output)
+      if(output === true){
+        callback(output);
       }
-    })
-  }
+    });
+  };
 
   factory.login = function(data, callback){
     var deferred = $q.defer();

@@ -1,10 +1,14 @@
-hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $location, $state, $stateParams, userFactory, authFactory, hustleBeeAppFactory){
+hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $location, $state, $stateParams, userFactory, regChecker, authFactory, hustleBeeAppFactory){
 
   $scope.credit = {};
   $scope.credit.check = false;
   $scope.error = false;
   $scope.disabled = true;
   $scope.tempUserInfo = {};
+  $scope.creditCard = {};
+  $scope.creditCard.exp_month = "00";
+  $scope.creditCard.exp_year = "00";
+
 
   $scope.workerOccupation = [{value: "Outpatient Pharmacist", label: "Outpatient Pharmacist"}, {value: "Inpatient Pharmacist", label: "Inpatient Pharmacist"}, {value: "Intern Pharmacist", label: "Intern Pharmacist"}, {value: "Pharmacy Technician", label: "Pharmacy Technician"}]
 
@@ -143,27 +147,28 @@ hustleBeeAppModule.controller('AuthController', function($scope, $rootScope, $lo
   }
 
   $scope.nextPage= function(newUser, stateLicense){
+    var results;
     if(angular.isUndefined(newUser)){
       $scope.error = true;
       $scope.errorMessage = "All fields are required.";
-    } else
-      if (angular.isUndefined(newUser.firstName) || angular.isUndefined(newUser.lastName) || angular.isUndefined(newUser.companyName) || angular.isUndefined(newUser.email) || angular.isUndefined(newUser.password) || angular.isUndefined(newUser.phone) || angular.isUndefined(newUser.confirmPassword) || angular.isUndefined(newUser.licenseNumber) || angular.isUndefined(newUser.licenseExpirationDate) || angular.isUndefined(stateLicense.value)){
-        $scope.error = true;
-        $scope.errorMessage = "All fields are required.";
-      } else if ((newUser.firstName === '') || (newUser.lastName === '') || (newUser.companyName === '') || (newUser.email === '') || (newUser.username === '') || (newUser.password === '') || (newUser.phone === '') || (newUser.confirmPassword === '')){
-        $scope.error = true;
-        $scope.errorMessage = "All fields are required.";
-      } else if (newUser.password != newUser.confirmPassword) {
-        $scope.error = true;
-        $scope.errorMessage = "Passwords do not match."
-      } else {
+    } 
+    regChecker.userCheck(newUser, stateLicense, function(output){
+      if(output.status === true){
+        $scope.error = false;
+        $scope.errorMessage  = '';
         newUser.status = 0;
         newUser.employer = true;
         newUser.stateLicense = stateLicense.value;
         userFactory.setTempInfo(newUser, stateLicense);
         $state.go('credit')
       }
+      else{
+        $scope.error = true;
+        $scope.errorMessage  = output.message;
+      }
+    });
   }
+
 
   $scope.registerUser = function(newUser, occupation, stateLicense) {
     if(angular.isUndefined(newUser) || angular.isUndefined(occupation) || angular.isUndefined(stateLicense)){

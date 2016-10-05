@@ -36,9 +36,9 @@ app.use(express.static(path.join(__dirname, './client')));
 
 app.post('/uploadPicture', upload.array('photos, 12'), function(req,res,next){
   console.log('hi', req.files);
-})
+});
 
 app.listen(8888, function(){
   console.log('Listening on port 8888');
-})
+});
 
